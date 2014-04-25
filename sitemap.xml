@@ -4,77 +4,77 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/JCBox/index.html</loc>
-<lastmod>2014-04-25T11:51:19-00:00</lastmod>
+<loc>/index.html</loc>
+<lastmod>2014-04-25T11:52:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/JCBox/archives.html</loc>
-<lastmod>2014-04-25T11:51:19-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2014-04-25T11:52:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/JCBox/tags.html</loc>
-<lastmod>2014-04-25T11:51:19-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2014-04-25T11:52:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/JCBox/categories.html</loc>
-<lastmod>2014-04-25T11:51:19-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2014-04-25T11:52:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/JCBox/posts/2014/04/li-yong-githubpelicanda-jian-ge-ren-blog/</loc>
+<loc>/posts/2014/04/li-yong-githubpelicanda-jian-ge-ren-blog/</loc>
 <lastmod>2014-04-23T00:10:39-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/JCBox/posts/2014/04/bo-ke-dan-sheng-ji-ji-yu-githubpelicanchuang-jian-bo-ke-de-zheng-ge-guo-cheng/</loc>
+<loc>/posts/2014/04/bo-ke-dan-sheng-ji-ji-yu-githubpelicanchuang-jian-bo-ke-de-zheng-ge-guo-cheng/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/JCBox/category/web</loc>
+<loc>/category/web</loc>
 <lastmod>2014-04-23T00:10:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/JCBox/tag/web/</loc>
+<loc>/tag/web/</loc>
 <lastmod>2014-04-23T00:10:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/JCBox/tag/tech/</loc>
+<loc>/tag/tech/</loc>
 <lastmod>2014-04-23T00:10:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/JCBox/tag/writing/</loc>
+<loc>/tag/writing/</loc>
 <lastmod>2014-04-23T00:10:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/JCBox/author/justincheung.html</loc>
+<loc>/author/justincheung.html</loc>
 <lastmod>2014-04-23T00:10:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
