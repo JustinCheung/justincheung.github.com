@@ -1,61 +1,69 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>    利用Github+Pelican搭建个人Blog
-</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-            <link rel="stylesheet" href="/theme/css/normalize.css">
-        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/theme/css/main.css">
+<html lang="zh">
+<head>
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css"> 
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
+    <link href="/" type="application/atom+xml" rel="alternate" title="JC's Box ATOM Feed" />
 
-    <link rel="stylesheet" href="/theme/css/blog.css">
-    <link rel="stylesheet" href="/theme/css/github.css">
-        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
+        <title>利用Github+Pelican搭建个人Blog - JC's Box</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-        <div id="wrapper">
-<header id="sidebar" class="side-shadow">
-    <hgroup id="site-header">
-        <a id="site-title" href=""><h1><i class="icon-coffee"></i> JC's Box</h1></a>
-        <p id="site-desc"></p>
-    </hgroup>
-    <nav>
-        <ul id="nav-links">
-        </ul>
-    </nav>
-<footer id="site-info">
-    <p>
-        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> and <a href="http://python.org/" target="python">Python</a>. Theme by <a href="https://github.com/hdra/pelican-cait" target="github">hndr</a>.
-    </p>
-    <p>
-        Textures by <a href="http://subtlepatterns.com/" target="subtlepatterns">Subtle Pattern</a>. Font Awesome by <a href="http://fortawesome.github.io/Font-Awesome/" target="github">Dave Grandy</a>.
-    </p>
-</footer></header>
-    <div id="post-container">
-        <ol id="post-list">
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2014-04-23T00:10:39" pubdate>
-                            周三 23 四月 2014
-                        </time>
-                        <a href="/posts/2014/04/li-yong-githubpelicanda-jian-ge-ren-blog/" rel="bookmark"><h1>利用Github+Pelican搭建个人Blog</h1></a>
-                    </header>
+<body>
+    <section id="navbar">
+        <div class="user_meta">
+            <h1 id="user"><a href="" class="">JC's Box</a></h1>
+            <h2></h2>
+        </div>
+        <div class="nav-button">
+            <ul>
+                            <li><a href="">首页</a></li>
+                            <li><a href="https://github.com/JustinCheung">Github</a></li>
+                                    <li class="active"><a href="/category/web">Web</a></li>
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+             </ul>
+         </div>
+     </section>
 
-                    <section class="post-content">
-                        <h2>在GitHub上创建工程</h2>
+     <section id="sidebar">
+        <div class="user_meta">
+            <h1 id="user"><a href="" class="">JC's Box</a></h1>
+            <h2></h2>
+            <ul>
+                        <li><a href="">首页</a></li>
+                        <li><a href="https://github.com/JustinCheung">Github</a></li>
+                                <li class="active"><a href="/category/web">Web</a></li>
+                        <li><a href="#">You can add links in your config file</a></li>
+                        <li><a href="#">Another social link</a></li>
+                        <li><a href="http://getpelican.com/">Pelican</a></li>
+                        <li><a href="http://python.org/">Python.org</a></li>
+                        <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                        <li><a href="#">You can modify those links in your config file</a></li>
+            </ul>
+        </div>
+        <footer>
+            <address>
+                Powered by <a href='http://docs.getpelican.com/en/latest/'>Pelican</a>,
+                <a href='https://github.com/jamescooke/pelican-svbtle#readme'>theme info</a>.
+            </address>
+        </footer>
+    </section>
+
+    <section id="posts">
+        <article>
+                <h1 class="title">
+                        <a href="/posts/2014/04/li-yong-githubpelicanda-jian-ge-ren-blog/" rel="bookmark">利用Github+Pelican搭建个人Blog</a>
+                </h1>
+
+                <div class='article-content'>
+                    <h2>在GitHub上创建工程</h2>
 <p>如果你还没有GitHub账户，去<a href="http://www.github.com" title="注册">注册</a>一个~</p>
 <p>登录GitHub，点击页面顶部的显示你用户名位置右边的创建新工程 (<code>Create a new repo</code>) 按钮，来到创建新工程页面</p>
 <p><img alt="" src="http://i.imgur.com/K3IxOHm.png" /></p>
@@ -184,38 +192,48 @@ PLUGINS = ["sitemap"]</p>
 <p>然后执行</p>
 <p>make html
 然后 Pelican 就会将img目录拷贝到output/static/下就大功告成了。</p>
-                    </section>
-                    <hr/>
-                    <aside class="post-meta">
-                        <p>Category: <a href="/category/web">Web</a></p>
-                        <p>Tags: <a href="/tag/writing/">Writing</a>, <a href="/tag/web/">Web</a>, <a href="/tag/tech/">Tech</a>, </p>
-                    </aside>
-                    <hr/>
-<div class="comments">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'JustinCheung';
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-                </article>
-            </li>
-        </ol>
-    </div>
+                </div>
+
+                <div class="abbr published" title='2014-04-23T00:10:39'>Posted 周三 23 四月 2014</div>
+
+                <div id="article_meta">
+                                Category:
+                                        <a href="/category/web">Web</a>
+                                <br />Tags:
+                                        <a href="/tag/writing/">Writing</a>
+                                        <a href="/tag/web/">Web</a>
+                                        <a href="/tag/tech/">Tech</a>
+                </div>
+        </article>
+
+        <footer>
+                <a href="/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+        </footer>
+
+        <div id="comments">
+                <h2>Comments</h2>
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                        var disqus_identifier = "posts/2014/04/li-yong-githubpelicanda-jian-ge-ren-blog/";
+                        (function() {
+                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://JustinCheung.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                </script>
+                <noscript>Please enable JavaScript to view <a href="http://disqus.com/?ref_noscript">comments</a>.</noscript>
         </div>
 
-<script>
-    var _gaq=[['_setAccount','UA-50301243-1'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-        <script src="/theme/js/main.js"></script>
-    </body>
+    </section>
+
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-50301243-1");
+			pageTracker._trackPageview();
+		} catch(err) {}</script>
+</body>
 </html>
