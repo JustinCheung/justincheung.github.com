@@ -81,9 +81,16 @@
             </ul>
             <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
           </div><!--/.nav-collapse -->
-		  <form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);" style="margin-left: 57%;"> 
-		  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input">
-		  </form>
+		  <!--Baidu站内搜索开始-->
+			<form action="http://www.baidu.com/baidu">
+			<input type=text name=word>
+			<input type="submit" value="Baidu 搜索">
+			<input name=tn type=hidden value="bds">
+			<input name=cl type=hidden value="3">
+			<input name=ct type=hidden value="2097152">
+			<input name=si type=hidden value="www.williamlong.info">
+			</form>
+		  <!--Baidu站内搜索结束-->
         </div>
       </div>
     </div>
@@ -191,6 +198,11 @@
 <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
 <li class="nav-header"><h4><i class="icon-tags icon-large"></i>标签</h4></li>
 <li class="tag-4">
+    <a href="/tag/tech/">
+        <i class="icon-tag icon-large"></i>Tech
+    </a>
+</li>
+<li class="tag-4">
     <a href="/tag/writing/">
         <i class="icon-tag icon-large"></i>Writing
     </a>
@@ -198,11 +210,6 @@
 <li class="tag-1">
     <a href="/tag/web/">
         <i class="icon-tag icon-large"></i>Web
-    </a>
-</li>
-<li class="tag-4">
-    <a href="/tag/tech/">
-        <i class="icon-tag icon-large"></i>Tech
     </a>
 </li>
 </div>
