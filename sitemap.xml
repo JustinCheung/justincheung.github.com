@@ -4,78 +4,57 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/index.html</loc>
-<lastmod>2014-04-26T11:02:41-00:00</lastmod>
+<loc>http://justincheung.github.io/index.html</loc>
+<lastmod>2014-04-26T13:31:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/archives.html</loc>
-<lastmod>2014-04-26T11:02:41-00:00</lastmod>
+<loc>http://justincheung.github.io/archives.html</loc>
+<lastmod>2014-04-26T13:31:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tags.html</loc>
-<lastmod>2014-04-26T11:02:41-00:00</lastmod>
+<loc>http://justincheung.github.io/tags.html</loc>
+<lastmod>2014-04-26T13:31:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/categories.html</loc>
-<lastmod>2014-04-26T11:02:41-00:00</lastmod>
+<loc>http://justincheung.github.io/categories.html</loc>
+<lastmod>2014-04-26T13:31:23-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/posts/2014/04/li-yong-githubpelicanda-jian-ge-ren-blog/</loc>
-<lastmod>2014-04-23T00:10:39-00:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-
-<url>
-<loc>/posts/2014/04/bo-ke-dan-sheng-ji-ji-yu-githubpelicanchuang-jian-bo-ke-de-zheng-ge-guo-cheng/</loc>
+<loc>http://justincheung.github.io/posts/2014/04/bo-ke-dan-sheng-ji-ji-yu-githubpelicanchuang-jian-bo-ke-de-zheng-ge-guo-cheng/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/category/web</loc>
-<lastmod>2014-04-23T00:10:39-00:00</lastmod>
+<loc>http://justincheung.github.io/category/web</loc>
+<lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/web/</loc>
-<lastmod>2014-04-23T00:10:39-00:00</lastmod>
+<loc>http://justincheung.github.io/tag/web/</loc>
+<lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/tech/</loc>
-<lastmod>2014-04-23T00:10:39-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tag/writing/</loc>
-<lastmod>2014-04-23T00:10:39-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/author/justincheung.html</loc>
-<lastmod>2014-04-23T00:10:39-00:00</lastmod>
+<loc>http://justincheung.github.io/author/justincheung.html</loc>
+<lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
