@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://justincheung.github.io/index.html</loc>
-<lastmod>2014-04-26T17:21:40-00:00</lastmod>
+<lastmod>2014-04-26T17:23:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://justincheung.github.io/archives.html</loc>
-<lastmod>2014-04-26T17:21:40-00:00</lastmod>
+<lastmod>2014-04-26T17:23:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://justincheung.github.io/tags.html</loc>
-<lastmod>2014-04-26T17:21:40-00:00</lastmod>
+<lastmod>2014-04-26T17:23:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://justincheung.github.io/categories.html</loc>
-<lastmod>2014-04-26T17:21:40-00:00</lastmod>
+<lastmod>2014-04-26T17:23:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -43,13 +43,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2014-04-21T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
-</url>
-
-<url>
-<loc>http://justincheung.github.io/category/posts</loc>
-<lastmod>2014-04-21T00:00:00-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
 </url>
 
 <url>
