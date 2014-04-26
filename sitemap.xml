@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://justincheung.github.io/index.html</loc>
-<lastmod>2014-04-27T01:08:31-00:00</lastmod>
+<lastmod>2014-04-27T01:10:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://justincheung.github.io/archives.html</loc>
-<lastmod>2014-04-27T01:08:31-00:00</lastmod>
+<lastmod>2014-04-27T01:10:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://justincheung.github.io/tags.html</loc>
-<lastmod>2014-04-27T01:08:31-00:00</lastmod>
+<lastmod>2014-04-27T01:10:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://justincheung.github.io/categories.html</loc>
-<lastmod>2014-04-27T01:08:31-00:00</lastmod>
+<lastmod>2014-04-27T01:10:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -39,7 +39,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://justincheung.github.io/posts/2014/04/githubge-ren-bo-ke-chuang-jian-yi-ji-pei-zhi-guo-cheng/</loc>
+<loc>http://justincheung.github.io/posts/2014/04/githubge-ren-bo-ke-chuang-jian-yi-ji-pei-zhi-guo-cheng-lian-zai-zhong/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -53,14 +53,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://justincheung.github.io/tag/writting/</loc>
+<loc>http://justincheung.github.io/tag/web/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/tag/web/</loc>
+<loc>http://justincheung.github.io/tag/writting/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
