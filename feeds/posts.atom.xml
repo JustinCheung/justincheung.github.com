@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://justincheung.github.io/" rel="alternate"></link><link href="http://justincheung.github.io/feeds%5Cposts.atom.xml" rel="self"></link><id>http://justincheung.github.io/</id><updated>2014-04-21T00:00:00+08:00</updated><entry><title>test</title><link href="http://justincheung.github.io/posts/2014/04/test/" rel="alternate"></link><updated>2014-04-21T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:justincheung.github.io,2014-04-21:posts/2014/04/test/</id><summary type="html">&lt;h1&gt;1. 大时代&lt;/h1&gt;
+&lt;h1&gt;2. 第二篇&lt;/h1&gt;
+&lt;h1&gt;大苏打撒&lt;/h1&gt;</summary><category term="Web"></category></entry></feed>
