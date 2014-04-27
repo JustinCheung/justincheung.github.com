@@ -5,23 +5,23 @@
 &lt;h1 id="1github"&gt;1.在GitHub上申请账号创建工程&lt;/h1&gt;
 &lt;p&gt;    GitHub被誉为“程序员的Facebook”，如果你还没有&lt;a href="http://www.github.com"&gt;GitHub&lt;/a&gt;账号，那就先去注册一个。&lt;/p&gt;
 &lt;h2 id="11github"&gt;1.1注册GitHub&lt;/h2&gt;
-&lt;p&gt;    关于注册我就不多说了，这个只用根据提示一步一步的设置就好了。在这里贴上一张注册页面的图。&lt;br&gt;
-&lt;img alt="" src="\images\注册.PNG"/&gt;&lt;/br&gt;&lt;/p&gt;
+&lt;p&gt;    关于注册我就不多说了，这个只用根据提示一步一步的设置就好了。在这里贴上一张注册页面的图。
+&lt;img alt="" src="\images\注册.PNG"/&gt;&lt;/p&gt;
 &lt;h2 id="12github"&gt;1.2在GitHub上创建仓库&lt;/h2&gt;
-&lt;p&gt;    现在恭喜你有了GitHub的账号了，接下来就需要新建一个Repository（仓库）。如图所示：&lt;br&gt;
-&lt;img alt="" src="\images\NewRepository.PNG"/&gt;&lt;br&gt;
-然后进入一个Repository的配置页面。如图所示：&lt;br&gt;
-&lt;img alt="" src="\images\SetRepository.PNG"/&gt;&lt;br&gt;
-    我的仓库之前已经建立过了，所以提示“名字已经被使用了”，你可以根据自己的喜好随意设置仓库名。之后的设置默认就可以了。最后“&lt;strong&gt;Create Repository&lt;/strong&gt;”。好了，现在我们就有一个仓库了。但是这个仓库还没有域名，接下来我们要为这个仓库设置一个域名。&lt;br&gt;
-在仓库页面的左侧有个“ &lt;strong&gt;Settings&lt;/strong&gt; ”选项，选进去。   在“ &lt;strong&gt;GitHub Pages&lt;/strong&gt; ”这栏（我因为已经创建过页面了所以有提示" &lt;strong&gt;Your site is published at ......&lt;/strong&gt; "），点击“ &lt;strong&gt;Automatic Page Generator&lt;/strong&gt; ”，接下来几步一路continue就可以了。&lt;br&gt;
-&lt;img alt="" src="\images\GitHubPages.PNG"/&gt;&lt;br&gt;
-    现在你可以休息一下，也可以先接着往下看。因为GitHub Pages第一次配置之后，大概要十分钟才能为它分配域名成功。好了，闲话少说，我们继续本地配置。&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
+&lt;p&gt;    现在恭喜你有了GitHub的账号了，接下来就需要新建一个Repository（仓库）。如图所示：
+&lt;img alt="" src="\images\NewRepository.PNG"/&gt;
+然后进入一个Repository的配置页面。如图所示：
+&lt;img alt="" src="\images\SetRepository.PNG"/&gt;
+    我的仓库之前已经建立过了，所以提示“名字已经被使用了”，你可以根据自己的喜好随意设置仓库名。之后的设置默认就可以了。最后“&lt;strong&gt;Create Repository&lt;/strong&gt;”。好了，现在我们就有一个仓库了。但是这个仓库还没有域名，接下来我们要为这个仓库设置一个域名。&lt;/p&gt;
+&lt;p&gt;在仓库页面的左侧有个“ &lt;strong&gt;Settings&lt;/strong&gt; ”选项，选进去。   在“ &lt;strong&gt;GitHub Pages&lt;/strong&gt; ”这栏（我因为已经创建过页面了所以有提示" &lt;strong&gt;Your site is published at ......&lt;/strong&gt; "），点击“ &lt;strong&gt;Automatic Page Generator&lt;/strong&gt; ”，接下来几步一路continue就可以了。
+&lt;img alt="" src="\images\GitHubPages.PNG"/&gt;
+    现在你可以休息一下，也可以先接着往下看。因为GitHub Pages第一次配置之后，大概要十分钟才能为它分配域名成功。好了，闲话少说，我们继续本地配置。&lt;/p&gt;
 &lt;h1 id="2pelicangit"&gt;2.安装pelican和git等工具&lt;/h1&gt;
 &lt;p&gt;    GitHub Pages是静态网页，所以我们所写的网页不能直接放上去。也不能像“ &lt;strong&gt;Wordpress&lt;/strong&gt; ”那样通过后台来添加博文。所以我们需要一个工具来将写好的文章和模板一起来生成一个静态网站。这个工具就是pelican。Peelican官方文档上是这么说的，“ &lt;strong&gt;Pelican is a static site generator, written in Python, that requires no database or server-side logic.&lt;/strong&gt; ”具体的文档，你可以在&lt;a href="http://blog.getpelican.com/"&gt;http://blog.getpelican.com/&lt;/a&gt;上深入研究。好了，我们现在不用太深入纠结。&lt;/p&gt;
 &lt;h2 id="21pip"&gt;2.1安装pip&lt;/h2&gt;
-&lt;p&gt;    Pip是一个为了方便安装和管理Python包的一个工具，通俗的的讲就是一个应用管理中心（官方给出的解释是“ &lt;strong&gt;A tool for installing and managing Python packages.&lt;/strong&gt; ”）。&lt;br&gt;
-    如果你的python是2.X版本的，你需要安装pip。但是3.X版本的似乎不需要安装pip了。具体需不需要安装，你可以在Python的安装目录下的Scripts的文件夹中看看有没有pip。好了，如果你没有pip那就来配置一下吧。&lt;br&gt;
-    打开终端，输入下边的代码：&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
+&lt;p&gt;    Pip是一个为了方便安装和管理Python包的一个工具，通俗的的讲就是一个应用管理中心（官方给出的解释是“ &lt;strong&gt;A tool for installing and managing Python packages.&lt;/strong&gt; ”）。
+    如果你的python是2.X版本的，你需要安装pip。但是3.X版本的似乎不需要安装pip了。具体需不需要安装，你可以在Python的安装目录下的Scripts的文件夹中看看有没有pip。好了，如果你没有pip那就来配置一下吧。
+    打开终端，输入下边的代码：&lt;/p&gt;
 &lt;p&gt;curl -O http://python-distribute.org/distribute_setup.py
 sudo python distribute_setup.py&lt;/p&gt;
 &lt;p&gt;curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
