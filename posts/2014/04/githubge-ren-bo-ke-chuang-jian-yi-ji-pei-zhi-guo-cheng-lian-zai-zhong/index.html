@@ -131,36 +131,37 @@
 <p>    Pip是一个为了方便安装和管理Python包的一个工具，通俗的的讲就是一个应用管理中心（官方给出的解释是“ <strong>A tool for installing and managing Python packages.</strong> ”）。</p>
 <p>    如果你的python是2.X版本的，你需要安装pip。但是3.X版本的似乎不需要安装pip了。具体需不需要安装，你可以在Python的安装目录下的Scripts的文件夹中看看有没有pip。好了，如果你没有pip那就来配置一下吧。</p>
 <p>    打开终端，输入下边的代码：</p>
-<p>`curl -O http://python-distribute.org/distribute_setup.py  </p>
-<p>sudo python distribute_setup.py  </p>
-<p>curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py  </p>
-<p>sudo python get-pip.py`</p>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="o">:</span><span class="c1">//python-distribute.org/distribute_setup.py  </span>
+<span class="n">sudo</span> <span class="n">python</span> <span class="n">distribute_setup</span><span class="p">.</span><span class="n">py</span>
+
+<span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">https</span><span class="o">:</span><span class="c1">//raw.github.com/pypa/pip/master/contrib/get-pip.py  </span>
+<span class="n">sudo</span> <span class="n">python</span> <span class="n">get</span><span class="o">-</span><span class="n">pip</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
 <p>    OK，现在pip已经安装成功了，如果你用的是window系统，那你还需要将Python目录下的Scripts放入环境变量中。</p>
 <h2 id="22pelican">2.2安装pelican</h2>
-<p>    哈哈，现在我们有了pip，就开始配置pelican和一些必要的Python Packages了。闲言少叙，书接上文。<br>
-    接下来我们需要下载pelican、markdown以及beautifulsoup4等Python Packages。你只需要在终端中输入下边代码：<br/></br></p>
-<blockquote>
-<p>sudo pip install pelican<br>
-sudo pip install markdown<br>
-sudo pip install beautifulsoup4</br></br></p>
-</blockquote>
+<p>    哈哈，现在我们有了pip，就开始配置pelican和一些必要的Python Packages了。闲言少叙，书接上文。</p>
+<p>    接下来我们需要下载pelican、markdown以及beautifulsoup4等Python Packages。你只需要在终端中输入下边代码：</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
+<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span>
+<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">beautifulsoup4</span>
+</pre></div>
 <h2 id="23-git">2.3 配置git</h2>
-<p>    Git怎么安装的在这里不进行赘述了。只是简单地介绍一下配置Git。<br>
-    参考了GitHub的配置指南，设置好用户名和邮箱（这里的邮箱用的是你注册GitHub的那个邮箱）。</br></p>
-<blockquote>
-<p>git config --global user.name "Your Name Here"<br>
-git config --global user.email "your_email@example.com"<br>
-git config --global push.default simple</br></br></p>
-</blockquote>
+<p>    Git怎么安装的在这里不进行赘述了。只是简单地介绍一下配置Git。</p>
+<p>    参考了GitHub的配置指南，设置好用户名和邮箱（这里的邮箱用的是你注册GitHub的那个邮箱）。</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="s">"Your Name Here"</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span> <span class="s">"your_email@example.com"</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">push</span><span class="p">.</span><span class="k">default</span> <span class="n">simple</span>
+</pre></div>
 <p><strong>安装ssh公钥</strong>:用你在注册github时用的Email生成一个ssh公钥私钥对:</p>
+<div class="highlight"><pre><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">C</span> <span class="s">"your_email@example.com"</span>
+</pre></div>
 <blockquote>
-<p>ssh-keygen -t rsa -C "your_email@example.com"</p>
+<p>Enter passphrase (empty for no passphrase): 输入你在github注册时使用的密码
+Enter same passphrase again: 再输一次</p>
 </blockquote>
-<p>Enter passphrase (empty for no passphrase): 输入你在github注册时使用的密码<br>
-Enter same passphrase again: 再输一次</br></p>
 <p>    然后会看到公钥和私钥分别被保存为id_rsa和id_rsa.pub，后者正是我们需要的。打开github网页，在账户设置（Account settings）中找到SSH keys项目，点击添加SSH key(Add SSH key)，把idrsa.pub中的内容复制到网页中的key里面。到此git配置成功！</p>
 <h1 id="3">3.配置博客</h1>
-<p>    现在开始创建Blog了，创建一个Blog目录并且用命令pelican-quickstart创建一个博客。<br/></p>
+<p>    现在开始创建Blog了，创建一个Blog目录并且用命令pelican-quickstart创建一个博客。</p>
 <blockquote>
 <p>mkdir blog<br>
 cd blog<br>
