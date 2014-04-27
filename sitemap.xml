@@ -4,77 +4,77 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://justincheung.github.io/index.html</loc>
-<lastmod>2014-04-27T17:10:03-00:00</lastmod>
+<loc>http://www.zscbb.com/index.html</loc>
+<lastmod>2014-04-27T17:14:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/archives.html</loc>
-<lastmod>2014-04-27T17:10:03-00:00</lastmod>
+<loc>http://www.zscbb.com/archives.html</loc>
+<lastmod>2014-04-27T17:14:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/tags.html</loc>
-<lastmod>2014-04-27T17:10:03-00:00</lastmod>
+<loc>http://www.zscbb.com/tags.html</loc>
+<lastmod>2014-04-27T17:14:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/categories.html</loc>
-<lastmod>2014-04-27T17:10:03-00:00</lastmod>
+<loc>http://www.zscbb.com/categories.html</loc>
+<lastmod>2014-04-27T17:14:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/pages/about.html</loc>
+<loc>http://www.zscbb.com/pages/about.html</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/posts/2014/04/githubge-ren-bo-ke-chuang-jian-yi-ji-pei-zhi-guo-cheng-lian-zai-zhong/</loc>
+<loc>http://www.zscbb.com/posts/2014/04/githubge-ren-bo-ke-chuang-jian-yi-ji-pei-zhi-guo-cheng-lian-zai-zhong/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/category/web</loc>
+<loc>http://www.zscbb.com/category/web</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/tag/github/</loc>
+<loc>http://www.zscbb.com/tag/github/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/tag/writting/</loc>
+<loc>http://www.zscbb.com/tag/web/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/tag/web/</loc>
+<loc>http://www.zscbb.com/tag/writting/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://justincheung.github.io/author/justincheung.html</loc>
+<loc>http://www.zscbb.com/author/justincheung.html</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
