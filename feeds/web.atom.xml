@@ -21,13 +21,11 @@
 &lt;h2 id="21pip"&gt;2.1安装pip&lt;/h2&gt;
 &lt;p&gt;    Pip是一个为了方便安装和管理Python包的一个工具，通俗的的讲就是一个应用管理中心（官方给出的解释是“ &lt;strong&gt;A tool for installing and managing Python packages.&lt;/strong&gt; ”）。&lt;br&gt;
     如果你的python是2.X版本的，你需要安装pip。但是3.X版本的似乎不需要安装pip了。具体需不需要安装，你可以在Python的安装目录下的Scripts的文件夹中看看有没有pip。好了，如果你没有pip那就来配置一下吧。&lt;br&gt;
-    打开终端，输入下边的代码：&lt;br/&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;curl -O http://python-distribute.org/distribute_setup.py&lt;br&gt;
-sudo python distribute_setup.py&lt;/br&gt;&lt;/p&gt;
+    打开终端，输入下边的代码：&lt;br&gt;
+`curl -O http://python-distribute.org/distribute_setup.py&lt;br&gt;
+sudo python distribute_setup.py&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;
 &lt;p&gt;curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py&lt;br&gt;
-sudo python get-pip.py&lt;/br&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+sudo python get-pip.py`&lt;/br&gt;&lt;/p&gt;
 &lt;p&gt;OK，现在pip已经安装成功了，如果你用的是window系统，那你还需要将Python目录下的Scripts放入环境变量中。&lt;/p&gt;
 &lt;h2 id="22pelican"&gt;2.2安装pelican&lt;/h2&gt;
 &lt;p&gt;    哈哈，现在我们有了pip，就开始配置pelican和一些必要的Python Packages了。闲言少叙，书接上文。&lt;br&gt;
