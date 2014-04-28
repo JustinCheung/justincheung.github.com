@@ -156,8 +156,8 @@
 <div class="highlight"><pre><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">C</span> <span class="s">"your_email@example.com"</span>
 </pre></div>
 <blockquote>
-<p>Enter passphrase (empty for no passphrase): 输入你在github注册时使用的密码
-Enter same passphrase again: 再输一次</p>
+<p>Enter passphrase (empty for no passphrase): 输入你在github注册时使用的密码</p>
+<p>Enter same passphrase again: 再输一次</p>
 </blockquote>
 <p>    然后会看到公钥和私钥分别被保存为id_rsa和id_rsa.pub，后者正是我们需要的。打开github网页，在账户设置（Account settings）中找到SSH keys项目，点击添加SSH key(Add SSH key)，把idrsa.pub中的内容复制到网页中的key里面。到此git配置成功！</p>
 <h1 id="3">3.配置博客</h1>
