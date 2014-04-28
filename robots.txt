@@ -1,0 +1,10 @@
+### BEGIN FILE ###
+#
+# allow-all
+#
+#
+
+Sitemap: http://www.zscbb.com/sitemap.xml
+Allow: /
+
+### END FILE ###
