@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.zscbb.com/index.html</loc>
-<lastmod>2014-04-28T22:20:36-00:00</lastmod>
+<lastmod>2014-04-28T22:24:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.zscbb.com/archives.html</loc>
-<lastmod>2014-04-28T22:20:36-00:00</lastmod>
+<lastmod>2014-04-28T22:24:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.zscbb.com/tags.html</loc>
-<lastmod>2014-04-28T22:20:36-00:00</lastmod>
+<lastmod>2014-04-28T22:24:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.zscbb.com/categories.html</loc>
-<lastmod>2014-04-28T22:20:36-00:00</lastmod>
+<lastmod>2014-04-28T22:24:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -60,14 +60,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.zscbb.com/tag/writting/</loc>
+<loc>http://www.zscbb.com/tag/github/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.zscbb.com/tag/github/</loc>
+<loc>http://www.zscbb.com/tag/writting/</loc>
 <lastmod>2014-04-22T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

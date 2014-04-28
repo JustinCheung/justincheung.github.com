@@ -156,15 +156,15 @@
 <div class="highlight"><pre><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">C</span> <span class="s">"your_email@example.com"</span>
 </pre></div>
 <blockquote>
-<p>Enter passphrase (empty for no passphrase): 输入你在github注册时使用的密码</p>
-<p>Enter same passphrase again: 再输一次</p>
+<p><strong>Enter passphrase (empty for no passphrase): 输入你在github注册时使用的密码</strong></p>
+<p><strong>Enter same passphrase again: 再输一次</strong></p>
 </blockquote>
 <p>    然后会看到公钥和私钥分别被保存为id_rsa和id_rsa.pub，后者正是我们需要的。打开github网页，在账户设置（Account settings）中找到SSH keys项目，点击添加SSH key(Add SSH key)，把idrsa.pub中的内容复制到网页中的key里面。到此git配置成功！</p>
 <h1 id="3">3.配置博客</h1>
 <p>    现在开始创建Blog了，创建一个Blog目录并且用命令pelican-quickstart创建一个博客。</p>
-<div class="highlight"><pre><span class="nx">mkdir</span> <span class="nx">blog</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
-<span class="nx">cd</span> <span class="nx">blog</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
-<span class="nx">pelican</span><span class="na">-quickstart</span>
+<div class="highlight"><pre><span class="n">mkdir</span> <span class="n">blog</span>
+<span class="n">cd</span> <span class="n">blog</span>
+<span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
 </pre></div>
 <h2 id="31pelican-elegant">3.1配置pelican-elegant模板</h2>
 <h2 id="32">3.2配置插件</h2>
