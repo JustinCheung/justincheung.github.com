@@ -284,23 +284,37 @@ Excel自身提供的。语言相关的部分只是负责跟Windows的COM组件�
 &lt;div class="section" id="id12"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id34"&gt;关于枚举常量&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Excel API中有各种各样的枚举常量，我还没有找到在Python中直接引用这些常亮的方法，目前的办法         是找到所需的常数的值，自己定义这些常数。比如我用到了如下这些枚举常量：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ExcelConstants&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="c"&gt;# XlFileFormat Enumeration&lt;/span&gt;
-    &lt;span class="n"&gt;xlOpenXMLWorkbook&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;51&lt;/span&gt;  &lt;span class="c"&gt;# Open XML Workbook.&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ExcelConstants&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+     &lt;span class="c"&gt;# XlFileFormat Enumeration&lt;/span&gt;
+     &lt;span class="n"&gt;xlOpenXMLWorkbook&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;51&lt;/span&gt;  &lt;span class="c"&gt;# Open XML Workbook.&lt;/span&gt;
 
-    &lt;span class="c"&gt;# XlDVType Enumeration&lt;/span&gt;
-    &lt;span class="n"&gt;xlValidateList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;  &lt;span class="c"&gt;# Value must be present in a specified list.&lt;/span&gt;
+     &lt;span class="c"&gt;# XlDVType Enumeration&lt;/span&gt;
+     &lt;span class="n"&gt;xlValidateList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;  &lt;span class="c"&gt;# Value must be present in a specified list.&lt;/span&gt;
 
-    &lt;span class="c"&gt;# XlDVAlertStyle Enumeration&lt;/span&gt;
-    &lt;span class="n"&gt;xlValidAlertStop&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="c"&gt;# Stop icon.&lt;/span&gt;
+     &lt;span class="c"&gt;# XlDVAlertStyle Enumeration&lt;/span&gt;
+     &lt;span class="n"&gt;xlValidAlertStop&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="c"&gt;# Stop icon.&lt;/span&gt;
 
-    &lt;span class="c"&gt;# Constants Enumeration&lt;/span&gt;
-    &lt;span class="n"&gt;xlCenter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4108&lt;/span&gt;
+     &lt;span class="c"&gt;# Constants Enumeration&lt;/span&gt;
+     &lt;span class="n"&gt;xlCenter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4108&lt;/span&gt;
 
-    &lt;span class="c"&gt;# XlLineStyle enumeration&lt;/span&gt;
-    &lt;span class="n"&gt;xlContinuous&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+     &lt;span class="c"&gt;# XlLineStyle enumeration&lt;/span&gt;
+     &lt;span class="n"&gt;xlContinuous&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;要想知道某一个枚举常量的数值，可以查阅MSDN中&lt;a class="reference external" href="http://msdn.microsoft.com/en-us/library/office/ff838815.aspx"&gt;Excel Enumerations&lt;/a&gt;相关的资料。&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;要想知道某一个枚举常量的数值，可以查阅MSDN中&lt;a class="reference external" href="http://msdn.microsoft.com/en-us/library/office/ff838815.aspx"&gt;Excel Enumerations&lt;/a&gt;相关的资料。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </summary><category term="Excel"></category></entry></feed>

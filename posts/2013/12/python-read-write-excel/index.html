@@ -403,23 +403,37 @@ Excel自身提供的。语言相关的部分只是负责跟Windows的COM组件�
 <div class="section" id="id12">
 <h3><a class="toc-backref" href="#id34">关于枚举常量</a></h3>
 <p>Excel API中有各种各样的枚举常量，我还没有找到在Python中直接引用这些常亮的方法，目前的办法         是找到所需的常数的值，自己定义这些常数。比如我用到了如下这些枚举常量：</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">ExcelConstants</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="c"># XlFileFormat Enumeration</span>
-    <span class="n">xlOpenXMLWorkbook</span> <span class="o">=</span> <span class="mi">51</span>  <span class="c"># Open XML Workbook.</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">ExcelConstants</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+     <span class="c"># XlFileFormat Enumeration</span>
+     <span class="n">xlOpenXMLWorkbook</span> <span class="o">=</span> <span class="mi">51</span>  <span class="c"># Open XML Workbook.</span>
 
-    <span class="c"># XlDVType Enumeration</span>
-    <span class="n">xlValidateList</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c"># Value must be present in a specified list.</span>
+     <span class="c"># XlDVType Enumeration</span>
+     <span class="n">xlValidateList</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c"># Value must be present in a specified list.</span>
 
-    <span class="c"># XlDVAlertStyle Enumeration</span>
-    <span class="n">xlValidAlertStop</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c"># Stop icon.</span>
+     <span class="c"># XlDVAlertStyle Enumeration</span>
+     <span class="n">xlValidAlertStop</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c"># Stop icon.</span>
 
-    <span class="c"># Constants Enumeration</span>
-    <span class="n">xlCenter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4108</span>
+     <span class="c"># Constants Enumeration</span>
+     <span class="n">xlCenter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4108</span>
 
-    <span class="c"># XlLineStyle enumeration</span>
-    <span class="n">xlContinuous</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="c"># XlLineStyle enumeration</span>
+     <span class="n">xlContinuous</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
-<p>要想知道某一个枚举常量的数值，可以查阅MSDN中<a class="reference external" href="http://msdn.microsoft.com/en-us/library/office/ff838815.aspx">Excel Enumerations</a>相关的资料。</p>
+</td></tr></table><p>要想知道某一个枚举常量的数值，可以查阅MSDN中<a class="reference external" href="http://msdn.microsoft.com/en-us/library/office/ff838815.aspx">Excel Enumerations</a>相关的资料。</p>
 </div>
 </div>
 
