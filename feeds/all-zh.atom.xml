@@ -385,8 +385,10 @@ Excel自身提供的。语言相关的部分只是负责跟Windows的COM组件�
 &lt;!-- more --&gt;
 &lt;p&gt;我第一次遇到这个问题的时候，着实犯了一回傻，自以为是地证明了这个题目是无解的。其实从概率的角度来看，题目的要求就是，利用一个1/5的概率源，通过某种方式产生出1/3的概率输出。我们都知道，概率运算法则有加法和乘法，而在我的记忆中，算法是“在有限步骤内求解某一问题所使用的一组定义明确的规则”，算法的一个重要特征就是有穷性，即一个算法必须保证执行有限步之后结束。那么有限多个1/5通过加法和乘法是不可能的到1/3这个数值的，因为加法和乘法都不会给分母带来新的因子，那么分母中的3根本就不可能出现。&lt;/p&gt;
 &lt;p&gt;然而我忽略了这样一个式子：&lt;/p&gt;
-&lt;div class="formula"&gt;
-&lt;span class="limits"&gt;&lt;sup class="limit"&gt;∞&lt;/sup&gt;&lt;span class="limit"&gt;&lt;span class="symbol"&gt;∑&lt;/span&gt;&lt;/span&gt;&lt;sub class="limit"&gt;&lt;i&gt;i&lt;/i&gt; = 0&lt;/sub&gt;&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎛&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎝&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎞&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎠&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;sup&gt;&lt;i&gt;i&lt;/i&gt;&lt;/sup&gt; = &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;1 − &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; = &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;3&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\sum_{i=0}^\infty \left(\frac{2}{5}\right)^i = \frac{1}{1-\frac{2}{5}} = \frac{5}{3}
+\end{equation*}
 &lt;/div&gt;
 &lt;p&gt;基于这个想法，我们来看看这个算法是什么样子的：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;Rand3&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -408,127 +410,33 @@ Excel自身提供的。语言相关的部分只是负责跟Windows的COM组件�
 &lt;p&gt;算法很简单，x是我们最终要输出的数字，只要它不在[0,
 3)范围内，就不断地调用Rand5来更新它。直观地看，算法输出的数字只有0、1、2这三个，而且对任何一个都没有偏袒，那么显然每个数字的概率都是1/3，那让我们来严格地计算一下。&lt;/p&gt;
 &lt;p&gt;以输出0为例，看看概率是多少。x的第一个有效数值是通过Rand5得到的。Rand5返回0的概率是1/5，如果这事儿发生了，我们就得到了0，否则只有当Rand5返回3或4的时候，我们才有机会再次调用它来得到新的数据。第二次调用Rand5之后，又是有1/5的概率得到0，2/5的概率得到3或4导致循环继续执行下去，如此反复。因此概率的计算公式为：&lt;/p&gt;
-&lt;div class="formula"&gt;
-&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
-&lt;i&gt;p&lt;/i&gt;
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- = 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
-&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; + &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; × &lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎛&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎝&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; + &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; × &lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎛&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎝&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; + &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; × &lt;span class="symbol"&gt;(&lt;/span&gt;⋯&lt;span class="symbol"&gt;)&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎞&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎠&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎞&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎠&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
- 
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
- 
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
-
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- = 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
-&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; × &lt;span class="limits"&gt;&lt;sup class="limit"&gt;∞&lt;/sup&gt;&lt;span class="limit"&gt;&lt;span class="symbol"&gt;∑&lt;/span&gt;&lt;/span&gt;&lt;sub class="limit"&gt;&lt;i&gt;i&lt;/i&gt; = 0&lt;/sub&gt;&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎛&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎝&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎞&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎠&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;sup&gt;&lt;i&gt;i&lt;/i&gt;&lt;/sup&gt;
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
- 
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
- 
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
-
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- = 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
-&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; × &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;1 − &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
- 
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
- 
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
-
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- = 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
-&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; × &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;3&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
- 
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
- 
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;span class="arrayrow"&gt;
-&lt;span class="arraycell align-r"&gt;
-
-&lt;/span&gt;
-&lt;span class="arraycell align-c"&gt;
- = 
-&lt;/span&gt;
-&lt;span class="arraycell align-l"&gt;
-&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;3&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;
-&lt;/span&gt;
-
-&lt;/span&gt;
-&lt;/span&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\begin{array}{rcl}
+p &amp;amp; = &amp;amp; \frac{1}{5}+\frac{2}{5}\times\left(\frac{1}{5}+\frac{2}{5}\times\left(\frac{1}{5}+\frac{2}{5}\times\left(\cdots\right)\right)\right) \\
+&amp;amp; = &amp;amp; \frac{1}{5}\times\sum_{i=0}^\infty \left(\frac{2}{5}\right)^i \\
+&amp;amp; = &amp;amp; \frac{1}{5}\times\frac{1}{1-\frac{2}{5}} \\
+&amp;amp; = &amp;amp; \frac{1}{5}\times\frac{5}{3} \\
+&amp;amp; = &amp;amp; \frac{1}{3} \end{array}
+\end{equation*}
 &lt;/div&gt;
 &lt;p&gt;喏，计算表明，Rand3输出0的概率确实是1/3，对于另外两个数字也是一样的。&lt;/p&gt;
 &lt;p&gt;那么这段代码是不是一个算法呢，它是否满足算法的有穷性呢？我不能确定，虽然它不停机的概率是0，然而这个概率是一个极限值，唉，回去复习极限知识先。&lt;/p&gt;
 &lt;p&gt;【2013年11月7日添加】今天想到，对于上面那个函数，需要再了解一下它消耗的时间。具体来讲，就是要知道平均每调用一次Rand3，相当于调用了多少次Rand5。根据算法可以知道，Rand3函数执行一次，有3/5的概率是只调用一次Rand5就能停机；刚好调用两次Rand5后停机的概率是(2/5) * (3/5)。类推下去，刚好调用k次Rand5后停机的概率应该是(2/5) ^ (k-1) * (3/5)。根据这个概率分布，可以计算出停机前Rand5被调用次数的数学期望，即&lt;/p&gt;
-&lt;div class="formula"&gt;
-&lt;span class="limits"&gt;&lt;sup class="limit"&gt;∞&lt;/sup&gt;&lt;span class="limit"&gt;&lt;span class="symbol"&gt;∑&lt;/span&gt;&lt;/span&gt;&lt;sub class="limit"&gt;&lt;i&gt;k&lt;/i&gt; = 1&lt;/sub&gt;&lt;/span&gt;&lt;i&gt;k&lt;/i&gt; × &lt;i&gt;p&lt;/i&gt;(&lt;i&gt;k&lt;/i&gt;) = &lt;span class="limits"&gt;&lt;sup class="limit"&gt;∞&lt;/sup&gt;&lt;span class="limit"&gt;&lt;span class="symbol"&gt;∑&lt;/span&gt;&lt;/span&gt;&lt;sub class="limit"&gt;&lt;i&gt;k&lt;/i&gt; = 1&lt;/sub&gt;&lt;/span&gt;&lt;i&gt;k&lt;/i&gt;&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;3&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎛&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎝&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎞&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎠&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;sup&gt;&lt;i&gt;k&lt;/i&gt; − 1&lt;/sup&gt; = &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;3&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; × &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;1&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎛&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-left"&gt;⎝&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;1 − &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;2&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;span class="array"&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎞&lt;/span&gt;&lt;/span&gt;&lt;span class="arrayrow"&gt;&lt;span class="bracket align-right"&gt;⎠&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt; = &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;5&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;3&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\sum_{k=1}^{\infty}{k\times p(k)}
+=\sum_{k=1}^{\infty}k \frac{3}{5} \left(\frac{2}{5}\right)^{k-1}
+=\frac{3}{5}\times\frac{1}{\left(1-\frac{2}{5}\right)^2}
+=\frac{5}{3}
+\end{equation*}
 &lt;/div&gt;
 &lt;p&gt;可见，Rand3函数每运行一次，平均需要调用1.67次Rand5。&lt;/p&gt;
 &lt;p&gt;更一般地，当我们依据上述算法，将一种分布的随机信号转换成另外一种随机信号时，如果每消耗m个源信号，就有p的概率可以产生一个目标信号，那么平均来讲，停机前需要使用的源信号数据个数的期望为：&lt;/p&gt;
-&lt;div class="formula"&gt;
-&lt;span class="limits"&gt;&lt;sup class="limit"&gt;∞&lt;/sup&gt;&lt;span class="limit"&gt;&lt;span class="symbol"&gt;∑&lt;/span&gt;&lt;/span&gt;&lt;sub class="limit"&gt;&lt;i&gt;k&lt;/i&gt; = 1&lt;/sub&gt;&lt;/span&gt;&lt;i&gt;k&lt;/i&gt;⋅&lt;i&gt;m&lt;/i&gt;⋅&lt;i&gt;p&lt;/i&gt;⋅(1 − &lt;i&gt;p&lt;/i&gt;)&lt;sup&gt;&lt;i&gt;k&lt;/i&gt; − 1&lt;/sup&gt; = &lt;span class="fraction"&gt;&lt;span class="ignored"&gt;(&lt;/span&gt;&lt;span class="numerator"&gt;&lt;i&gt;m&lt;/i&gt;&lt;/span&gt;&lt;span class="ignored"&gt;)/(&lt;/span&gt;&lt;span class="denominator"&gt;&lt;i&gt;p&lt;/i&gt;&lt;/span&gt;&lt;span class="ignored"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\sum_{k=1}^{\infty}k\cdot m\cdot p\cdot (1-p)^{k-1}=\frac{m}{p}
+\end{equation*}
 &lt;/div&gt;
 &lt;p&gt;【2013年11月7日添加结束】&lt;/p&gt;
 &lt;p&gt;改变一下题目，如果要求利用Rand5编写Rand7怎么办？很简单，用两个Rand5可以拼出Rand25，然后就用前面的方法即可：&lt;/p&gt;
