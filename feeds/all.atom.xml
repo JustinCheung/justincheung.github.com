@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://www.zscbb.com/" rel="alternate"></link><link href="http://www.zscbb.com/feeds%5Call.atom.xml" rel="self"></link><id>http://www.zscbb.com/</id><updated>2014-05-27T00:00:00+08:00</updated><entry><title>[转]函数式编程</title><link href="http://www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/" rel="alternate"></link><updated>2014-05-27T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:www.zscbb.com,2014-05-27:posts/2014/05/zhuan-han-shu-shi-bian-cheng/</id><summary type="html">
+&lt;h1 id="1"&gt;1. 概论&lt;/h1&gt;
 &lt;p&gt;在过去的近十年的时间里，面向对象编程大行其道。以至于在大学的教育里，老师也只会教给我们两种编程模型，面向过程和面向对象。&lt;/p&gt;
 &lt;p&gt;孰不知，在面向对象产生之前，在面向对象思想产生之前，函数式编程已经有了数十年的历史。&lt;/p&gt;
 &lt;p&gt;那么，接下来，就让我们回顾这个古老又现代的编程模型，让我们看看究竟是什么魔力将这个概念，将这个古老的概念，在21世纪的今天再次拉入了我们的视野。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2. 什么是函数式编程&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="2"&gt;2. 什么是函数式编程&lt;/h1&gt;
 &lt;p&gt;在&lt;a href="http://en.wikipedia.org/wiki/Functional_programming"&gt;维基百科&lt;/a&gt;中，已经对函数式编程有了很详细的介绍。&lt;/p&gt;
 &lt;p&gt;那我们就来摘取一下Wiki上对Functional Programming的定义：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -11,10 +12,10 @@
 &lt;/blockquote&gt;
 &lt;p&gt;简单地翻译一下，也就是说&lt;font color="#ff0000"&gt;&lt;strong&gt;函数式编程是一种编程模型，他将计算机运算看做是数学中函数的计算，并且避免了状态以及变量的概念&lt;/strong&gt;&lt;/font&gt;。&lt;/p&gt;
 &lt;p&gt;接下来，我们就来剖析下函数式编程的一些特征。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3. 从并发说开来&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="3"&gt;3. 从并发说开来&lt;/h1&gt;
 &lt;p&gt;说来惭愧，我第一个真正接触到函数式编程，要追溯到两年以前的《&lt;a href="http://book.douban.com/subject/3260311/"&gt;Erlang程序设计&lt;/a&gt;》，我们知道Erlang是一个支持高并发，有着强大容错性的函数式编程语言。&lt;/p&gt;
 &lt;p&gt;因为时间太久了，而且一直没有过真正地应用，所以对Erlang也只是停留在一些感性认识上。在我眼里，Erlang对高并发的支持体现在两方面，第一，&lt;strong&gt;Erlang对轻量级进程的支持&lt;/strong&gt;（请注意此处进程并不等于操作系统的进程，而只是Erlang内部的一个单位单元），第二，&lt;strong&gt;就是变量的不变性&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4. 变量的不变性&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="4"&gt;4. 变量的不变性&lt;/h1&gt;
 &lt;p&gt;在《&lt;a href="http://book.douban.com/subject/3260311/"&gt;Erlang程序设计&lt;/a&gt;》一书中，对变量的不变性是这样说的，Erlang是目前唯一变量不变性的语言。具体的话我记不清了，我不知道是老爷子就是这么写的，还是译者的问题。我在给这本书写书评的时候吹毛求疵地说：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;我对这句话有异议，切不说曾经的Lisp，再到如今的F#都对赋值操作另眼相看，低人一等。单说如今的Java和C#，提供的final和readonly一样可以支持变量的不变性，而这个唯一未免显得有点太孤傲了些。&lt;/p&gt;
@@ -58,7 +59,7 @@
 &lt;p&gt;这时我们就会发现，无论多少个进程在跑，因为我们本身没有赋值操作，所以都不会影响到我们的最终结果。&lt;/p&gt;
 &lt;p&gt;但是这样也像大家看到的一样，采用这样的方式没有办法保持状态。&lt;/p&gt;
 &lt;p&gt;这也就是我们在之前概念中看到的无状态性。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5. 再看函数式编程的崛起&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="5"&gt;5. 再看函数式编程的崛起&lt;/h1&gt;
 &lt;p&gt;既然已经看完了函数式编程的基本特征，那就让我们来想想数十年后函数式编程再次崛起的幕后原因。&lt;/p&gt;
 &lt;p&gt;一直以来，作为函数式编程代表的Lisp，还是Haskell，更多地都是在大学中，在实验室中应用，而很少真的应用到真实的生产环境。&lt;/p&gt;
 &lt;p&gt;先让我们再来回顾一下伟大的摩尔定律：&lt;/p&gt;
@@ -70,7 +71,7 @@
 &lt;p&gt;一如摩尔的预测，整个信息产业就这样飞速地向前发展着，但是在近年，我们却可以发现摩尔定律逐渐地失效了，芯片上元件的尺寸是不可能无限地缩小的，这就意味着芯片上所能集成的电子元件的数量一定会在某个时刻达到一个极限。那么当技术达到这个极限时，我们又该如何适应日益增长的计算需求，电子元件厂商给出了答案，就是多核。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;多核并行程序设计就这样被推到了前线，而命令式编程天生的缺陷却使并行编程模型变得非常复杂，无论是信号量，还是锁的概念，都使程序员不堪其重。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;就这样，函数式编程终于在数十年后，终于走出实验室，来到了真实的生产环境中，无论是冷门的Haskell，Erlang，还是Scala，F#，都是函数式编程成功的典型。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;6. 函数式编程的第一型&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="6"&gt;6. 函数式编程的第一型&lt;/h1&gt;
 &lt;p&gt;我们知道，对象是面向对象的第一型，那么函数式编程也是一样，函数是函数式编程的第一型。&lt;/p&gt;
 &lt;p&gt;我们在函数式编程中努力用函数来表达所有的概念，完成所有的操作。&lt;/p&gt;
 &lt;p&gt;在面向对象编程中，我们把对象传来传去，那&lt;strong&gt;在函数式编程中，我们要做的是把函数传来传去，而这个，说成术语，我们把他叫做高阶函数&lt;/strong&gt;。&lt;/p&gt;
@@ -113,18 +114,18 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这样看上去是不是更赏心悦目呢？&lt;/p&gt;
 &lt;p&gt;这样我们就看到了，函数是我们编程的基本单位。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;7. 函数式编程的数学本质&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="7"&gt;7. 函数式编程的数学本质&lt;/h1&gt;
 &lt;p&gt;忘了是谁说过：一切问题，归根结底到最后都是数学问题。&lt;/p&gt;
 &lt;p&gt;编程从来都不是难事儿，无非是细心，加上一些函数类库的熟悉程度，加上经验的堆积，而真正困难的，是如何把一个实际问题，转换成一个数学模型。这也是为什么微软，Google之类的公司重视算法，这也是为什么数学建模大赛在大学计算机系如此被看重的原因。&lt;/p&gt;
 &lt;p&gt;先假设我们已经凭借我们良好的数学思维和逻辑思维建立好了数学模型，那么接下来要做的是如何把数学语言来表达成计算机能看懂的程序语言。&lt;/p&gt;
 &lt;p&gt;这里我们再看在第四节中，我们提到的赋值模型，同一个函数，同一个参数，却会在不同的场景下计算出不同的结果，这是在数学函数中完全不可能出现的情况，&lt;strong&gt;f(x) = y ，那么这个函数无论在什么场景下，都会得到同样的结果，这个我们称之为函数的确定性。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;这也是赋值模型与数学模型的不兼容之处。而&lt;strong&gt;函数式编程取消了赋值模型，则使数学模型与编程模型完美地达成了统一&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;8. 函数式编程的抽象本质&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="8"&gt;8. 函数式编程的抽象本质&lt;/h1&gt;
 &lt;p&gt;相信每个程序员都对抽象这个概念不陌生。&lt;/p&gt;
 &lt;p&gt;在面向对象编程中，我们说，&lt;strong&gt;类是现实事物的一种抽象表示。那么抽象的最大作用在我看来就在于抽象事物的重用性&lt;/strong&gt;，一个事物越具体，那么他的可重用性就越低，因此，我们再打造可重用性代码，类，类库时，其实在做的本质工作就在于提高代码的抽象性。而再往大了说开来，&lt;strong&gt;程序员做的工作，就是把一系列过程抽象开来，反映成一个通用过程&lt;/strong&gt;，然后用代码表示出来。&lt;/p&gt;
 &lt;p&gt;在面向对象中，我们把事物抽象。而在函数式编程中，我们则是在将函数方法抽象，第六节的滤波器已经让我们知道，函数一样是可重用，可置换的抽象单位。&lt;/p&gt;
 &lt;p&gt;那么我们说&lt;strong&gt;函数式编程的抽象本质则是将函数也作为一个抽象单位，而反映成代码形式，则是高阶函数&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;9.状态到底怎么办&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="9"&gt;9.状态到底怎么办&lt;/h1&gt;
 &lt;p&gt;我们说了一大堆函数式编程的特点，但是我们忽略了，这些都是在理想的层面，我们回头想想第四节的变量不变性，确实，我们说，函数式编程是无状态的，可是在我们现实情况中，状态不可能一直保持不变，而状态必然需要改变，传递，那么我们在函数式编程中的则是将其保存在函数的参数中，作为函数的附属品来传递。&lt;/p&gt;
 &lt;p&gt;ps：在Erlang中，进程之间的交互传递变量是靠“信箱”的收发信件来实现，其实我们想一想，从本质而言，也是将变量作为一个附属品来传递么！&lt;/p&gt;
 &lt;p&gt;我们来看个例子，我们在这里举一个求x的n次方的例子，我们用传统的命令式编程来写一下：&lt;/p&gt;
@@ -147,7 +148,7 @@
    &lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;呦，这不是递归么！&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;10. 函数式编程和递归&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="10"&gt;10. 函数式编程和递归&lt;/h1&gt;
 &lt;p&gt;递归是函数式编程的一个重要的概念，循环可以没有，但是递归对于函数式编程却是不可或缺的。&lt;/p&gt;
 &lt;p&gt;在这里，我得承认，我确实不知道我该怎么解释递归为什么对函数式编程那么重要。我能想到的只是递归充分地发挥了函数的威力，也解决了函数式编程无状态的问题。（如果大家有其他的意见，请赐教）&lt;/p&gt;
 &lt;p&gt;递归其实就是将大问题无限地分解，直到问题足够小。&lt;/p&gt;
@@ -178,7 +179,7 @@
 &lt;p&gt;这里则是在描述我们该如何求解斐波那契数列，应该先怎么样再怎么样。&lt;/p&gt;
 &lt;p&gt;而我们明显可以看到，递归相比于循环，具有着更加良好的可读性。&lt;/p&gt;
 &lt;p&gt;但是，我们也不能忽略，递归而产生的StackOverflow，而赋值模型呢？我们懂的，函数式编程不能赋值，那么怎么办？&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;11.  尾递归，伪递归&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="11"&gt;11. 尾递归，伪递归&lt;/h1&gt;
 &lt;p&gt;我们之前说到了递归和循环各自的问题，那怎么来解决这个问题，函数式编程为我们抛出了答案，尾递归。&lt;/p&gt;
 &lt;p&gt;什么是尾递归，用最通俗的话说：&lt;strong&gt;就是在最后一部单纯地去调用递归函数&lt;/strong&gt;，这里我们要注意“单纯”这个字眼。&lt;/p&gt;
 &lt;p&gt;那么我们说下尾递归的原理，&lt;strong&gt;其实尾递归就是不要保持当前递归函数的状态，而把需要保持的东西全部用参数给传到下一个函数里，这样就可以自动清空本次调用的栈空间。&lt;/strong&gt;这样的话，占用的栈空间就是常数阶的了。&lt;/p&gt;
@@ -199,7 +200,7 @@
 &lt;p&gt;那么按照这个思路一步步转换下去，是不是就是我们在上面写的那段循环代码呢？&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;那么这个尾递归，其实本质上就是个“伪递归”，&lt;/strong&gt;您说呢？&lt;/p&gt;
 &lt;p&gt;既然我们可以优化，对于大多数的函数式编程语言的编译器来说，他们对尾递归同样提供了优化，使尾递归可以优化成循环迭代的形式，使其不会造成堆栈溢出的情况。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;12. 惰性求值与并行&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="12"&gt;12. 惰性求值与并行&lt;/h1&gt;
 &lt;p&gt;第一次接触到惰性求值这个概念应该是在Haskell语言中，看一个最简单的惰性求值，我觉得也是最经典的例子：&lt;/p&gt;
 &lt;p&gt;在Haskell里，有个repeat关键字，他的作用是返回一个无限长的List，那么我们来看下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;take&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;repeat&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -220,7 +221,7 @@
    &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;可是这段代码如果惰性求值的话，第一句话就不见得会在第二句话之前执行了。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;13. 函数式编程总览&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id="13"&gt;13. 函数式编程总览&lt;/h1&gt;
 &lt;p&gt;我们看完了函数式编程的特点，我们想想函数式编程的应用场合。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
