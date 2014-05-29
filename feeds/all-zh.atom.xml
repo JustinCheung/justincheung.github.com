@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://www.zscbb.com/" rel="alternate"></link><link href="http://www.zscbb.com/feeds%5Call-zh.atom.xml" rel="self"></link><id>http://www.zscbb.com/</id><updated>2014-05-27T00:00:00+08:00</updated><entry><title>[转]函数式编程</title><link href="http://www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/" rel="alternate"></link><updated>2014-05-27T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:www.zscbb.com,2014-05-27:posts/2014/05/zhuan-han-shu-shi-bian-cheng/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://www.zscbb.com/" rel="alternate"></link><link href="http://www.zscbb.com/feeds%5Call-zh.atom.xml" rel="self"></link><id>http://www.zscbb.com/</id><updated>2014-05-29T00:00:00+08:00</updated><entry><title>未来十年互联网发展趋势</title><link href="http://www.zscbb.com/posts/2014/05/wei-lai-shi-nian-hu-lian-wang-fa-zhan-qu-shi/" rel="alternate"></link><updated>2014-05-29T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:www.zscbb.com,2014-05-29:posts/2014/05/wei-lai-shi-nian-hu-lian-wang-fa-zhan-qu-shi/</id><summary type="html">
+&lt;p&gt;万维网25岁了，作为探讨“互联网未来”的一部分，皮尤研究中心询问了一群科技行业专家对10年后的互联网的想法。他们的回答道出了一个深度互连、远远超越国界的世界。&lt;/p&gt;
+&lt;p&gt;皮尤向专业人士抛出了一个开放式问题，让他们预测2025年的互联网会在人们的生活中扮演什么角色，会对社会、经济和政治进程产生怎样的影响。“不管好坏，你觉得2025年互联网对人类最大的影响会是什么?”皮尤问道。它询问的专业人士有研究人员、企业家、作家、开发者等等。&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="" src="http://www.199it.com/wp-content/uploads/2014/03/185349tstyrt7h8jrwt3hr.jpg"/&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;以下是来自“2025年数字生活”概况的回答精选。详情可浏览皮尤网站上的报告全文。&lt;/p&gt;
+&lt;h1 id="1"&gt;1.无形的信息&lt;/h1&gt;
+&lt;p&gt;麻省理工学院高级研究科学家大卫·克拉克(David Clark)：“设备们将越来越多地拥有自己的通信模式，自己的‘社交网络’，它们通过这种网络来分享和聚合信息，承担自动化的控制和激活。渐渐地，人类将处于一个决策由一系列活跃的协同操作的设备作出的世界。互联网(以及计算机为媒介的通信)将变得更加无处不在，但不那么显眼。在某种程度上，它将融入我们所有活动所处的情境。”&lt;/p&gt;
+&lt;h1 id="2"&gt;2.可穿戴技术的潜力&lt;/h1&gt;
+&lt;p&gt;加州大学伯克利分校软件开发者亚伦·罗伯茨(Aron Roberts)：“未来很可能会出现各种各样的可穿戴设备，家居和办公室也会有各式的传感器，它们能够帮助我们不断地改变生活方式，及早检测针对疾病风险而不只是疾病本身。我们可能将能够逐日甚至是逐个小时调整药物治疗和生活方式，因而日渐减员的医疗服务系统反而能够大大提升治疗效果。”&lt;/p&gt;
+&lt;h1 id="3ubernet"&gt;3.“Ubernet”&lt;/h1&gt;
+&lt;p&gt;拥有40年数字通信从业经验的大卫·休斯(David Hughes)：“通过Ubernet，地球上的70多亿人迟早都会‘互连’，连接至特定的地点。这会使得国家对人们的生活的控制力下降。当地球上的每一个人都能够相互触及，进行双向通讯，国家对地理边界内的每一个人的控制力会开始下降。”&lt;/p&gt;
+&lt;h1 id="4"&gt;4.全民教育&lt;/h1&gt;
+&lt;p&gt;谷歌首席经济学家哈尔·瓦里安(Hal Varian)：“互联网对世界最大的影响将会是人人都能触及所有的人类知识。现在，世界上最聪明的人很有可能在印度或者中国的农田中劳作。让那个人以及数以百万那样的人得到教育将会对人类的发展产生深远的影响。廉价移动设备将会全球普及，像可汗学院(Khan Academy)这样的教育工具也将让每一个人都能用到。这会对提高人类的整体文化程度和计算能力产生巨大的影响，全球人口的知识面和教育程度将得到提升。”&lt;/p&gt;
+&lt;h1 id="5"&gt;5.日常的黑暗现实&lt;/h1&gt;
+&lt;p&gt;TopEditor国际媒介服务公司CEO卢埃林·克里埃尔(Llewellyn Kriel)：“互联网上的一切一切都将明码标价。网络恐怖主义将变得司空见惯。个人隐私和信息保密都将成为历史。网络‘疾病’——精神上的、身体上的、社交上的、成瘾的——将侵袭大量的家庭和社区，并跨境蔓延。数字鸿沟将会扩大并恶化到各国或者联合国等国际组织都无法控制的地步。这将加剧富国与穷国的两极分化。全球化公司将会利用这一点。数字犯罪网络将成为新的现实。恐怖行动，不管是组织发起的还是个人发起的，都将成为日常现实。世界将变得越来越不安全，只有个人技能和洞见才能保护个人。”&lt;/p&gt;
+&lt;h1 id="6"&gt;6.更加精明的政府&lt;/h1&gt;
+&lt;p&gt;南阿肯色州大学副教授保罗·巴比特(Paul Babbitt)：“政府在将互联网应用于政治控制和社会管制上将变得高效得多。也就是说过滤工具将变得越来越有价值，越来越重要，高效实用的过滤工具将能够对其服务收费。人们也将乐于以众多网站普遍存在的开放性换取更加结构化、更加规范的环境。”&lt;/p&gt;
+&lt;h1 id="7"&gt;7.地缘政治&lt;/h1&gt;
+&lt;p&gt;德克萨斯农工大学传播副教授兰迪·克鲁弗(Randy Kluver)：“互联网最被忽视的影响在于地缘政治。鲜少专家研究这个问题，但数字媒体的兴起给国与国之间的关系带来的重大影响。部分非常重要的维度包括跨国政治运动的发展，虚拟国家的出现，数字外交努力的影响，信息在削弱国家权力上的角色(想想维基百科)，以及……网络冲突的发展。”&lt;/p&gt;
+&lt;h1 id="8"&gt;8.生于线上&lt;/h1&gt;
+&lt;p&gt;谷歌副总裁温特·瑟夫(Vint Cerf)：“未来将会有更多的公民权和信息共享。为了适应数字通信与存储经济学，商业模式将发生改变。我们最终可能会实现网络选举，但前提是我们要有非常强大的认证体制。隐私问题必须得到改善，企业在保留了用户哪些信息上也需要提高透明度。更多的公司将生于线上，从一开始就面向全球市场。大型开放式网络课程将成为重要的创收来源。”&lt;/p&gt;</summary><category term="笔记"></category><category term="web"></category></entry><entry><title>[转]函数式编程</title><link href="http://www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/" rel="alternate"></link><updated>2014-05-27T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:www.zscbb.com,2014-05-27:posts/2014/05/zhuan-han-shu-shi-bian-cheng/</id><summary type="html">
 &lt;h1 id="1"&gt;1. 概论&lt;/h1&gt;
 &lt;p&gt;在过去的近十年的时间里，面向对象编程大行其道。以至于在大学的教育里，老师也只会教给我们两种编程模型，面向过程和面向对象。&lt;/p&gt;
 &lt;p&gt;孰不知，在面向对象产生之前，在面向对象思想产生之前，函数式编程已经有了数十年的历史。&lt;/p&gt;
