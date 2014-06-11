@@ -1,9 +1,2 @@
-### BEGIN FILE ###
-#
-# allow-all
-#
-#
-User-agnet: *
+User-Agent: *
 Sitemap: http://www.zscbb.com/sitemap.xml
-
-### END FILE ###
