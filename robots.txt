@@ -3,8 +3,7 @@
 # allow-all
 #
 #
-
+User-agnet: *
 Sitemap: http://www.zscbb.com/sitemap.xml
-Allow: /
 
 ### END FILE ###
