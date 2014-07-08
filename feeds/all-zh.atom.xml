@@ -1,5 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://www.zscbb.com/" rel="alternate"></link><link href="http://www.zscbb.com/feeds%5Call-zh.atom.xml" rel="self"></link><id>http://www.zscbb.com/</id><updated>2014-05-29T00:00:00+08:00</updated><entry><title>未来十年互联网发展趋势</title><link href="http://www.zscbb.com/posts/2014/05/wei-lai-shi-nian-hu-lian-wang-fa-zhan-qu-shi/" rel="alternate"></link><updated>2014-05-29T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:www.zscbb.com,2014-05-29:posts/2014/05/wei-lai-shi-nian-hu-lian-wang-fa-zhan-qu-shi/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://www.zscbb.com/" rel="alternate"></link><link href="http://www.zscbb.com/feeds%5Call-zh.atom.xml" rel="self"></link><id>http://www.zscbb.com/</id><updated>2014-07-01T00:00:00+08:00</updated><entry><title>[转]lift学习笔记</title><link href="http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/" rel="alternate"></link><updated>2014-07-01T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:www.zscbb.com,2014-07-01:posts/2014/07/zhuan-liftxue-xi-bi-ji/</id><summary type="html">
+&lt;p&gt;最近在学习scala，大致的学习了一下scala语法后，开始学习liftweb,希望通过对liftweb的学习来带动对scala的进一步深入。学习liftweb的过程也同样，大致浏览一下《The Definitive Guide To Lift》后，下载了liftweb的官方例子，通过对例子的学习来进一步消化书中的内容。&lt;/p&gt;
+&lt;p&gt;按照看的顺序把学习到的东西记录下来，留备以后复习&lt;img alt="" src="/images/smiles/icon_wink.gif"/&gt; &lt;/p&gt;
+&lt;h1 id="1"&gt;1.入口&lt;/h1&gt;
+&lt;p&gt;入口还是index.html,不过被LiftFilter所过滤处理，filter的定义依然在web.xml中。&lt;/p&gt;
+&lt;p&gt;index.html的内容被surround标签包含&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;lift:surround&lt;/span&gt; &lt;span class="na"&gt;with=&lt;/span&gt;&lt;span class="s"&gt;"default"&lt;/span&gt; &lt;span class="na"&gt;at=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+...  
+&lt;span class="nt"&gt;&amp;lt;/lift:surround&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这是lift中Rendering with Templates 的语法，通过这个tag把页面的内容和模板组合在一起。with指定使用的模板名称，模板位于webapp\templates-hidden目录下，在这个目录下可以找到default.html。 at指定了本页内容位于模板中的位置，在模板文件中能找到下面代码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;lift&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这个代码在渲染过程中会被本页内容所替代。&lt;/p&gt;
+&lt;p&gt;关于Rendering with Templates 在《The Definitive Guide To Lift》的第三章(P28)有详细说明&lt;/p&gt;
+&lt;h1 id="2snippet"&gt;2.snippet&lt;/h1&gt;
+&lt;p&gt;在index.html中有以下代码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;lift&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;helloworld&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;howdy&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这是lift的snippet标签（在《The Definitive Guide To Lift》的第三章(P31)有详细说明），snippet语法可以用多种写法，这里使用的&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;lift&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"..."&lt;/span&gt; &lt;span class="n"&gt;multipart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"..."&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;所以这里的class是hello_world,method是howdy,那么在哪里查找这个类呢？&lt;/p&gt;
+&lt;p&gt;在bootstrap\liftweb\Boot.scala这个类中有这样的代码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// add the com.hellolift package to the list packages  &lt;/span&gt;
+&lt;span class="c1"&gt;// searched for Snippets, CometWidgets, etc.  &lt;/span&gt;
+&lt;span class="n"&gt;LiftRules&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addToPackages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"com.hellolift"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;所有的snippets都在这个包的子包中查找，即com.hellolift.snippet,在这里我们可以找到HelloWorld.scala,类名的 camel case 会转化为title case&lt;/p&gt;
+&lt;p&gt;在HelloWorld.scala可以找到howdy方法的定义&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;def&lt;/span&gt; &lt;span class="n"&gt;howdy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;Welcome&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;HelloLift&lt;/span&gt; &lt;span class="nx"&gt;at&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;root.java.util.Date&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里的函数体是一个XML literals（《ProgrammingInScala》Ch26.3 P541)&lt;/p&gt;
+&lt;p&gt;这个方法的完整定义可以写成&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;def&lt;/span&gt; &lt;span class="nx"&gt;howdy&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;content&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;NodeSeq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;NodeSeq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;Welcome&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;HelloLift&lt;/span&gt; &lt;span class="nx"&gt;at&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;root.java.util.Date&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在 XML literal中可以混合scala的代码，用{} 区分&lt;/p&gt;
+&lt;h1 id="3"&gt;3.菜单&lt;/h1&gt;
+&lt;p&gt;在页面上可以看到，除了index.html中输出的内容之外，页面上还有一个操作菜单，这个菜单是如何形成的呢？
+在default.html中有&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;lift&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Menu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这又是一个snippet的运用，不过是lift内置的snippet，这个class在lift-webkit包中的可以找到，源代码位于lift\src\main\scala\net\liftweb\builtin\snippet\Menu.class，很多lift内置的snippet都在这里可以找到，不过我看到了surround,没有看到bind&lt;/p&gt;
+&lt;p&gt;Menu的builder方法从LiftRules.siteMap中得到menu的内容，siteMap的定义在Boot.scala中进行，如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// Build SiteMap  &lt;/span&gt;
+&lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;entries&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Menu&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Loc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Home"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"index"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"Home"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;::&lt;/span&gt;  
+&lt;span class="n"&gt;Menu&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Loc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Request Details"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"request"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"Request Details"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;::&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sitemap&lt;/span&gt; &lt;span class="o"&gt;:::&lt;/span&gt; &lt;span class="n"&gt;Entry&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sitemap&lt;/span&gt;  
+&lt;span class="n"&gt;LiftRules&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setSiteMap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SiteMap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;entries:&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="n"&gt;Loc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Home"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"index"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"Home"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;定义了一个Loc,三个参数分别是名称，链接和菜单显示的文本，其中第二个参数是相对于web context的URI用'/'分割后得到的数组&lt;/p&gt;
+&lt;p&gt;Menu的构造如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;case class Menu(val loc : Loc[Any], val kids : Menu*)   
+extends HasKids with Product
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里User.sitemap和Entry.sitemap是两个List[Menu],分别定义了各自相关的菜单项。Entry.sitemap在hellolift\src\main\scala\com\hellolift\model\Entry.scala中定义，Uesr.sitemap则在其继承的MetaMegaProtoUser中定义(位于lift-mapper\src\main\scala\net\liftweb\mapper\ProtoUser.scala)其中的内容以后再仔细学习。&lt;/p&gt;
+&lt;p&gt;两个Menu,两个List[Menu]构成了entries这样一个新的List[Menu]&lt;/p&gt;
+&lt;p&gt;再来看最后一句&lt;/p&gt;
+&lt;p&gt;SiteMap的实现中的定义是&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kids&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Menu&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;定义中的*是Repeated parameters语法，表示最后一个参数是可以重复的(参考《The Definitive Guide To Lift》ch8.8)&lt;/p&gt;
+&lt;p&gt;entries:_* 表示把变量entries的每一个元素作为参数传递给函数，而不是把变量作为一个参数传递&lt;/p&gt;
+&lt;p&gt;这里SiteMap(entries:_*)，是对object SiteMap.apply()方法的调用，构造了一个SiteMap对象，在调用&lt;/p&gt;
+&lt;p&gt;LiftRules.setSiteMap方法之后，我们就完成了一个系统菜单的创建，菜单包括这里定义的Home，Request Details和分别有User,Entry的model创建的各自的菜单。&lt;/p&gt;
+&lt;p&gt;（这里有个疑问，从源代码中看，SiteMap的定义是这样的&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;SiteMap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;globalParamFuncs&lt;/span&gt;: &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;PartialFunction&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Box&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Req&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;Loc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;LocParam&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; &lt;span class="n"&gt;kids&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Menu&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;HasKids&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可是在api中查看的构造函数却没有第一个参数，这是怎么回事儿？希望有明白的朋友指点一下）&lt;/p&gt;</summary><category term="scala"></category><category term="liftweb"></category><category term="web"></category></entry><entry><title>未来十年互联网发展趋势</title><link href="http://www.zscbb.com/posts/2014/05/wei-lai-shi-nian-hu-lian-wang-fa-zhan-qu-shi/" rel="alternate"></link><updated>2014-05-29T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:www.zscbb.com,2014-05-29:posts/2014/05/wei-lai-shi-nian-hu-lian-wang-fa-zhan-qu-shi/</id><summary type="html">
 &lt;p&gt;万维网25岁了，作为探讨“互联网未来”的一部分，皮尤研究中心询问了一群科技行业专家对10年后的互联网的想法。他们的回答道出了一个深度互连、远远超越国界的世界。&lt;/p&gt;
 &lt;p&gt;皮尤向专业人士抛出了一个开放式问题，让他们预测2025年的互联网会在人们的生活中扮演什么角色，会对社会、经济和政治进程产生怎样的影响。“不管好坏，你觉得2025年互联网对人类最大的影响会是什么?”皮尤问道。它询问的专业人士有研究人员、企业家、作家、开发者等等。&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;&lt;img alt="" src="http://www.199it.com/wp-content/uploads/2014/03/185349tstyrt7h8jrwt3hr.jpg"/&gt;&lt;/center&gt;&lt;/p&gt;
