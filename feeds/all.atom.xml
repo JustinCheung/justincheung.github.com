@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://www.zscbb.com/" rel="alternate"></link><link href="http://www.zscbb.com/feeds%5Call.atom.xml" rel="self"></link><id>http://www.zscbb.com/</id><updated>2014-07-01T00:00:00+08:00</updated><entry><title>[转]lift学习笔记1</title><link href="http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/" rel="alternate"></link><updated>2014-07-01T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:www.zscbb.com,2014-07-01:posts/2014/07/zhuan-liftxue-xi-bi-ji-1/</id><summary type="html">
 &lt;p&gt;最近在学习scala，大致的学习了一下scala语法后，开始学习liftweb,希望通过对liftweb的学习来带动对scala的进一步深入。学习liftweb的过程也同样，大致浏览一下《The Definitive Guide To Lift》后，下载了liftweb的官方例子，通过对例子的学习来进一步消化书中的内容。&lt;/p&gt;
-&lt;p&gt;按照看的顺序把学习到的东西记录下来，留备以后复习&lt;img alt="" src="/images/smiles/icon_wink.gif"/&gt; &lt;/p&gt;
+&lt;p&gt;按照看的顺序把学习到的东西记录下来，留备以后复习&lt;/p&gt;
 &lt;h1 id="1"&gt;1.入口&lt;/h1&gt;
 &lt;p&gt;入口还是index.html,不过被LiftFilter所过滤处理，filter的定义依然在web.xml中。&lt;/p&gt;
 &lt;p&gt;index.html的内容被surround标签包含&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;lift:surround&lt;/span&gt; &lt;span class="na"&gt;with=&lt;/span&gt;&lt;span class="s"&gt;"default"&lt;/span&gt; &lt;span class="na"&gt;at=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
-&lt;span class="nt"&gt;&amp;lt;/lift:surround&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;lift:surround at="content" with="default"&gt;
+&lt;/lift:surround&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;这是lift中Rendering with Templates 的语法，通过这个tag把页面的内容和模板组合在一起。with指定使用的模板名称，模板位于webapp\templates-hidden目录下，在这个目录下可以找到default.html。 at指定了本页内容位于模板中的位置，在模板文件中能找到下面代码&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;lift&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
