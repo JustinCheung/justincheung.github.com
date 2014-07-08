@@ -5,11 +5,7 @@
 &lt;h1 id="1"&gt;1.入口&lt;/h1&gt;
 &lt;p&gt;入口还是index.html,不过被LiftFilter所过滤处理，filter的定义依然在web.xml中。&lt;/p&gt;
 &lt;p&gt;index.html的内容被surround标签包含&lt;/p&gt;
-&lt;p&gt;.. code-block:: html
-   :linenos: true&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;lift:surround&lt;/span&gt; &lt;span class="na"&gt;with=&lt;/span&gt;&lt;span class="s"&gt;"default"&lt;/span&gt; &lt;span class="na"&gt;at=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/lift:surround&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;ol class="dp-j" start="1"&gt;&lt;li&gt;&lt;span&gt;&lt;span&gt;&amp;lt;lift:surround with=&lt;/span&gt;&lt;span class="string"&gt;"default"&lt;/span&gt;&lt;span&gt; at=&lt;/span&gt;&lt;span class="string"&gt;"content"&lt;/span&gt;&lt;span&gt;&amp;gt;  &lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;...  &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&amp;lt;/lift:surround&amp;gt;  &lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p&gt;这是lift中Rendering with Templates 的语法，通过这个tag把页面的内容和模板组合在一起。with指定使用的模板名称，模板位于webapp\templates-hidden目录下，在这个目录下可以找到default.html。 at指定了本页内容位于模板中的位置，在模板文件中能找到下面代码&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;lift&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
