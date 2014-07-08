@@ -10,18 +10,18 @@
 
 <meta name="keywords" content="scala, liftweb, web, scala, " />
 
-<meta property="og:title" content="[转]lift学习笔记 "/>
+<meta property="og:title" content="[转]lift学习笔记1 "/>
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/" />
+<meta property="og:url" content="http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/" />
 <meta property="og:description" content="最近在学习scala，大致的学习了一下scala语法后，开始学习liftweb,希望通过对liftweb的学习来带动对scala的进一步深入。学习liftweb的过程也同样，大致浏览一下《The Definitive Guide To Lift》后，下载了liftweb的官方例子，通过对例子的学习来进一步消化书中的内容。 按照看的顺序把学习到的东西记录下来，留备以后复习 1.入口 入口还是index.html,不过被LiftFilter所过滤处理，filter的定义依然在web.xml中。 index.html的内容被surround标签包含 <lift:surround with="default" at="content"> ... </lift:surround> 这是lift中Rendering with Templates 的语法，通过这个tag把页面的内容和模板组合在一起。with指定使用的模板名称，模板位于webapp\templates-hidden目录下，在这个目录下可以找到default.html。 at指定了本页内容位于模板中的位置，在模板文件中能找到下面代码 <lift:bind name="content" /> 这个代码在渲染过程中会被本页内容所替代 ..." />
 <meta property="og:site_name" content="JC's Box" />
 <meta property="og:article:author" content="JustinCheung" />
 <meta property="og:article:published_time" content="2014-07-01T00:00:00" />
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[转]lift学习笔记 ">
+<meta name="twitter:title" content="[转]lift学习笔记1 ">
 <meta name="twitter:description" content="最近在学习scala，大致的学习了一下scala语法后，开始学习liftweb,希望通过对liftweb的学习来带动对scala的进一步深入。学习liftweb的过程也同样，大致浏览一下《The Definitive Guide To Lift》后，下载了liftweb的官方例子，通过对例子的学习来进一步消化书中的内容。 按照看的顺序把学习到的东西记录下来，留备以后复习 1.入口 入口还是index.html,不过被LiftFilter所过滤处理，filter的定义依然在web.xml中。 index.html的内容被surround标签包含 <lift:surround with="default" at="content"> ... </lift:surround> 这是lift中Rendering with Templates 的语法，通过这个tag把页面的内容和模板组合在一起。with指定使用的模板名称，模板位于webapp\templates-hidden目录下，在这个目录下可以找到default.html。 at指定了本页内容位于模板中的位置，在模板文件中能找到下面代码 <lift:bind name="content" /> 这个代码在渲染过程中会被本页内容所替代 ...">
 
-        <title>[转]lift学习笔记  · JC's Box
+        <title>[转]lift学习笔记1  · JC's Box
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -83,7 +83,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/"> [转]lift学习笔记  </a></h1>
+    <h1><a href="http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/"> [转]lift学习笔记1  </a></h1>
     </header>
 </div>
 
@@ -177,13 +177,13 @@ extends HasKids with Product
             <section>
     <p id="post-share-links">
     Share on:
-    <a href="http://twitter.com/home?status=%5B%E8%BD%AC%5Dlift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20 http%3A//www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="http://twitter.com/home?status=%5B%E8%BD%AC%5Dlift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%20 http%3A//www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/" target="_blank" title="Share on Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/&p[images][0]=&p[title]=%5B%E8%BD%AC%5Dlift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20&p[summary]=%0A%3Cp%3E%E6%9C%80%E8%BF%91%E5%9C%A8%E5%AD%A6%E4%B9%A0scala%EF%BC%8C%E5%A4%A7%E8%87%B4%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%BA%86%E4%B8%80%E4%B8%8Bscala%E8%AF%AD%E6%B3%95%E5%90%8E%EF%BC%8C%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0liftweb%2C%E5%B8%8C%E6%9C%9B%E9%80%9A%E8%BF%87%E5%AF%B9liftweb%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%9D%A5%E5%B8%A6%E5%8A%A8%E5%AF%B9scala%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%B7%B1%E5%85%A5%E3%80%82%E5%AD%A6%E4%B9%A0liftweb%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B9%9F%E5%90%8C%E6%A0%B7%EF%BC%8C%E5%A4%A7%E8%87%B4%E6%B5%8F%E8%A7%88%E4%B8%80%E4%B8%8B%E3%80%8AThe%20Definitive%20Guide%20To%20Lift%E3%80%8B%E5%90%8E%EF%BC%8C%E4%B8%8B%E8%BD%BD%E4%BA%86liftweb%E7%9A%84%E5%AE%98%E6%96%B9%E4%BE%8B%E5%AD%90%EF%BC%8C%E9%80%9A%E8%BF%87%E5%AF%B9%E4%BE%8B%E5%AD%90%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%9D%A5%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%B6%88%E5%8C%96%E4%B9%A6%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E3%80%82%3C/p%3E%0A%3Cp%3E%E6%8C%89%E7%85%A7%E7%9C%8B%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8A%8A%E5%AD%A6%E4%B9%A0%E5%88%B0%E7%9A%84%E4%B8%9C%E8%A5%BF%E8%AE%B0%E5%BD%95%E4%B8%8B%E6%9D%A5%EF%BC%8C%E7%95%99%E5%A4%87%E4%BB%A5%E5%90%8E%E5%A4%8D%E4%B9%A0%3Cimg%20alt%3D%22%22%20src%3D%22/images/smiles/icon_wink.gif%22/%3E%20%3C/p%3E%0A%3Ch1%20id%3D%221%22%3E1.%E5%85%A5%E5%8F%A3%3C/h1%3E%0A%3Cp%3E%E5%85%A5%E5%8F%A3%E8%BF%98%E6%98%AFindex.html%2C%E4%B8%8D%E8%BF%87%E8%A2%ABLiftFilter%E6%89%80%E8%BF%87%E6%BB%A4%E5%A4%84%E7%90%86%EF%BC%8Cfilter%E7%9A%84%E5%AE%9A%E4%B9%89%E4%BE%9D%E7%84%B6%E5%9C%A8web.xml%E4%B8%AD%E3%80%82%3C/p%3E%0A%3Cp%3Eindex.html%E7%9A%84%E5%86%85%E5%AE%B9%E8%A2%ABsurround%E6%A0%87%E7%AD%BE%E5%8C%85%E5%90%AB%3C/p%3E%0A%3Cdiv%20class%3D%22highlight%22%3E%3Cpre%3E%3Cspan%20class%3D%22nt%22%3E%26lt%3Blift%3Asurround%3C/span%3E%20%3Cspan%20class%3D%22na%22%3Ewith%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%22default%22%3C/span%3E%20%3Cspan%20class%3D%22na%22%3Eat%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%22content%22%3C/span%3E%3Cspan%20class%3D%22nt%22%3E%26gt%3B%3C/span%3E%20%20%0A...%20%20%0A%3Cspan%20class%3D%22nt%22%3E%26lt%3B/lift%3Asurround%26gt%3B%3C/span%3E%0A%3C/pre%3E%3C/div%3E%0A%3Cp%3E%E8%BF%99%E6%98%AFlift%E4%B8%ADRendering%20with%20Templates%20%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%8C%E9%80%9A%E8%BF%87%E8%BF%99%E4%B8%AAtag%E6%8A%8A%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%BB%84%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7%E3%80%82with%E6%8C%87%E5%AE%9A%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%90%8D%E7%A7%B0%EF%BC%8C%E6%A8%A1%E6%9D%BF%E4%BD%8D%E4%BA%8Ewebapp%5Ctemplates-hidden%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E5%9C%A8%E8%BF%99%E4%B8%AA%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%8F%AF%E4%BB%A5%E6%89%BE%E5%88%B0default.html%E3%80%82%20at%E6%8C%87%E5%AE%9A%E4%BA%86%E6%9C%AC%E9%A1%B5%E5%86%85%E5%AE%B9%E4%BD%8D%E4%BA%8E%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%9C%A8%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6%E4%B8%AD%E8%83%BD%E6%89%BE%E5%88%B0%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%3C/p%3E%0A%3Cdiv%20class%3D%22highlight%22%3E%3Cpre%3E%3Cspan%20class%3D%22o%22%3E%26lt%3B%3C/span%3E%3Cspan%20class%3D%22n%22%3Elift%3C/span%3E%3Cspan%20class%3D%22o%22%3E%3A%3C/span%3E%3Cspan%20class%3D%22n%22%3Ebind%3C/span%3E%20%3Cspan%20class%3D%22n%22%3Ename%3C/span%3E%3Cspan%20class%3D%22o%22%3E%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%22content%22%3C/span%3E%20%3Cspan%20class%3D%22o%22%3E/%26gt%3B%3C/span%3E%0A%3C/pre%3E%3C/div%3E%0A%3Cp%3E%E8%BF%99%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%9C%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%BC%9A%E8%A2%AB%E6%9C%AC%E9%A1%B5%E5%86%85%E5%AE%B9%E6%89%80%E6%9B%BF%E4%BB%A3%20...%3C/p%3E" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/&p[images][0]=&p[title]=%5B%E8%BD%AC%5Dlift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%20&p[summary]=%0A%3Cp%3E%E6%9C%80%E8%BF%91%E5%9C%A8%E5%AD%A6%E4%B9%A0scala%EF%BC%8C%E5%A4%A7%E8%87%B4%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%BA%86%E4%B8%80%E4%B8%8Bscala%E8%AF%AD%E6%B3%95%E5%90%8E%EF%BC%8C%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0liftweb%2C%E5%B8%8C%E6%9C%9B%E9%80%9A%E8%BF%87%E5%AF%B9liftweb%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%9D%A5%E5%B8%A6%E5%8A%A8%E5%AF%B9scala%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%B7%B1%E5%85%A5%E3%80%82%E5%AD%A6%E4%B9%A0liftweb%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B9%9F%E5%90%8C%E6%A0%B7%EF%BC%8C%E5%A4%A7%E8%87%B4%E6%B5%8F%E8%A7%88%E4%B8%80%E4%B8%8B%E3%80%8AThe%20Definitive%20Guide%20To%20Lift%E3%80%8B%E5%90%8E%EF%BC%8C%E4%B8%8B%E8%BD%BD%E4%BA%86liftweb%E7%9A%84%E5%AE%98%E6%96%B9%E4%BE%8B%E5%AD%90%EF%BC%8C%E9%80%9A%E8%BF%87%E5%AF%B9%E4%BE%8B%E5%AD%90%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%9D%A5%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%B6%88%E5%8C%96%E4%B9%A6%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E3%80%82%3C/p%3E%0A%3Cp%3E%E6%8C%89%E7%85%A7%E7%9C%8B%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8A%8A%E5%AD%A6%E4%B9%A0%E5%88%B0%E7%9A%84%E4%B8%9C%E8%A5%BF%E8%AE%B0%E5%BD%95%E4%B8%8B%E6%9D%A5%EF%BC%8C%E7%95%99%E5%A4%87%E4%BB%A5%E5%90%8E%E5%A4%8D%E4%B9%A0%3Cimg%20alt%3D%22%22%20src%3D%22/images/smiles/icon_wink.gif%22/%3E%20%3C/p%3E%0A%3Ch1%20id%3D%221%22%3E1.%E5%85%A5%E5%8F%A3%3C/h1%3E%0A%3Cp%3E%E5%85%A5%E5%8F%A3%E8%BF%98%E6%98%AFindex.html%2C%E4%B8%8D%E8%BF%87%E8%A2%ABLiftFilter%E6%89%80%E8%BF%87%E6%BB%A4%E5%A4%84%E7%90%86%EF%BC%8Cfilter%E7%9A%84%E5%AE%9A%E4%B9%89%E4%BE%9D%E7%84%B6%E5%9C%A8web.xml%E4%B8%AD%E3%80%82%3C/p%3E%0A%3Cp%3Eindex.html%E7%9A%84%E5%86%85%E5%AE%B9%E8%A2%ABsurround%E6%A0%87%E7%AD%BE%E5%8C%85%E5%90%AB%3C/p%3E%0A%3Cdiv%20class%3D%22highlight%22%3E%3Cpre%3E%3Cspan%20class%3D%22nt%22%3E%26lt%3Blift%3Asurround%3C/span%3E%20%3Cspan%20class%3D%22na%22%3Ewith%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%22default%22%3C/span%3E%20%3Cspan%20class%3D%22na%22%3Eat%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%22content%22%3C/span%3E%3Cspan%20class%3D%22nt%22%3E%26gt%3B%3C/span%3E%20%20%0A...%20%20%0A%3Cspan%20class%3D%22nt%22%3E%26lt%3B/lift%3Asurround%26gt%3B%3C/span%3E%0A%3C/pre%3E%3C/div%3E%0A%3Cp%3E%E8%BF%99%E6%98%AFlift%E4%B8%ADRendering%20with%20Templates%20%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%8C%E9%80%9A%E8%BF%87%E8%BF%99%E4%B8%AAtag%E6%8A%8A%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%BB%84%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7%E3%80%82with%E6%8C%87%E5%AE%9A%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%90%8D%E7%A7%B0%EF%BC%8C%E6%A8%A1%E6%9D%BF%E4%BD%8D%E4%BA%8Ewebapp%5Ctemplates-hidden%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E5%9C%A8%E8%BF%99%E4%B8%AA%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%8F%AF%E4%BB%A5%E6%89%BE%E5%88%B0default.html%E3%80%82%20at%E6%8C%87%E5%AE%9A%E4%BA%86%E6%9C%AC%E9%A1%B5%E5%86%85%E5%AE%B9%E4%BD%8D%E4%BA%8E%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%9C%A8%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6%E4%B8%AD%E8%83%BD%E6%89%BE%E5%88%B0%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%3C/p%3E%0A%3Cdiv%20class%3D%22highlight%22%3E%3Cpre%3E%3Cspan%20class%3D%22o%22%3E%26lt%3B%3C/span%3E%3Cspan%20class%3D%22n%22%3Elift%3C/span%3E%3Cspan%20class%3D%22o%22%3E%3A%3C/span%3E%3Cspan%20class%3D%22n%22%3Ebind%3C/span%3E%20%3Cspan%20class%3D%22n%22%3Ename%3C/span%3E%3Cspan%20class%3D%22o%22%3E%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%22content%22%3C/span%3E%20%3Cspan%20class%3D%22o%22%3E/%26gt%3B%3C/span%3E%0A%3C/pre%3E%3C/div%3E%0A%3Cp%3E%E8%BF%99%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%9C%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%BC%9A%E8%A2%AB%E6%9C%AC%E9%A1%B5%E5%86%85%E5%AE%B9%E6%89%80%E6%9B%BF%E4%BB%A3%20...%3C/p%3E" target="_blank" title="Share on Facebook">Facebook</a>
     ❄
-    <a href="https://plus.google.com/share?url=http%3A//www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/" target="_blank" title="Share on Google Plus">Google+</a>
+    <a href="https://plus.google.com/share?url=http%3A//www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/" target="_blank" title="Share on Google Plus">Google+</a>
     ❄
-    <a href="mailto:?subject=%5B%E8%BD%AC%5Dlift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20&body=http%3A//www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/" target="_blank" title="Share via Email">Email</a>
+    <a href="mailto:?subject=%5B%E8%BD%AC%5Dlift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%20&body=http%3A//www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/" target="_blank" title="Share via Email">Email</a>
     </p>
 </section>
 
@@ -192,7 +192,7 @@ extends HasKids with Product
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/#disqus_thread">
+                href="http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/#disqus_thread">
                 Comments
             </a>
         </div>
@@ -202,8 +202,8 @@ extends HasKids with Product
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'JustinCheung';
-        var disqus_identifier = 'http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/';
-    var disqus_url = 'http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji/';
+        var disqus_identifier = 'http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/';
+    var disqus_url = 'http://www.zscbb.com/posts/2014/07/zhuan-liftxue-xi-bi-ji-1/';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
