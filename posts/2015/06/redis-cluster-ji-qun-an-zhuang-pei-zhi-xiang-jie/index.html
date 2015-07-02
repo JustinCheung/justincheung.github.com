@@ -13,13 +13,13 @@
 <meta property="og:title" content="redis cluster 集群 安装 配置 详解 "/>
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://www.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" />
-<meta property="og:description" content="[TOC] <div class="entry"> Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。 目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。 <span id="more-1725"></span> **一，redis服务器说明** <div class="dp-highlighter"> 1. <span><span>192.168.10.219&nbsp;6379&nbsp;&nbsp;</span></span> 2. <span>192.168.10.219&nbsp;6380&nbsp;&nbsp ..." />
+<meta property="og:description" content="[TOC] Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。 目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。 一，redis服务器说明 192.168.10.219 6379   192.168.10.219 6380   192.168.10.219 6381      192.168.10.220 6382   192.168.10.220 6383   192.168.10.220 6384   要让集群正常运作至少需要三个主节点，不过在刚开始试用集群功能时， 强烈建议使用六个节点 ..." />
 <meta property="og:site_name" content="JC's Box" />
 <meta property="og:article:author" content="JustinCheung" />
 <meta property="og:article:published_time" content="2015-06-23T00:00:00" />
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis cluster 集群 安装 配置 详解 ">
-<meta name="twitter:description" content="[TOC] <div class="entry"> Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。 目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。 <span id="more-1725"></span> **一，redis服务器说明** <div class="dp-highlighter"> 1. <span><span>192.168.10.219&nbsp;6379&nbsp;&nbsp;</span></span> 2. <span>192.168.10.219&nbsp;6380&nbsp;&nbsp ...">
+<meta name="twitter:description" content="[TOC] Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。 目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。 一，redis服务器说明 192.168.10.219 6379   192.168.10.219 6380   192.168.10.219 6381      192.168.10.220 6382   192.168.10.220 6383   192.168.10.220 6384   要让集群正常运作至少需要三个主节点，不过在刚开始试用集群功能时， 强烈建议使用六个节点 ...">
 
         <title>redis cluster 集群 安装 配置 详解  · JC's Box
 </title>
@@ -91,457 +91,225 @@
         <div class="span8 offset2 article-content">
 
             
-            <div class="highlight"><pre><span class="k">[TOC]</span>
-
-                    <span class="na">&lt;div class</span><span class="o">=</span><span class="s">&quot;entry&quot;&gt;</span>
-
-                    <span class="err">Redis</span> <span class="err">集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。</span>
-
-                    <span class="err">目前redis</span> <span class="err">3.0还不稳定，如果要用在生产环境中，要慎重。</span>
-
-                    <span class="na">&lt;span id</span><span class="o">=</span><span class="s">&quot;more-1725&quot;&gt;&lt;/span&gt;</span>
-
-                    <span class="err">**一，redis服务器说明**</span>
-
-                    <span class="na">&lt;div class</span><span class="o">=</span><span class="s">&quot;dp-highlighter&quot;&gt;</span>
-
-                    <span class="err">1.</span>  <span class="err">&lt;span&gt;&lt;span&gt;192.168.10.219&amp;nbsp</span><span class="c1">;6379&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;</span>
-                    <span class="err">2.</span>  <span class="err">&lt;span&gt;192.168.10.219&amp;nbsp</span><span class="c1">;6380&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-                    <span class="err">3.</span>  <span class="err">&lt;span&gt;192.168.10.219&amp;nbsp</span><span class="c1">;6381&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-                    <span class="err">4.</span>  <span class="err">&lt;span&gt;&amp;nbsp</span><span class="c1">;&amp;nbsp;&lt;/span&gt;</span>
-                    <span class="err">5.</span>  <span class="err">&lt;span&gt;192.168.10.220&amp;nbsp</span><span class="c1">;6382&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-                    <span class="err">6.</span>  <span class="err">&lt;span&gt;192.168.10.220&amp;nbsp</span><span class="c1">;6383&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-                    <span class="na">7.  &lt;span&gt;192.168.10.220&amp;nbsp;6384&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;pre class</span><span class="o">=</span><span class="s">&quot;php&quot; name=&quot;code&quot; style=&quot;display: none;&quot;&gt;192.168.10.219 6379</span>
-<span class="s">                    192.168.10.219 6380</span>
-<span class="s">                    192.168.10.219 6381</span>
-
-                    <span class="err">192.168.10.220</span> <span class="err">6382</span>
-                    <span class="err">192.168.10.220</span> <span class="err">6383</span>
-                    <span class="err">192.168.10.220</span> <span class="err">6384&lt;/pre&gt;</span>
-
-                    <span class="na">&lt;span style</span><span class="o">=</span><span class="s">&quot;color: #800080;&quot;&gt;**要让集群正常运作至少需要三个主节点，不过在刚开始试用集群功能时， 强烈建议使用六个节点： 其中三个为主节点， 而其余三个则是各个主节点的从节点。所有用二台机器，开6个redis进程，模拟6台机器。**&lt;/span&gt;</span>
-
-                    <span class="err">**二，安装ruby,rubygems**</span>
-
-                    <span class="na">&lt;div class</span><span class="o">=</span><span class="s">&quot;dp-highlighter&quot;&gt;&lt;div class=&quot;bar&quot;&gt;&lt;div class=&quot;tools&quot;&gt;[查看](#)[复制](#)[打印](#)[?](#)&lt;/div&gt;&lt;/div&gt;</span>
-
-                    <span class="err">1.</span>  <span class="err">&lt;span&gt;&lt;span&gt;</span><span class="c1">#&amp;nbsp;yum&amp;nbsp;-y&amp;nbsp;install&amp;nbsp;gcc&amp;nbsp;openssl-devel&amp;nbsp;libyaml-devel&amp;nbsp;libffi-devel&amp;nbsp;readline-devel&amp;nbsp;zlib-devel&amp;nbsp;gdbm-devel&amp;nbsp;ncurses-devel&amp;nbsp;gcc-c++&amp;nbsp;automake&amp;nbsp;autoconf&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;</span>
-                    <span class="err">2.</span>  <span class="err">&lt;span&gt;&amp;nbsp</span><span class="c1">;&amp;nbsp;&lt;/span&gt;</span>
-                    <span class="na">3.  &lt;span&gt;#&amp;nbsp;yum&amp;nbsp;-y&amp;nbsp;install&amp;nbsp;ruby&amp;nbsp;rubygems&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span class</span><span class="o">=</span><span class="s">&quot;comment&quot;&gt;//安装ruby&amp;nbsp;rubygems&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;</span>
-<span class="s">                    4.  &lt;span&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-<span class="s">                    5.  &lt;span&gt;&lt;span class=&quot;comment&quot;&gt;//换源&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;</span>
-<span class="s">                    6.  &lt;span&gt;#&amp;nbsp;gem&amp;nbsp;source&amp;nbsp;-l&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-<span class="s">                    7.  &lt;span&gt;#&amp;nbsp;gem&amp;nbsp;source&amp;nbsp;--remove&amp;nbsp;http:&lt;span class=&quot;comment&quot;&gt;//rubygems.org/&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;</span>
-<span class="s">                    8.  &lt;span&gt;#&amp;nbsp;gem&amp;nbsp;sources&amp;nbsp;-a&amp;nbsp;http:&lt;span class=&quot;comment&quot;&gt;//ruby.taobao.org/&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;</span>
-<span class="s">                    9.  &lt;span&gt;#&amp;nbsp;gem&amp;nbsp;source&amp;nbsp;-l&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-<span class="s">                    10.  &lt;span&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-<span class="s">                    11.  &lt;span&gt;#&amp;nbsp;gem&amp;nbsp;install&amp;nbsp;redis&amp;nbsp;--version&amp;nbsp;3.0.0&amp;nbsp;&amp;nbsp;&lt;span class=&quot;comment&quot;&gt;//安装gem_redis&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;</span>
-<span class="s">                    12.  &lt;span&gt;Successfully&amp;nbsp;installed&amp;nbsp;redis-3.0.0&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-<span class="s">                    13.  &lt;span&gt;1&amp;nbsp;gem&amp;nbsp;installed&amp;nbsp;&amp;nbsp;&lt;/span&gt;</span>
-<span class="s">                    14.  &lt;span&gt;Installing&amp;nbsp;ri&amp;nbsp;documentation&amp;nbsp;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;&lt;span&gt;&amp;nbsp;redis-3.0.0...&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;</span>
-<span class="s">                    15.  &lt;span&gt;Installing&amp;nbsp;RDoc&amp;nbsp;documentation&amp;nbsp;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;&lt;span&gt;&amp;nbsp;redis-3.0.0...&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;pre class=&quot;php&quot; name=&quot;code&quot; style=&quot;display: none;&quot;&gt;# yum -y install gcc openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel gcc-c++ automake autoconf</span>
-</pre></div>
-
-
-<h1 id="yum-y-install-ruby-rubygems-ruby-rubygems">yum -y install ruby rubygems   //安装ruby rubygems</h1>
-<div class="highlight"><pre>                    <span class="c1">//换源</span>
-</pre></div>
-
-
-<h1 id="gem-source-l">gem source -l</h1>
-<h1 id="gem-source-remove-httprubygemsorg">gem source --remove http://rubygems.org/</h1>
-<h1 id="gem-sources-a-httprubytaobaoorg">gem sources -a http://ruby.taobao.org/</h1>
-<h1 id="gem-source-l_1">gem source -l</h1>
-<h1 id="gem-install-redis-version-300-gem_redis">gem install redis --version 3.0.0  //安装gem_redis</h1>
-<div class="highlight"><pre>                    <span class="nx">Successfully</span> <span class="nx">installed</span> <span class="nx">redis</span><span class="o">-</span><span class="mf">3.0.0</span>
-                    <span class="mi">1</span> <span class="nx">gem</span> <span class="nx">installed</span>
-                    <span class="nx">Installing</span> <span class="nx">ri</span> <span class="nx">documentation</span> <span class="nb">for</span> <span class="nx">redis</span><span class="o">-</span><span class="mf">3.0.0</span><span class="nx">...</span>
-                    <span class="nx">Installing</span> <span class="nx">RDoc</span> <span class="nx">documentation</span> <span class="nb">for</span> <span class="nx">redis</span><span class="o">-</span><span class="mf">3.0.0</span><span class="nx">...</span><span class="o">&lt;/</span><span class="nx">pre</span><span class="o">&gt;</span>
-
-                    <span class="nx">以前写过一篇ruby</span> <span class="k">on</span> <span class="nx">rails的文章</span><span class="err">，</span><span class="nx">请参考</span><span class="err">：[</span><span class="o">**&lt;</span><span class="nx">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;color: #800080;&quot;</span><span class="o">&gt;</span><span class="nx">centos</span> <span class="nx">ruby</span> <span class="k">on</span> <span class="nx">rails</span> <span class="nx">apache</span> <span class="nx">mysql</span> <span class="nx">安装配置详解</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;**</span><span class="cp">]</span>(http://blog.51yip.com/server/1493.html &quot;centos ruby on rails apache mysql 安装配置详解&quot;)
-
-                    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #800080;&quot;</span><span class="nt">&gt;</span>**喜欢手动编译的人，可以参考这篇文章，安装ruby.**<span class="nt">&lt;/span&gt;</span>
-
-                    **三，安装redis3.0.0**
-
-                    ** **
-
-                    **1，安装redis**
-
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dp-highlighter&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;tools&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nx">查看</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">复制</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">打印</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="o">?</span><span class="cp">]</span>(#)<span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-
-                    1.  <span class="nt">&lt;span&gt;&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>wget<span class="ni">&amp;nbsp;</span>http:<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//download.redis.io/releases/redis-3.0.0.tar.gz<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    2.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>tar<span class="ni">&amp;nbsp;</span>-xvzf<span class="ni">&amp;nbsp;</span>redis-3.0.0.tar.gz<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    3.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>cd<span class="ni">&amp;nbsp;</span>redis-3.0.0<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    4.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>make<span class="ni">&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;</span>make<span class="ni">&amp;nbsp;</span>install<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    5.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>cd<span class="ni">&amp;nbsp;</span>src<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    6.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>cp<span class="ni">&amp;nbsp;</span>redis-trib.rb<span class="ni">&amp;nbsp;</span>/usr/local/bin<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    7.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    8.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;func&quot;</span><span class="nt">&gt;</span>mkdir<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>/etc/redis<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    9.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;func&quot;</span><span class="nt">&gt;</span>mkdir<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>/<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/log/redis<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;pre</span> <span class="na">class=</span><span class="s">&quot;php&quot;</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span><span class="nt">&gt;</span># wget http://download.redis.io/releases/redis-3.0.0.tar.gz
-</pre></div>
-
-
-<h1 id="tar-xvzf-redis-300targz">tar -xvzf redis-3.0.0.tar.gz</h1>
-<h1 id="cd-redis-300">cd redis-3.0.0</h1>
-<h1 id="make-make-install">make &amp;&amp; make install</h1>
-<h1 id="cd-src">cd src</h1>
-<h1 id="cp-redis-tribrb-usrlocalbin">cp redis-trib.rb /usr/local/bin</h1>
-<h1 id="mkdir-etcredis">mkdir /etc/redis</h1>
-<h1 id="mkdir-varlogredis">mkdir /var/log/redis</pre></h1>
-<div class="highlight"><pre>                    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #800080;&quot;</span><span class="nt">&gt;</span>**上述操作要先在二台机器上面都操作好。**<span class="nt">&lt;/span&gt;</span>
-
-                    **2,配置redis**
-
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dp-highlighter&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;tools&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nx">查看</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">复制</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">打印</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="o">?</span><span class="cp">]</span>(#)<span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-
-                    1.  <span class="nt">&lt;span&gt;&lt;span&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span><span class="o">&amp;</span><span class="nx">nbsp</span><span class="p">;</span><span class="nx">redis</span><span class="o">-</span><span class="mf">3.0.0</span><span class="cp">]</span>#<span class="ni">&amp;nbsp;&amp;nbsp;</span>vim<span class="ni">&amp;nbsp;</span>redis.conf<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//解压的根目录，有redis.conf,做以下修改<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    2.  <span class="nt">&lt;span&gt;</span>port<span class="ni">&amp;nbsp;</span>6379<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    3.  <span class="nt">&lt;span&gt;</span>pidfile<span class="ni">&amp;nbsp;</span>/<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/run/redis-6379.pid<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    4.  <span class="nt">&lt;span&gt;</span>dbfilename<span class="ni">&amp;nbsp;</span>dump-6379.rdb<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    5.  <span class="nt">&lt;span&gt;</span>appendfilename<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;appendonly-6379.aof&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    6.  <span class="nt">&lt;span&gt;</span>cluster-config-file<span class="ni">&amp;nbsp;</span>nodes-6379.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    7.  <span class="nt">&lt;span&gt;</span>cluster-enabled<span class="ni">&amp;nbsp;</span>yes<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    8.  <span class="nt">&lt;span&gt;</span>cluster-node-timeout<span class="ni">&amp;nbsp;</span>5000<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    9.  <span class="nt">&lt;span&gt;</span>appendonly<span class="ni">&amp;nbsp;</span>yes<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/div&gt;&lt;pre</span> <span class="na">class=</span><span class="s">&quot;php&quot;</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span> <span class="nx">redis</span><span class="o">-</span><span class="mf">3.0.0</span><span class="cp">]</span>#  vim redis.conf   //解压的根目录，有redis.conf,做以下修改
-                    port 6379
-                    pidfile /var/run/redis-6379.pid
-                    dbfilename dump-6379.rdb
-                    appendfilename &quot;appendonly-6379.aof&quot;
-                    cluster-config-file nodes-6379.conf
-                    cluster-enabled yes
-                    cluster-node-timeout 5000
-                    appendonly yes<span class="nt">&lt;/pre&gt;</span>
-
-                    **3，copy配置文件，并修改端口**
-
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dp-highlighter&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;tools&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nx">查看</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">复制</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">打印</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="o">?</span><span class="cp">]</span>(#)<span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-
-                    1.  <span class="nt">&lt;span&gt;&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>cp<span class="ni">&amp;nbsp;</span>redis.conf<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6379.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    2.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>cp<span class="ni">&amp;nbsp;</span>redis.conf<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6380.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    3.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>cp<span class="ni">&amp;nbsp;</span>redis.conf<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6381.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    4.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    5.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>scp<span class="ni">&amp;nbsp;</span>redis.conf<span class="ni">&amp;nbsp;</span>192.168.10.220:/etc/redis/redis-6382.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    6.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>scp<span class="ni">&amp;nbsp;</span>redis.conf<span class="ni">&amp;nbsp;</span>192.168.10.220:/etc/redis/redis-6383.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    7.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>scp<span class="ni">&amp;nbsp;</span>redis.conf<span class="ni">&amp;nbsp;</span>192.168.10.220:/etc/redis/redis-6384.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    8.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    9.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>sed<span class="ni">&amp;nbsp;</span>-i<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;s/6379/6380/g&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>/etc/redis/redis-6380.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    10.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>sed<span class="ni">&amp;nbsp;</span>-i<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;s/6379/6381/g&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>/etc/redis/redis-6381.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    11.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    12.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>sed<span class="ni">&amp;nbsp;</span>-i<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;s/6379/6382/g&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>/etc/redis/redis-6382.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    13.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>sed<span class="ni">&amp;nbsp;</span>-i<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;s/6379/6383/g&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>/etc/redis/redis-6383.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    14.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>sed<span class="ni">&amp;nbsp;</span>-i<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;s/6379/6384/g&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>/etc/redis/redis-6384.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;pre</span> <span class="na">class=</span><span class="s">&quot;php&quot;</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span><span class="nt">&gt;</span># cp redis.conf /etc/redis/redis-6379.conf
-</pre></div>
-
-
-<h1 id="cp-redisconf-etcredisredis-6380conf">cp redis.conf /etc/redis/redis-6380.conf</h1>
-<h1 id="cp-redisconf-etcredisredis-6381conf">cp redis.conf /etc/redis/redis-6381.conf</h1>
-<h1 id="scp-redisconf-19216810220etcredisredis-6382conf">scp redis.conf 192.168.10.220:/etc/redis/redis-6382.conf</h1>
-<h1 id="scp-redisconf-19216810220etcredisredis-6383conf">scp redis.conf 192.168.10.220:/etc/redis/redis-6383.conf</h1>
-<h1 id="scp-redisconf-19216810220etcredisredis-6384conf">scp redis.conf 192.168.10.220:/etc/redis/redis-6384.conf</h1>
-<h1 id="sed-i-s63796380g-etcredisredis-6380conf">sed -i "s/6379/6380/g" /etc/redis/redis-6380.conf</h1>
-<h1 id="sed-i-s63796381g-etcredisredis-6381conf">sed -i "s/6379/6381/g" /etc/redis/redis-6381.conf</h1>
-<h1 id="sed-i-s63796382g-etcredisredis-6382conf">sed -i "s/6379/6382/g" /etc/redis/redis-6382.conf</h1>
-<h1 id="sed-i-s63796383g-etcredisredis-6383conf">sed -i "s/6379/6383/g" /etc/redis/redis-6383.conf</h1>
-<h1 id="sed-i-s63796384g-etcredisredis-6384conf">sed -i "s/6379/6384/g" /etc/redis/redis-6384.conf</pre></h1>
-<div class="highlight"><pre>                    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #800080;&quot;</span><span class="nt">&gt;</span>**将配置文件分别copy到二台机器上，并替换端口：**<span class="nt">&lt;/span&gt;</span>
-
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dp-highlighter&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;tools&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nx">查看</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">复制</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">打印</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="o">?</span><span class="cp">]</span>(#)<span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-
-                    1.  <span class="nt">&lt;span&gt;&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>cat<span class="ni">&amp;nbsp;</span>redis-6380.conf<span class="ni">&amp;nbsp;</span>|awk<span class="ni">&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&#39;{if($0<span class="ni">&amp;nbsp;</span>!~<span class="ni">&amp;nbsp;</span>/^$/<span class="ni">&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;</span>$0<span class="ni">&amp;nbsp;</span>!~<span class="ni">&amp;nbsp;</span>/#/)<span class="ni">&amp;nbsp;</span>{print<span class="ni">&amp;nbsp;</span>$0}}&#39;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>|grep<span class="ni">&amp;nbsp;</span>6380<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    2.  <span class="nt">&lt;span&gt;</span>pidfile<span class="ni">&amp;nbsp;</span>/<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/run/redis-6380.pid<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    3.  <span class="nt">&lt;span&gt;</span>port<span class="ni">&amp;nbsp;</span>6380<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    4.  <span class="nt">&lt;span&gt;</span>dbfilename<span class="ni">&amp;nbsp;</span>dump-6380.rdb<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    5.  <span class="nt">&lt;span&gt;</span>appendfilename<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;appendonly-6380.aof&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    6.  <span class="nt">&lt;span&gt;</span>cluster-config-file<span class="ni">&amp;nbsp;</span>nodes-6380.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/div&gt;&lt;pre</span> <span class="na">class=</span><span class="s">&quot;php&quot;</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span><span class="nt">&gt;</span># cat redis-6380.conf |awk &#39;{if($0 !~ /^$/ <span class="ni">&amp;amp;&amp;amp;</span> $0 !~ /#/) {print $0}}&#39; |grep 6380
-                    pidfile /var/run/redis-6380.pid
-                    port 6380
-                    dbfilename dump-6380.rdb
-                    appendfilename &quot;appendonly-6380.aof&quot;
-                    cluster-config-file nodes-6380.conf<span class="nt">&lt;/pre&gt;</span>
-
-                    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #800080;&quot;</span><span class="nt">&gt;</span>**有5处修改端口的地方**<span class="nt">&lt;/span&gt;</span>
-
-                    **4，启动并查看redis**
-
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dp-highlighter&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;tools&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nx">查看</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">复制</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">打印</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="o">?</span><span class="cp">]</span>(#)<span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-
-                    1.  <span class="nt">&lt;span&gt;&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6379.conf<span class="ni">&amp;nbsp;&amp;gt;&amp;nbsp;</span>/<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/log/redis/redis-6379.log<span class="ni">&amp;nbsp;</span>2<span class="ni">&amp;gt;&amp;amp;</span>1<span class="ni">&amp;nbsp;&amp;amp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    2.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6380.conf<span class="ni">&amp;nbsp;&amp;gt;&amp;nbsp;</span>/<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/log/redis/redis-6380.log<span class="ni">&amp;nbsp;</span>2<span class="ni">&amp;gt;&amp;amp;</span>1<span class="ni">&amp;nbsp;&amp;amp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    3.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6381.conf<span class="ni">&amp;nbsp;&amp;gt;&amp;nbsp;</span>/<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/log/redis/redis-6381.log<span class="ni">&amp;nbsp;</span>2<span class="ni">&amp;gt;&amp;amp;</span>1<span class="ni">&amp;nbsp;&amp;amp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    4.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    5.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6382.conf<span class="ni">&amp;nbsp;&amp;gt;&amp;nbsp;</span>/<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/log/redis/redis-6382.log<span class="ni">&amp;nbsp;</span>2<span class="ni">&amp;gt;&amp;amp;</span>1<span class="ni">&amp;nbsp;&amp;amp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    6.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6383.conf<span class="ni">&amp;nbsp;&amp;gt;&amp;nbsp;</span>/<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/log/redis/redis-6383.log<span class="ni">&amp;nbsp;</span>2<span class="ni">&amp;gt;&amp;amp;</span>1<span class="ni">&amp;nbsp;&amp;amp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    7.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>/etc/redis/redis-6384.conf<span class="ni">&amp;nbsp;&amp;gt;&amp;nbsp;</span>/<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>var<span class="nt">&lt;/span&gt;&lt;span&gt;</span>/log/redis/redis-6384.log<span class="ni">&amp;nbsp;</span>2<span class="ni">&amp;gt;&amp;amp;</span>1<span class="ni">&amp;nbsp;&amp;amp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    8.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    9.  <span class="nt">&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>netstat<span class="ni">&amp;nbsp;</span>-tpnl<span class="ni">&amp;nbsp;</span>|grep<span class="ni">&amp;nbsp;</span>redis<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    10.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>0.0.0.0:6379<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0.0.0.0:*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7298/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    11.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>0.0.0.0:6380<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0.0.0.0:*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7299/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    12.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>0.0.0.0:6381<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0.0.0.0:*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7304/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    13.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>0.0.0.0:16379<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0.0.0.0:*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7298/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    14.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>0.0.0.0:16380<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0.0.0.0:*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7299/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    15.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>0.0.0.0:16381<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0.0.0.0:*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7304/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    16.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>:::6379<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>:::*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7298/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    17.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>:::6380<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>:::*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7299/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    18.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>:::6381<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>:::*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7304/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    19.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>:::16379<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>:::*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7298/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    20.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>:::16380<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>:::*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7299/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    21.  <span class="nt">&lt;span&gt;</span>tcp<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>:::16381<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>:::*<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>LISTEN<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7304/redis-server<span class="ni">&amp;nbsp;</span>*<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    22.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    23.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span><span class="o">&amp;</span><span class="nx">nbsp</span><span class="p">;</span><span class="nx">redis</span><span class="cp">]</span>#<span class="ni">&amp;nbsp;</span>ll<span class="ni">&amp;nbsp;</span>/etc/redis/<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    24.  <span class="nt">&lt;span&gt;</span>总用量<span class="ni">&amp;nbsp;</span>156<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    25.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>4月<span class="ni">&amp;nbsp;&amp;nbsp;</span>30<span class="ni">&amp;nbsp;</span>23:54<span class="ni">&amp;nbsp;</span>appendonly-6379.aof<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    26.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>5月<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>00:08<span class="ni">&amp;nbsp;</span>appendonly-6380.aof<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    27.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>5月<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>00:08<span class="ni">&amp;nbsp;</span>appendonly-6381.aof<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    28.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>18<span class="ni">&amp;nbsp;</span>5月<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>00:08<span class="ni">&amp;nbsp;</span>dump-6379.rdb<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    29.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>18<span class="ni">&amp;nbsp;</span>5月<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>00:08<span class="ni">&amp;nbsp;</span>dump-6380.rdb<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    30.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>18<span class="ni">&amp;nbsp;</span>5月<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>00:08<span class="ni">&amp;nbsp;</span>dump-6381.rdb<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    31.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>763<span class="ni">&amp;nbsp;</span>5月<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>00:08<span class="ni">&amp;nbsp;</span>nodes-6379.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    32.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>763<span class="ni">&amp;nbsp;</span>5月<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>00:08<span class="ni">&amp;nbsp;</span>nodes-6380.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    33.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>763<span class="ni">&amp;nbsp;</span>5月<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>00:08<span class="ni">&amp;nbsp;</span>nodes-6381.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    34.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>41412<span class="ni">&amp;nbsp;</span>4月<span class="ni">&amp;nbsp;&amp;nbsp;</span>30<span class="ni">&amp;nbsp;</span>23:30<span class="ni">&amp;nbsp;</span>redis-6379.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    35.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>41412<span class="ni">&amp;nbsp;</span>4月<span class="ni">&amp;nbsp;&amp;nbsp;</span>30<span class="ni">&amp;nbsp;</span>23:39<span class="ni">&amp;nbsp;</span>redis-6380.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    36.  <span class="nt">&lt;span&gt;</span>-rw-r--r--<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>root<span class="ni">&amp;nbsp;</span>41412<span class="ni">&amp;nbsp;</span>4月<span class="ni">&amp;nbsp;&amp;nbsp;</span>30<span class="ni">&amp;nbsp;</span>23:39<span class="ni">&amp;nbsp;</span>redis-6381.conf<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/div&gt;&lt;pre</span> <span class="na">class=</span><span class="s">&quot;php&quot;</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span><span class="nt">&gt;</span># redis-server /etc/redis/redis-6379.conf <span class="ni">&amp;gt;</span> /var/log/redis/redis-6379.log 2<span class="ni">&amp;gt;&amp;amp;</span>1 <span class="ni">&amp;amp;</span>
-</pre></div>
-
-
-<h1 id="redis-server-etcredisredis-6380conf-varlogredisredis-6380log-21">redis-server /etc/redis/redis-6380.conf &gt; /var/log/redis/redis-6380.log 2&gt;&amp;1 &amp;</h1>
-<h1 id="redis-server-etcredisredis-6381conf-varlogredisredis-6381log-21">redis-server /etc/redis/redis-6381.conf &gt; /var/log/redis/redis-6381.log 2&gt;&amp;1 &amp;</h1>
-<h1 id="redis-server-etcredisredis-6382conf-varlogredisredis-6382log-21">redis-server /etc/redis/redis-6382.conf &gt; /var/log/redis/redis-6382.log 2&gt;&amp;1 &amp;</h1>
-<h1 id="redis-server-etcredisredis-6383conf-varlogredisredis-6383log-21">redis-server /etc/redis/redis-6383.conf &gt; /var/log/redis/redis-6383.log 2&gt;&amp;1 &amp;</h1>
-<h1 id="redis-server-etcredisredis-6384conf-varlogredisredis-6384log-21">redis-server /etc/redis/redis-6384.conf &gt; /var/log/redis/redis-6384.log 2&gt;&amp;1 &amp;</h1>
-<h1 id="netstat-tpnl-grep-redis">netstat -tpnl |grep redis</h1>
-<div class="highlight"><pre>                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">6379</span>                <span class="mf">0.0.0.0</span><span class="p">:</span><span class="o">*</span>                   <span class="nb">LISTEN</span>      <span class="mi">7298</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">6380</span>                <span class="mf">0.0.0.0</span><span class="p">:</span><span class="o">*</span>                   <span class="nb">LISTEN</span>      <span class="mi">7299</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">6381</span>                <span class="mf">0.0.0.0</span><span class="p">:</span><span class="o">*</span>                   <span class="nb">LISTEN</span>      <span class="mi">7304</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">16379</span>               <span class="mf">0.0.0.0</span><span class="p">:</span><span class="o">*</span>                   <span class="nb">LISTEN</span>      <span class="mi">7298</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">16380</span>               <span class="mf">0.0.0.0</span><span class="p">:</span><span class="o">*</span>                   <span class="nb">LISTEN</span>      <span class="mi">7299</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">16381</span>               <span class="mf">0.0.0.0</span><span class="p">:</span><span class="o">*</span>                   <span class="nb">LISTEN</span>      <span class="mi">7304</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="p">:::</span><span class="mi">6379</span>                     <span class="p">:::</span><span class="o">*</span>                        <span class="nb">LISTEN</span>      <span class="mi">7298</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="p">:::</span><span class="mi">6380</span>                     <span class="p">:::</span><span class="o">*</span>                        <span class="nb">LISTEN</span>      <span class="mi">7299</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="p">:::</span><span class="mi">6381</span>                     <span class="p">:::</span><span class="o">*</span>                        <span class="nb">LISTEN</span>      <span class="mi">7304</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="p">:::</span><span class="mi">16379</span>                    <span class="p">:::</span><span class="o">*</span>                        <span class="nb">LISTEN</span>      <span class="mi">7298</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="p">:::</span><span class="mi">16380</span>                    <span class="p">:::</span><span class="o">*</span>                        <span class="nb">LISTEN</span>      <span class="mi">7299</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-                    <span class="nx">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="p">:::</span><span class="mi">16381</span>                    <span class="p">:::</span><span class="o">*</span>                        <span class="nb">LISTEN</span>      <span class="mi">7304</span><span class="p">/</span><span class="nx">redis</span><span class="na">-server</span> <span class="o">*</span>
-
-                    <span class="err">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span> <span class="nx">redis</span><span class="cp">]</span># ll /etc/redis/
-                    总用量 156
-                    -rw-r--r-- 1 root root     0 4月  30 23:54 appendonly-6379.aof
-                    -rw-r--r-- 1 root root     0 5月   1 00:08 appendonly-6380.aof
-                    -rw-r--r-- 1 root root     0 5月   1 00:08 appendonly-6381.aof
-                    -rw-r--r-- 1 root root    18 5月   1 00:08 dump-6379.rdb
-                    -rw-r--r-- 1 root root    18 5月   1 00:08 dump-6380.rdb
-                    -rw-r--r-- 1 root root    18 5月   1 00:08 dump-6381.rdb
-                    -rw-r--r-- 1 root root   763 5月   1 00:08 nodes-6379.conf
-                    -rw-r--r-- 1 root root   763 5月   1 00:08 nodes-6380.conf
-                    -rw-r--r-- 1 root root   763 5月   1 00:08 nodes-6381.conf
-                    -rw-r--r-- 1 root root 41412 4月  30 23:30 redis-6379.conf
-                    -rw-r--r-- 1 root root 41412 4月  30 23:39 redis-6380.conf
-                    -rw-r--r-- 1 root root 41412 4月  30 23:39 redis-6381.conf<span class="nt">&lt;/pre&gt;</span>
-
-                    所有节点都启动成功，并不代表，他们就是集群了。
-
-                    **四，创建集群，并查看**
-
-                    ** **
-
-                    **1，创建redis集群**
-
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dp-highlighter&quot;</span><span class="nt">&gt;</span>
-
-                    1.  <span class="nt">&lt;span&gt;&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>redis-trib.rb<span class="ni">&amp;nbsp;</span>create<span class="ni">&amp;nbsp;</span>--replicas<span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>192.168.10.219:6379<span class="ni">&amp;nbsp;</span>192.168.10.219:6380<span class="ni">&amp;nbsp;</span>192.168.10.219:6381<span class="ni">&amp;nbsp;</span>192.168.10.220:6382<span class="ni">&amp;nbsp;</span>192.168.10.220:6383<span class="ni">&amp;nbsp;</span>192.168.10.220:6384<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;pre</span> <span class="na">class=</span><span class="s">&quot;php&quot;</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span><span class="nt">&gt;</span># redis-trib.rb create --replicas 1 192.168.10.219:6379 192.168.10.219:6380 192.168.10.219:6381 192.168.10.220:6382 192.168.10.220:6383 192.168.10.220:6384<span class="nt">&lt;/pre&gt;</span>
-
-                    **2，查看redis集群状态**
-
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dp-highlighter&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;tools&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nx">查看</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">复制</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">打印</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="o">?</span><span class="cp">]</span>(#)<span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-
-                    1.  <span class="nt">&lt;span&gt;&lt;span&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span><span class="o">&amp;</span><span class="nx">nbsp</span><span class="p">;</span><span class="nx">redis</span><span class="cp">]</span>#<span class="ni">&amp;nbsp;</span>redis-trib.rb<span class="ni">&amp;nbsp;</span>check<span class="ni">&amp;nbsp;</span>192.168.10.219:6379<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    2.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.219:6379:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    3.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.220:6384:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    4.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.219:6381:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    5.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.220:6383:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    6.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.220:6382:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    7.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.219:6380:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    8.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;gt;&amp;gt;&amp;gt;&amp;nbsp;</span>Performing<span class="ni">&amp;nbsp;</span>Cluster<span class="ni">&amp;nbsp;</span>Check<span class="ni">&amp;nbsp;</span>(using<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.219:6379)<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    9.  <span class="nt">&lt;span&gt;</span>M:<span class="ni">&amp;nbsp;</span>d40d9a367c24784b0336c7b80fb4c87337e2cba6<span class="ni">&amp;nbsp;</span>192.168.10.219:6379<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    10.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:5461-10922<span class="ni">&amp;nbsp;</span>(5462<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>master<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    11.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>additional<span class="ni">&amp;nbsp;</span>replica(s)<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    12.  <span class="nt">&lt;span&gt;</span>S:<span class="ni">&amp;nbsp;</span>5f00f163d0c0a540ea99daf004f55588a802327b<span class="ni">&amp;nbsp;</span>192.168.10.220:6384<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    13.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:<span class="ni">&amp;nbsp;</span>(0<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>slave<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    14.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>replicates<span class="ni">&amp;nbsp;</span>d40d9a367c24784b0336c7b80fb4c87337e2cba6<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    15.  <span class="nt">&lt;span&gt;</span>S:<span class="ni">&amp;nbsp;</span>b3b1a848987b5a87a06888e126d5c9b16f871ff5<span class="ni">&amp;nbsp;</span>192.168.10.219:6381<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    16.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:<span class="ni">&amp;nbsp;</span>(0<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>slave<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    17.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>replicates<span class="ni">&amp;nbsp;</span>d2eb5a8a77f87888792428aed4692dfb907e7a1d<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    18.  <span class="nt">&lt;span&gt;</span>M:<span class="ni">&amp;nbsp;</span>d2eb5a8a77f87888792428aed4692dfb907e7a1d<span class="ni">&amp;nbsp;</span>192.168.10.220:6383<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    19.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:10923-16383<span class="ni">&amp;nbsp;</span>(5461<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>master<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    20.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>additional<span class="ni">&amp;nbsp;</span>replica(s)<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    21.  <span class="nt">&lt;span&gt;</span>M:<span class="ni">&amp;nbsp;</span>a8eafe8b19d6a28c034917da13a43ce1230fe870<span class="ni">&amp;nbsp;</span>192.168.10.220:6382<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    22.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:0-5460<span class="ni">&amp;nbsp;</span>(5461<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>master<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    23.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>additional<span class="ni">&amp;nbsp;</span>replica(s)<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    24.  <span class="nt">&lt;span&gt;</span>S:<span class="ni">&amp;nbsp;</span>a87d207204a53ab599bf7f6ffb9d679d0eef4f25<span class="ni">&amp;nbsp;</span>192.168.10.219:6380<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    25.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:<span class="ni">&amp;nbsp;</span>(0<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>slave<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    26.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>replicates<span class="ni">&amp;nbsp;</span>a8eafe8b19d6a28c034917da13a43ce1230fe870<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    27.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nx">OK</span><span class="cp">]</span><span class="ni">&amp;nbsp;</span>All<span class="ni">&amp;nbsp;</span>nodes<span class="ni">&amp;nbsp;</span>agree<span class="ni">&amp;nbsp;</span>about<span class="ni">&amp;nbsp;</span>slots<span class="ni">&amp;nbsp;</span>configuration.<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    28.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;gt;&amp;gt;&amp;gt;&amp;nbsp;</span>Check<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>for<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>open<span class="ni">&amp;nbsp;</span>slots...<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                    29.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;gt;&amp;gt;&amp;gt;&amp;nbsp;</span>Check<span class="ni">&amp;nbsp;</span>slots<span class="ni">&amp;nbsp;</span>coverage...<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-                    30.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nx">OK</span><span class="cp">]</span><span class="ni">&amp;nbsp;</span>All<span class="ni">&amp;nbsp;</span>16384<span class="ni">&amp;nbsp;</span>slots<span class="ni">&amp;nbsp;</span>covered.<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/div&gt;&lt;pre</span> <span class="na">class=</span><span class="s">&quot;php&quot;</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span> <span class="nx">redis</span><span class="cp">]</span># redis-trib.rb check 192.168.10.219:6379
-                    Connecting to node 192.168.10.219:6379: OK
-                    Connecting to node 192.168.10.220:6384: OK
-                    Connecting to node 192.168.10.219:6381: OK
-                    Connecting to node 192.168.10.220:6383: OK
-                    Connecting to node 192.168.10.220:6382: OK
-                    Connecting to node 192.168.10.219:6380: OK
-                    <span class="ni">&amp;gt;&amp;gt;&amp;gt;</span> Performing Cluster Check (using node 192.168.10.219:6379)
-                    M: d40d9a367c24784b0336c7b80fb4c87337e2cba6 192.168.10.219:6379
-                     slots:5461-10922 (5462 slots) master
-                      1 additional replica(s)
-S: 5f00f163d0c0a540ea99daf004f55588a802327b 192.168.10.220:6384
- slots: (0 slots) slave
-  replicates d40d9a367c24784b0336c7b80fb4c87337e2cba6
-  S: b3b1a848987b5a87a06888e126d5c9b16f871ff5 192.168.10.219:6381
-   slots: (0 slots) slave
-    replicates d2eb5a8a77f87888792428aed4692dfb907e7a1d
-    M: d2eb5a8a77f87888792428aed4692dfb907e7a1d 192.168.10.220:6383
-     slots:10923-16383 (5461 slots) master
-      1 additional replica(s)
-M: a8eafe8b19d6a28c034917da13a43ce1230fe870 192.168.10.220:6382
- slots:0-5460 (5461 slots) master
-  1 additional replica(s)
-S: a87d207204a53ab599bf7f6ffb9d679d0eef4f25 192.168.10.219:6380
- slots: (0 slots) slave
-  replicates a8eafe8b19d6a28c034917da13a43ce1230fe870
-  <span class="cp">[</span><span class="nx">OK</span><span class="cp">]</span> All nodes agree about slots configuration.
-  <span class="ni">&amp;gt;&amp;gt;&amp;gt;</span> Check for open slots...
-  <span class="ni">&amp;gt;&amp;gt;&amp;gt;</span> Check slots coverage...
-  <span class="cp">[</span><span class="nx">OK</span><span class="cp">]</span> All 16384 slots covered.<span class="nt">&lt;/pre&gt;</span>
-
-  到这儿，redis集群就配置成功了
-
-  **五，测试redis集群**
-
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dp-highlighter&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;tools&quot;</span><span class="nt">&gt;</span><span class="cp">[</span><span class="nx">查看</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">复制</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="nx">打印</span><span class="cp">]</span>(#)<span class="cp">[</span><span class="o">?</span><span class="cp">]</span>(#)<span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-
-  1.  <span class="nt">&lt;span&gt;&lt;span&gt;</span>#<span class="ni">&amp;nbsp;</span>redis-cli<span class="ni">&amp;nbsp;</span>-c<span class="ni">&amp;nbsp;</span>-p<span class="ni">&amp;nbsp;</span>6379<span class="ni">&amp;nbsp;</span>-h<span class="ni">&amp;nbsp;</span>192.168.10.219<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//在219登录<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  2.  <span class="nt">&lt;span&gt;</span>192.168.10.219:6379<span class="ni">&amp;gt;&amp;nbsp;</span>set<span class="ni">&amp;nbsp;</span>tank<span class="ni">&amp;nbsp;</span>tank1<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//设置测试值<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  3.  <span class="nt">&lt;span&gt;</span>-<span class="ni">&amp;gt;&amp;nbsp;</span>Redirected<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>slot<span class="ni">&amp;nbsp;</span><span class="cp">[</span><span class="mi">4407</span><span class="cp">]</span><span class="ni">&amp;nbsp;</span>located<span class="ni">&amp;nbsp;</span>at<span class="ni">&amp;nbsp;</span>192.168.10.220:6382<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  4.  <span class="nt">&lt;span&gt;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//直接转向到220<span class="ni">&amp;nbsp;</span>6382端口，数据存到了220<span class="ni">&amp;nbsp;</span>6382，不过有点奇怪<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  5.  <span class="nt">&lt;span&gt;</span>192.168.10.220:6382<span class="ni">&amp;gt;&amp;nbsp;</span>get<span class="ni">&amp;nbsp;</span>tank<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//可以取到值<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  6.  <span class="nt">&lt;span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;tank1&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  7.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  8.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">manage</span><span class="o">&amp;</span><span class="nx">nbsp</span><span class="p">;</span><span class="nx">redis</span><span class="cp">]</span>#<span class="ni">&amp;nbsp;</span>redis-cli<span class="ni">&amp;nbsp;</span>-c<span class="ni">&amp;nbsp;</span>-p<span class="ni">&amp;nbsp;</span>6383<span class="ni">&amp;nbsp;</span>-h<span class="ni">&amp;nbsp;</span>192.168.10.220<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//220机器，6383端口<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  9.  <span class="nt">&lt;span&gt;</span>192.168.10.220:6383<span class="ni">&amp;gt;&amp;nbsp;</span>get<span class="ni">&amp;nbsp;</span>tank<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  10.  <span class="nt">&lt;span&gt;</span>-<span class="ni">&amp;gt;&amp;nbsp;</span>Redirected<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>slot<span class="ni">&amp;nbsp;</span><span class="cp">[</span><span class="mi">4407</span><span class="cp">]</span><span class="ni">&amp;nbsp;</span>located<span class="ni">&amp;nbsp;</span>at<span class="ni">&amp;nbsp;</span>192.168.10.220:6382<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//直接转向220<span class="ni">&amp;nbsp;</span>6382端口<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  11.  <span class="nt">&lt;span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;tank1&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  12.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  13.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">manage</span><span class="o">&amp;</span><span class="nx">nbsp</span><span class="p">;</span><span class="nx">redis</span><span class="cp">]</span>#<span class="ni">&amp;nbsp;</span>ps<span class="ni">&amp;nbsp;</span>aux<span class="ni">&amp;nbsp;</span>|grep<span class="ni">&amp;nbsp;</span>redis<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//查看进程<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  14.  <span class="nt">&lt;span&gt;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7310<span class="ni">&amp;nbsp;&amp;nbsp;</span>0.2<span class="ni">&amp;nbsp;&amp;nbsp;</span>0.9<span class="ni">&amp;nbsp;</span>137436<span class="ni">&amp;nbsp;&amp;nbsp;</span>9724<span class="ni">&amp;nbsp;</span>pts/0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>Sl<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>Apr30<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0:09<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>*:6382<span class="ni">&amp;nbsp;</span><span class="cp">[</span><span class="nx">cluster</span><span class="cp">]</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  15.  <span class="nt">&lt;span&gt;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7311<span class="ni">&amp;nbsp;&amp;nbsp;</span>0.2<span class="ni">&amp;nbsp;&amp;nbsp;</span>0.9<span class="ni">&amp;nbsp;</span>137436<span class="ni">&amp;nbsp;&amp;nbsp;</span>9776<span class="ni">&amp;nbsp;</span>pts/0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>Sl<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>Apr30<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0:09<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>*:6383<span class="ni">&amp;nbsp;</span><span class="cp">[</span><span class="nx">cluster</span><span class="cp">]</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  16.  <span class="nt">&lt;span&gt;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7316<span class="ni">&amp;nbsp;&amp;nbsp;</span>0.2<span class="ni">&amp;nbsp;&amp;nbsp;</span>0.9<span class="ni">&amp;nbsp;</span>137436<span class="ni">&amp;nbsp;&amp;nbsp;</span>9944<span class="ni">&amp;nbsp;</span>pts/0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>Sl<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>Apr30<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0:10<span class="ni">&amp;nbsp;</span>redis-server<span class="ni">&amp;nbsp;</span>*:6384<span class="ni">&amp;nbsp;</span><span class="cp">[</span><span class="nx">cluster</span><span class="cp">]</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  17.  <span class="nt">&lt;span&gt;</span>root<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>7478<span class="ni">&amp;nbsp;&amp;nbsp;</span>0.0<span class="ni">&amp;nbsp;&amp;nbsp;</span>0.0<span class="ni">&amp;nbsp;</span>103256<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>812<span class="ni">&amp;nbsp;</span>pts/0<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>S+<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>00:56<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>0:00<span class="ni">&amp;nbsp;</span>grep<span class="ni">&amp;nbsp;</span>redis<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  18.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  19.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">manage</span><span class="o">&amp;</span><span class="nx">nbsp</span><span class="p">;</span><span class="nx">redis</span><span class="cp">]</span>#<span class="ni">&amp;nbsp;</span>kill<span class="ni">&amp;nbsp;</span>-9<span class="ni">&amp;nbsp;</span>7310<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//关闭220<span class="ni">&amp;nbsp;</span>6382端口，看数据会不会丢失<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  20.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  21.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span><span class="o">&amp;</span><span class="nx">nbsp</span><span class="p">;</span><span class="nx">redis</span><span class="cp">]</span>#<span class="ni">&amp;nbsp;</span>redis-trib.rb<span class="ni">&amp;nbsp;</span>check<span class="ni">&amp;nbsp;</span>192.168.10.219:6379<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//查看集群情况，任何接口都行<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  22.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.219:6379:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  23.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.220:6384:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  24.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.219:6381:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  25.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.220:6383:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  26.  <span class="nt">&lt;span&gt;</span>Connecting<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.219:6380:<span class="ni">&amp;nbsp;</span>OK<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  27.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;gt;&amp;gt;&amp;gt;&amp;nbsp;</span>Performing<span class="ni">&amp;nbsp;</span>Cluster<span class="ni">&amp;nbsp;</span>Check<span class="ni">&amp;nbsp;</span>(using<span class="ni">&amp;nbsp;</span>node<span class="ni">&amp;nbsp;</span>192.168.10.219:6379)<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  28.  <span class="nt">&lt;span&gt;</span>M:<span class="ni">&amp;nbsp;</span>d40d9a367c24784b0336c7b80fb4c87337e2cba6<span class="ni">&amp;nbsp;</span>192.168.10.219:6379<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  29.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:5461-10922<span class="ni">&amp;nbsp;</span>(5462<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>master<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  30.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>additional<span class="ni">&amp;nbsp;</span>replica(s)<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  31.  <span class="nt">&lt;span&gt;</span>S:<span class="ni">&amp;nbsp;</span>5f00f163d0c0a540ea99daf004f55588a802327b<span class="ni">&amp;nbsp;</span>192.168.10.220:6384<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  32.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:<span class="ni">&amp;nbsp;</span>(0<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>slave<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  33.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>replicates<span class="ni">&amp;nbsp;</span>d40d9a367c24784b0336c7b80fb4c87337e2cba6<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  34.  <span class="nt">&lt;span&gt;</span>S:<span class="ni">&amp;nbsp;</span>b3b1a848987b5a87a06888e126d5c9b16f871ff5<span class="ni">&amp;nbsp;</span>192.168.10.219:6381<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  35.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:<span class="ni">&amp;nbsp;</span>(0<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>slave<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  36.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>replicates<span class="ni">&amp;nbsp;</span>d2eb5a8a77f87888792428aed4692dfb907e7a1d<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  37.  <span class="nt">&lt;span&gt;</span>M:<span class="ni">&amp;nbsp;</span>d2eb5a8a77f87888792428aed4692dfb907e7a1d<span class="ni">&amp;nbsp;</span>192.168.10.220:6383<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  38.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:10923-16383<span class="ni">&amp;nbsp;</span>(5461<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>master<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  39.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>1<span class="ni">&amp;nbsp;</span>additional<span class="ni">&amp;nbsp;</span>replica(s)<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  40.  <span class="nt">&lt;span&gt;</span>M:<span class="ni">&amp;nbsp;</span>a87d207204a53ab599bf7f6ffb9d679d0eef4f25<span class="ni">&amp;nbsp;</span>192.168.10.219:6380<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  41.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>slots:0-5460<span class="ni">&amp;nbsp;</span>(5461<span class="ni">&amp;nbsp;</span>slots)<span class="ni">&amp;nbsp;</span>master<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  42.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>0<span class="ni">&amp;nbsp;</span>additional<span class="ni">&amp;nbsp;</span>replica(s)<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  43.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nx">OK</span><span class="cp">]</span><span class="ni">&amp;nbsp;</span>All<span class="ni">&amp;nbsp;</span>nodes<span class="ni">&amp;nbsp;</span>agree<span class="ni">&amp;nbsp;</span>about<span class="ni">&amp;nbsp;</span>slots<span class="ni">&amp;nbsp;</span>configuration.<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  44.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;gt;&amp;gt;&amp;gt;&amp;nbsp;</span>Check<span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>for<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;</span>open<span class="ni">&amp;nbsp;</span>slots...<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  45.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;gt;&amp;gt;&amp;gt;&amp;nbsp;</span>Check<span class="ni">&amp;nbsp;</span>slots<span class="ni">&amp;nbsp;</span>coverage...<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  46.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nx">OK</span><span class="cp">]</span><span class="ni">&amp;nbsp;</span>All<span class="ni">&amp;nbsp;</span>16384<span class="ni">&amp;nbsp;</span>slots<span class="ni">&amp;nbsp;</span>covered.<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//变成，三主二从了<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  47.  <span class="nt">&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  48.  <span class="nt">&lt;span&gt;</span><span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span><span class="o">&amp;</span><span class="nx">nbsp</span><span class="p">;</span><span class="nx">redis</span><span class="cp">]</span>#<span class="ni">&amp;nbsp;</span>redis-cli<span class="ni">&amp;nbsp;</span>-c<span class="ni">&amp;nbsp;</span>-p<span class="ni">&amp;nbsp;</span>6379<span class="ni">&amp;nbsp;</span>-h<span class="ni">&amp;nbsp;</span>192.168.10.219<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//219登录<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  49.  <span class="nt">&lt;span&gt;</span>192.168.10.219:6379<span class="ni">&amp;gt;&amp;nbsp;</span>get<span class="ni">&amp;nbsp;</span>tank<span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
-  50.  <span class="nt">&lt;span&gt;</span>-<span class="ni">&amp;gt;&amp;nbsp;</span>Redirected<span class="ni">&amp;nbsp;</span>to<span class="ni">&amp;nbsp;</span>slot<span class="ni">&amp;nbsp;</span><span class="cp">[</span><span class="mi">4407</span><span class="cp">]</span><span class="ni">&amp;nbsp;</span>located<span class="ni">&amp;nbsp;</span>at<span class="ni">&amp;nbsp;</span>192.168.10.219:6380<span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;comment&quot;</span><span class="nt">&gt;</span>//数据被转到了6380节点了<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-  51.  <span class="nt">&lt;span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;string&quot;</span><span class="nt">&gt;</span>&quot;tank1&quot;<span class="nt">&lt;/span&gt;&lt;span&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;pre</span> <span class="na">class=</span><span class="s">&quot;php&quot;</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span><span class="nt">&gt;</span># redis-cli -c -p 6379 -h 192.168.10.219   //在219登录
-  192.168.10.219:6379<span class="ni">&amp;gt;</span> set tank tank1    //设置测试值
-  -<span class="ni">&amp;gt;</span> Redirected to slot <span class="cp">[</span><span class="mi">4407</span><span class="cp">]</span> located at 192.168.10.220:6382
-  OK   //直接转向到220 6382端口，数据存到了220 6382，不过有点奇怪
-  192.168.10.220:6382<span class="ni">&amp;gt;</span> get tank   //可以取到值
-  &quot;tank1&quot;
-
-  <span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">manage</span> <span class="nx">redis</span><span class="cp">]</span># redis-cli -c -p 6383 -h 192.168.10.220  //220机器，6383端口
-  192.168.10.220:6383<span class="ni">&amp;gt;</span> get tank
-  -<span class="ni">&amp;gt;</span> Redirected to slot <span class="cp">[</span><span class="mi">4407</span><span class="cp">]</span> located at 192.168.10.220:6382  //直接转向220 6382端口
-  &quot;tank1&quot;
-
-  <span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">manage</span> <span class="nx">redis</span><span class="cp">]</span># ps aux |grep redis //查看进程
-  root      7310  0.2  0.9 137436  9724 pts/0    Sl   Apr30   0:09 redis-server *:6382 <span class="cp">[</span><span class="nx">cluster</span><span class="cp">]</span>
-  root      7311  0.2  0.9 137436  9776 pts/0    Sl   Apr30   0:09 redis-server *:6383 <span class="cp">[</span><span class="nx">cluster</span><span class="cp">]</span>
-  root      7316  0.2  0.9 137436  9944 pts/0    Sl   Apr30   0:10 redis-server *:6384 <span class="cp">[</span><span class="nx">cluster</span><span class="cp">]</span>
-  root      7478  0.0  0.0 103256   812 pts/0    S+   00:56   0:00 grep redis
-
-  <span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">manage</span> <span class="nx">redis</span><span class="cp">]</span># kill -9 7310  //关闭220 6382端口，看数据会不会丢失
-
-  <span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span> <span class="nx">redis</span><span class="cp">]</span># redis-trib.rb check 192.168.10.219:6379  //查看集群情况，任何接口都行
-  Connecting to node 192.168.10.219:6379: OK
-  Connecting to node 192.168.10.220:6384: OK
-  Connecting to node 192.168.10.219:6381: OK
-  Connecting to node 192.168.10.220:6383: OK
-  Connecting to node 192.168.10.219:6380: OK
-  <span class="ni">&amp;gt;&amp;gt;&amp;gt;</span> Performing Cluster Check (using node 192.168.10.219:6379)
-  M: d40d9a367c24784b0336c7b80fb4c87337e2cba6 192.168.10.219:6379
-   slots:5461-10922 (5462 slots) master
-    1 additional replica(s)
-S: 5f00f163d0c0a540ea99daf004f55588a802327b 192.168.10.220:6384
- slots: (0 slots) slave
-  replicates d40d9a367c24784b0336c7b80fb4c87337e2cba6
-  S: b3b1a848987b5a87a06888e126d5c9b16f871ff5 192.168.10.219:6381
-   slots: (0 slots) slave
-    replicates d2eb5a8a77f87888792428aed4692dfb907e7a1d
-    M: d2eb5a8a77f87888792428aed4692dfb907e7a1d 192.168.10.220:6383
-     slots:10923-16383 (5461 slots) master
-      1 additional replica(s)
-M: a87d207204a53ab599bf7f6ffb9d679d0eef4f25 192.168.10.219:6380
- slots:0-5460 (5461 slots) master
-  0 additional replica(s)
-<span class="cp">[</span><span class="nx">OK</span><span class="cp">]</span> All nodes agree about slots configuration.
-<span class="ni">&amp;gt;&amp;gt;&amp;gt;</span> Check for open slots...
-<span class="ni">&amp;gt;&amp;gt;&amp;gt;</span> Check slots coverage...
-<span class="cp">[</span><span class="nx">OK</span><span class="cp">]</span> All 16384 slots covered.  //变成，三主二从了
-
-<span class="cp">[</span><span class="nb">root</span><span class="p">@</span><span class="nx">slave2</span> <span class="nx">redis</span><span class="cp">]</span># redis-cli -c -p 6379 -h 192.168.10.219    //219登录
-192.168.10.219:6379<span class="ni">&amp;gt;</span> get tank
--<span class="ni">&amp;gt;</span> Redirected to slot <span class="cp">[</span><span class="mi">4407</span><span class="cp">]</span> located at 192.168.10.219:6380   //数据被转到了6380节点了
-&quot;tank1&quot;<span class="nt">&lt;/pre&gt;</span>
-
-经测试，集群是可用的。
-
-            <span class="c">&lt;!-- Baidu Button BEGIN --&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;bdshare&quot;</span> <span class="na">class=</span><span class="s">&quot;bdshare_t bds_tools_32 get-codes-bdshare&quot;</span> <span class="na">style=</span><span class="s">&quot;float:right;margin-right:15px;&quot;</span><span class="nt">&gt;</span>
-                                    <span class="cp">[]</span>(# &quot;分享到QQ空间&quot;)
-                                                <span class="cp">[]</span>(# &quot;分享到新浪微博&quot;)
-                                                            <span class="cp">[]</span>(# &quot;分享到腾讯微博&quot;)
-                                                                        <span class="cp">[]</span>(# &quot;分享到人人网&quot;)
-                                                                                    <span class="cp">[]</span>(# &quot;分享到网易微博&quot;)
-                                                                                                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;bds_more&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-                                                                                                            <span class="cp">[</span><span class="mi">0</span><span class="cp">]</span>(# &quot;累计分享0次&quot;)
-                                                                                                                        <span class="nt">&lt;/div&gt;</span>
-                                                                                                                                    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">id=</span><span class="s">&quot;bdshare_js&quot;</span> <span class="na">data=</span><span class="s">&quot;type=tools&amp;amp;uid=4016707&quot;</span> <span class="na">src=</span><span class="s">&quot;http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=398842&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-                                                                                                                                                <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-                                                                                                                                                            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;bdshell_js&quot;</span><span class="p">).</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=&quot;</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span><span class="o">/</span><span class="mi">3600000</span><span class="p">)</span>
-                                                                                                                                                                        <span class="nt">&lt;/script&gt;</span>
-                                                                                                                                                                                    <span class="c">&lt;!-- Baidu Button END --&gt;</span>
-</pre></div><script type= "text/javascript">
+            <p>[TOC]
+Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。</p>
+<p>目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。</p>
+<h1 id="redis">一，redis服务器说明</h1>
+<ol>
+<li><span><span>192.168.10.219&nbsp;6379&nbsp;&nbsp;</span></span></li>
+<li><span>192.168.10.219&nbsp;6380&nbsp;&nbsp;</span></li>
+<li><span>192.168.10.219&nbsp;6381&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>192.168.10.220&nbsp;6382&nbsp;&nbsp;</span></li>
+<li><span>192.168.10.220&nbsp;6383&nbsp;&nbsp;</span></li>
+<li><span>192.168.10.220&nbsp;6384&nbsp;&nbsp;</span></div></li>
+</ol>
+<p><span style="color: #800080;"><strong>要让集群正常运作至少需要三个主节点，不过在刚开始试用集群功能时， 强烈建议使用六个节点： 其中三个为主节点， 而其余三个则是各个主节点的从节点。所有用二台机器，开6个redis进程，模拟6台机器。</strong></span></p>
+<h1 id="rubyrubygems">二，安装ruby,rubygems</h1>
+<ol>
+<li><span><span>#&nbsp;yum&nbsp;-y&nbsp;install&nbsp;gcc&nbsp;openssl-devel&nbsp;libyaml-devel&nbsp;libffi-devel&nbsp;readline-devel&nbsp;zlib-devel&nbsp;gdbm-devel&nbsp;ncurses-devel&nbsp;gcc-c++&nbsp;automake&nbsp;autoconf&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;yum&nbsp;-y&nbsp;install&nbsp;ruby&nbsp;rubygems&nbsp;&nbsp;&nbsp;<span class="comment">//安装ruby&nbsp;rubygems</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span><span class="comment">//换源</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;gem&nbsp;source&nbsp;-l&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;gem&nbsp;source&nbsp;--remove&nbsp;http:<span class="comment">//rubygems.org/</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;gem&nbsp;sources&nbsp;-a&nbsp;http:<span class="comment">//ruby.taobao.org/</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;gem&nbsp;source&nbsp;-l&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;gem&nbsp;install&nbsp;redis&nbsp;--version&nbsp;3.0.0&nbsp;&nbsp;<span class="comment">//安装gem_redis</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>Successfully&nbsp;installed&nbsp;redis-3.0.0&nbsp;&nbsp;</span></li>
+<li><span>1&nbsp;gem&nbsp;installed&nbsp;&nbsp;</span></li>
+<li><span>Installing&nbsp;ri&nbsp;documentation&nbsp;<span class="keyword">for</span><span>&nbsp;redis-3.0.0...&nbsp;&nbsp;</span></span></li>
+<li><span>Installing&nbsp;RDoc&nbsp;documentation&nbsp;<span class="keyword">for</span><span>&nbsp;redis-3.0.0...&nbsp;&nbsp;</span></span></li>
+</ol>
+<h1 id="redis300">三，安装redis3.0.0</h1>
+<h2 id="1redis">1，安装redis</h2>
+<ol>
+<li><span><span>#&nbsp;wget&nbsp;http:</span><span class="comment">//download.redis.io/releases/redis-3.0.0.tar.gz</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;tar&nbsp;-xvzf&nbsp;redis-3.0.0.tar.gz&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;cd&nbsp;redis-3.0.0&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;make&nbsp;&amp;&amp;&nbsp;make&nbsp;install&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;cd&nbsp;src&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;cp&nbsp;redis-trib.rb&nbsp;/usr/local/bin&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;<span class="func">mkdir</span><span>&nbsp;/etc/redis&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;<span class="func">mkdir</span><span>&nbsp;/</span><span class="keyword">var</span><span>/log/redis&nbsp;&nbsp;</span></span></li>
+</ol>
+<p><span style="color: #800080;"><strong>上述操作要先在二台机器上面都操作好。</strong></span></p>
+<h2 id="2redis">2,配置redis</h2>
+<ol>
+<li><span><span>[root@slave2&nbsp;redis-3.0.0]#&nbsp;&nbsp;vim&nbsp;redis.conf&nbsp;&nbsp;&nbsp;</span><span class="comment">//解压的根目录，有redis.conf,做以下修改</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>port&nbsp;6379&nbsp;&nbsp;</span></li>
+<li><span>pidfile&nbsp;/<span class="keyword">var</span><span>/run/redis-6379.pid&nbsp;&nbsp;</span></span></li>
+<li><span>dbfilename&nbsp;dump-6379.rdb&nbsp;&nbsp;</span></li>
+<li><span>appendfilename&nbsp;<span class="string">"appendonly-6379.aof"</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>cluster-config-file&nbsp;nodes-6379.conf&nbsp;&nbsp;</span></li>
+<li><span>cluster-enabled&nbsp;yes&nbsp;&nbsp;</span></li>
+<li><span>cluster-node-timeout&nbsp;5000&nbsp;&nbsp;</span></li>
+<li><span>appendonly&nbsp;yes&nbsp;&nbsp;</span></li>
+</ol>
+<h2 id="3copy">3，copy配置文件，并修改端口</h2>
+<ol>
+<li><span><span>#&nbsp;cp&nbsp;redis.conf&nbsp;/etc/redis/redis-6379.conf&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;cp&nbsp;redis.conf&nbsp;/etc/redis/redis-6380.conf&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;cp&nbsp;redis.conf&nbsp;/etc/redis/redis-6381.conf&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;scp&nbsp;redis.conf&nbsp;192.168.10.220:/etc/redis/redis-6382.conf&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;scp&nbsp;redis.conf&nbsp;192.168.10.220:/etc/redis/redis-6383.conf&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;scp&nbsp;redis.conf&nbsp;192.168.10.220:/etc/redis/redis-6384.conf&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;sed&nbsp;-i&nbsp;<span class="string">"s/6379/6380/g"</span><span>&nbsp;/etc/redis/redis-6380.conf&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;sed&nbsp;-i&nbsp;<span class="string">"s/6379/6381/g"</span><span>&nbsp;/etc/redis/redis-6381.conf&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;sed&nbsp;-i&nbsp;<span class="string">"s/6379/6382/g"</span><span>&nbsp;/etc/redis/redis-6382.conf&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;sed&nbsp;-i&nbsp;<span class="string">"s/6379/6383/g"</span><span>&nbsp;/etc/redis/redis-6383.conf&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;sed&nbsp;-i&nbsp;<span class="string">"s/6379/6384/g"</span><span>&nbsp;/etc/redis/redis-6384.conf&nbsp;&nbsp;</span></span></li>
+</ol>
+<p><span style="color: #800080;"><strong>将配置文件分别copy到二台机器上，并替换端口：</strong></span></p>
+<ol>
+<li><span><span>#&nbsp;cat&nbsp;redis-6380.conf&nbsp;|awk&nbsp;</span><span class="string">'{if($0&nbsp;!~&nbsp;/^$/&nbsp;&amp;&amp;&nbsp;$0&nbsp;!~&nbsp;/#/)&nbsp;{print&nbsp;$0}}'</span><span>&nbsp;|grep&nbsp;6380&nbsp;&nbsp;</span></span></li>
+<li><span>pidfile&nbsp;/<span class="keyword">var</span><span>/run/redis-6380.pid&nbsp;&nbsp;</span></span></li>
+<li><span>port&nbsp;6380&nbsp;&nbsp;</span></li>
+<li><span>dbfilename&nbsp;dump-6380.rdb&nbsp;&nbsp;</span></li>
+<li><span>appendfilename&nbsp;<span class="string">"appendonly-6380.aof"</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>cluster-config-file&nbsp;nodes-6380.conf&nbsp;&nbsp;</span></li>
+</ol>
+<p><span style="color: #800080;"><strong>有5处修改端口的地方</strong></span></p>
+<h2 id="4redis">4，启动并查看redis</h2>
+<ol>
+<li><span><span>#&nbsp;redis-server&nbsp;/etc/redis/redis-6379.conf&nbsp;&gt;&nbsp;/</span><span class="keyword">var</span><span>/log/redis/redis-6379.log&nbsp;2&gt;&amp;1&nbsp;&amp;&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;redis-server&nbsp;/etc/redis/redis-6380.conf&nbsp;&gt;&nbsp;/<span class="keyword">var</span><span>/log/redis/redis-6380.log&nbsp;2&gt;&amp;1&nbsp;&amp;&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;redis-server&nbsp;/etc/redis/redis-6381.conf&nbsp;&gt;&nbsp;/<span class="keyword">var</span><span>/log/redis/redis-6381.log&nbsp;2&gt;&amp;1&nbsp;&amp;&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;redis-server&nbsp;/etc/redis/redis-6382.conf&nbsp;&gt;&nbsp;/<span class="keyword">var</span><span>/log/redis/redis-6382.log&nbsp;2&gt;&amp;1&nbsp;&amp;&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;redis-server&nbsp;/etc/redis/redis-6383.conf&nbsp;&gt;&nbsp;/<span class="keyword">var</span><span>/log/redis/redis-6383.log&nbsp;2&gt;&amp;1&nbsp;&amp;&nbsp;&nbsp;</span></span></li>
+<li><span>#&nbsp;redis-server&nbsp;/etc/redis/redis-6384.conf&nbsp;&gt;&nbsp;/<span class="keyword">var</span><span>/log/redis/redis-6384.log&nbsp;2&gt;&amp;1&nbsp;&amp;&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>#&nbsp;netstat&nbsp;-tpnl&nbsp;|grep&nbsp;redis&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;0.0.0.0:6379&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0:<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7298/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;0.0.0.0:6380&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0:<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7299/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;0.0.0.0:6381&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0:<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7304/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;0.0.0.0:16379&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0:<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7298/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;0.0.0.0:16380&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0:<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7299/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;0.0.0.0:16381&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0:<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7304/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;:::6379&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7298/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;:::6380&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7299/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;:::6381&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7304/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;:::16379&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7298/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;:::16380&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7299/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;:::16381&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7304/redis-server&nbsp;</em>&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>[root@slave2&nbsp;redis]#&nbsp;ll&nbsp;/etc/redis/&nbsp;&nbsp;</span></li>
+<li><span>总用量&nbsp;156&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;4月&nbsp;&nbsp;30&nbsp;23:54&nbsp;appendonly-6379.aof&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;5月&nbsp;&nbsp;&nbsp;1&nbsp;00:08&nbsp;appendonly-6380.aof&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;5月&nbsp;&nbsp;&nbsp;1&nbsp;00:08&nbsp;appendonly-6381.aof&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;18&nbsp;5月&nbsp;&nbsp;&nbsp;1&nbsp;00:08&nbsp;dump-6379.rdb&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;18&nbsp;5月&nbsp;&nbsp;&nbsp;1&nbsp;00:08&nbsp;dump-6380.rdb&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;18&nbsp;5月&nbsp;&nbsp;&nbsp;1&nbsp;00:08&nbsp;dump-6381.rdb&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;763&nbsp;5月&nbsp;&nbsp;&nbsp;1&nbsp;00:08&nbsp;nodes-6379.conf&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;763&nbsp;5月&nbsp;&nbsp;&nbsp;1&nbsp;00:08&nbsp;nodes-6380.conf&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;&nbsp;&nbsp;763&nbsp;5月&nbsp;&nbsp;&nbsp;1&nbsp;00:08&nbsp;nodes-6381.conf&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;41412&nbsp;4月&nbsp;&nbsp;30&nbsp;23:30&nbsp;redis-6379.conf&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;41412&nbsp;4月&nbsp;&nbsp;30&nbsp;23:39&nbsp;redis-6380.conf&nbsp;&nbsp;</span></li>
+<li><span>-rw-r--r--&nbsp;1&nbsp;root&nbsp;root&nbsp;41412&nbsp;4月&nbsp;&nbsp;30&nbsp;23:39&nbsp;redis-6381.conf&nbsp;&nbsp;</span></li>
+</ol>
+<p>所有节点都启动成功，并不代表，他们就是集群了。</p>
+<h1 id="_1">四，创建集群，并查看</h1>
+<h2 id="1redis_1">1，创建redis集群</h2>
+<ol>
+<li><span><span>#&nbsp;redis-trib.rb&nbsp;create&nbsp;--replicas&nbsp;1&nbsp;192.168.10.219:6379&nbsp;192.168.10.219:6380&nbsp;192.168.10.219:6381&nbsp;192.168.10.220:6382&nbsp;192.168.10.220:6383&nbsp;192.168.10.220:6384&nbsp;&nbsp;</span></span></div><pre class="php" name="code" style="display: none;"># redis-trib.rb create --replicas 1 192.168.10.219:6379 192.168.10.219:6380 192.168.10.219:6381 192.168.10.220:6382 192.168.10.220:6383 192.168.10.220:6384</pre></li>
+</ol>
+<h2 id="2redis_1">2，查看redis集群状态</h2>
+<ol>
+<li><span><span>[root@slave2&nbsp;redis]#&nbsp;redis-trib.rb&nbsp;check&nbsp;192.168.10.219:6379&nbsp;&nbsp;</span></span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.219:6379:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.220:6384:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.219:6381:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.220:6383:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.220:6382:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.219:6380:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>&gt;&gt;&gt;&nbsp;Performing&nbsp;Cluster&nbsp;Check&nbsp;(using&nbsp;node&nbsp;192.168.10.219:6379)&nbsp;&nbsp;</span></li>
+<li><span>M:&nbsp;d40d9a367c24784b0336c7b80fb4c87337e2cba6&nbsp;192.168.10.219:6379&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:5461-10922&nbsp;(5462&nbsp;slots)&nbsp;master&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;1&nbsp;additional&nbsp;replica(s)&nbsp;&nbsp;</span></li>
+<li><span>S:&nbsp;5f00f163d0c0a540ea99daf004f55588a802327b&nbsp;192.168.10.220:6384&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:&nbsp;(0&nbsp;slots)&nbsp;slave&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;replicates&nbsp;d40d9a367c24784b0336c7b80fb4c87337e2cba6&nbsp;&nbsp;</span></li>
+<li><span>S:&nbsp;b3b1a848987b5a87a06888e126d5c9b16f871ff5&nbsp;192.168.10.219:6381&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:&nbsp;(0&nbsp;slots)&nbsp;slave&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;replicates&nbsp;d2eb5a8a77f87888792428aed4692dfb907e7a1d&nbsp;&nbsp;</span></li>
+<li><span>M:&nbsp;d2eb5a8a77f87888792428aed4692dfb907e7a1d&nbsp;192.168.10.220:6383&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:10923-16383&nbsp;(5461&nbsp;slots)&nbsp;master&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;1&nbsp;additional&nbsp;replica(s)&nbsp;&nbsp;</span></li>
+<li><span>M:&nbsp;a8eafe8b19d6a28c034917da13a43ce1230fe870&nbsp;192.168.10.220:6382&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:0-5460&nbsp;(5461&nbsp;slots)&nbsp;master&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;1&nbsp;additional&nbsp;replica(s)&nbsp;&nbsp;</span></li>
+<li><span>S:&nbsp;a87d207204a53ab599bf7f6ffb9d679d0eef4f25&nbsp;192.168.10.219:6380&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:&nbsp;(0&nbsp;slots)&nbsp;slave&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;replicates&nbsp;a8eafe8b19d6a28c034917da13a43ce1230fe870&nbsp;&nbsp;</span></li>
+<li><span>[OK]&nbsp;All&nbsp;nodes&nbsp;agree&nbsp;about&nbsp;slots&nbsp;configuration.&nbsp;&nbsp;</span></li>
+<li><span>&gt;&gt;&gt;&nbsp;Check&nbsp;<span class="keyword">for</span><span>&nbsp;open&nbsp;slots...&nbsp;&nbsp;</span></span></li>
+<li><span>&gt;&gt;&gt;&nbsp;Check&nbsp;slots&nbsp;coverage...&nbsp;&nbsp;</span></li>
+<li><span>[OK]&nbsp;All&nbsp;16384&nbsp;slots&nbsp;covered.&nbsp;&nbsp;</span></li>
+</ol>
+<p>到这儿，redis集群就配置成功了</p>
+<h1 id="redis_1">五，测试redis集群</h1>
+<ol>
+<li><span><span>#&nbsp;redis-cli&nbsp;-c&nbsp;-p&nbsp;6379&nbsp;-h&nbsp;192.168.10.219&nbsp;&nbsp;&nbsp;</span><span class="comment">//在219登录</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>192.168.10.219:6379&gt;&nbsp;set&nbsp;tank&nbsp;tank1&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//设置测试值</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>-&gt;&nbsp;Redirected&nbsp;to&nbsp;slot&nbsp;[4407]&nbsp;located&nbsp;at&nbsp;192.168.10.220:6382&nbsp;&nbsp;</span></li>
+<li><span>OK&nbsp;&nbsp;&nbsp;<span class="comment">//直接转向到220&nbsp;6382端口，数据存到了220&nbsp;6382，不过有点奇怪</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>192.168.10.220:6382&gt;&nbsp;get&nbsp;tank&nbsp;&nbsp;&nbsp;<span class="comment">//可以取到值</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span><span class="string">"tank1"</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>[root@manage&nbsp;redis]#&nbsp;redis-cli&nbsp;-c&nbsp;-p&nbsp;6383&nbsp;-h&nbsp;192.168.10.220&nbsp;&nbsp;<span class="comment">//220机器，6383端口</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>192.168.10.220:6383&gt;&nbsp;get&nbsp;tank&nbsp;&nbsp;</span></li>
+<li><span>-&gt;&nbsp;Redirected&nbsp;to&nbsp;slot&nbsp;[4407]&nbsp;located&nbsp;at&nbsp;192.168.10.220:6382&nbsp;&nbsp;<span class="comment">//直接转向220&nbsp;6382端口</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span><span class="string">"tank1"</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>[root@manage&nbsp;redis]#&nbsp;ps&nbsp;aux&nbsp;|grep&nbsp;redis&nbsp;<span class="comment">//查看进程</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7310&nbsp;&nbsp;0.2&nbsp;&nbsp;0.9&nbsp;137436&nbsp;&nbsp;9724&nbsp;pts/0&nbsp;&nbsp;&nbsp;&nbsp;Sl&nbsp;&nbsp;&nbsp;Apr30&nbsp;&nbsp;&nbsp;0:09&nbsp;redis-server&nbsp;*:6382&nbsp;[cluster]&nbsp;&nbsp;</span></li>
+<li><span>root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7311&nbsp;&nbsp;0.2&nbsp;&nbsp;0.9&nbsp;137436&nbsp;&nbsp;9776&nbsp;pts/0&nbsp;&nbsp;&nbsp;&nbsp;Sl&nbsp;&nbsp;&nbsp;Apr30&nbsp;&nbsp;&nbsp;0:09&nbsp;redis-server&nbsp;*:6383&nbsp;[cluster]&nbsp;&nbsp;</span></li>
+<li><span>root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7316&nbsp;&nbsp;0.2&nbsp;&nbsp;0.9&nbsp;137436&nbsp;&nbsp;9944&nbsp;pts/0&nbsp;&nbsp;&nbsp;&nbsp;Sl&nbsp;&nbsp;&nbsp;Apr30&nbsp;&nbsp;&nbsp;0:10&nbsp;redis-server&nbsp;*:6384&nbsp;[cluster]&nbsp;&nbsp;</span></li>
+<li><span>root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7478&nbsp;&nbsp;0.0&nbsp;&nbsp;0.0&nbsp;103256&nbsp;&nbsp;&nbsp;812&nbsp;pts/0&nbsp;&nbsp;&nbsp;&nbsp;S+&nbsp;&nbsp;&nbsp;00:56&nbsp;&nbsp;&nbsp;0:00&nbsp;grep&nbsp;redis&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>[root@manage&nbsp;redis]#&nbsp;kill&nbsp;-9&nbsp;7310&nbsp;&nbsp;<span class="comment">//关闭220&nbsp;6382端口，看数据会不会丢失</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>[root@slave2&nbsp;redis]#&nbsp;redis-trib.rb&nbsp;check&nbsp;192.168.10.219:6379&nbsp;&nbsp;<span class="comment">//查看集群情况，任何接口都行</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.219:6379:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.220:6384:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.219:6381:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.220:6383:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>Connecting&nbsp;to&nbsp;node&nbsp;192.168.10.219:6380:&nbsp;OK&nbsp;&nbsp;</span></li>
+<li><span>&gt;&gt;&gt;&nbsp;Performing&nbsp;Cluster&nbsp;Check&nbsp;(using&nbsp;node&nbsp;192.168.10.219:6379)&nbsp;&nbsp;</span></li>
+<li><span>M:&nbsp;d40d9a367c24784b0336c7b80fb4c87337e2cba6&nbsp;192.168.10.219:6379&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:5461-10922&nbsp;(5462&nbsp;slots)&nbsp;master&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;1&nbsp;additional&nbsp;replica(s)&nbsp;&nbsp;</span></li>
+<li><span>S:&nbsp;5f00f163d0c0a540ea99daf004f55588a802327b&nbsp;192.168.10.220:6384&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:&nbsp;(0&nbsp;slots)&nbsp;slave&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;replicates&nbsp;d40d9a367c24784b0336c7b80fb4c87337e2cba6&nbsp;&nbsp;</span></li>
+<li><span>S:&nbsp;b3b1a848987b5a87a06888e126d5c9b16f871ff5&nbsp;192.168.10.219:6381&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:&nbsp;(0&nbsp;slots)&nbsp;slave&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;replicates&nbsp;d2eb5a8a77f87888792428aed4692dfb907e7a1d&nbsp;&nbsp;</span></li>
+<li><span>M:&nbsp;d2eb5a8a77f87888792428aed4692dfb907e7a1d&nbsp;192.168.10.220:6383&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:10923-16383&nbsp;(5461&nbsp;slots)&nbsp;master&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;1&nbsp;additional&nbsp;replica(s)&nbsp;&nbsp;</span></li>
+<li><span>M:&nbsp;a87d207204a53ab599bf7f6ffb9d679d0eef4f25&nbsp;192.168.10.219:6380&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;slots:0-5460&nbsp;(5461&nbsp;slots)&nbsp;master&nbsp;&nbsp;</span></li>
+<li><span>&nbsp;0&nbsp;additional&nbsp;replica(s)&nbsp;&nbsp;</span></li>
+<li><span>[OK]&nbsp;All&nbsp;nodes&nbsp;agree&nbsp;about&nbsp;slots&nbsp;configuration.&nbsp;&nbsp;</span></li>
+<li><span>&gt;&gt;&gt;&nbsp;Check&nbsp;<span class="keyword">for</span><span>&nbsp;open&nbsp;slots...&nbsp;&nbsp;</span></span></li>
+<li><span>&gt;&gt;&gt;&nbsp;Check&nbsp;slots&nbsp;coverage...&nbsp;&nbsp;</span></li>
+<li><span>[OK]&nbsp;All&nbsp;16384&nbsp;slots&nbsp;covered.&nbsp;&nbsp;<span class="comment">//变成，三主二从了</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>&nbsp;&nbsp;</span></li>
+<li><span>[root@slave2&nbsp;redis]#&nbsp;redis-cli&nbsp;-c&nbsp;-p&nbsp;6379&nbsp;-h&nbsp;192.168.10.219&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//219登录</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span>192.168.10.219:6379&gt;&nbsp;get&nbsp;tank&nbsp;&nbsp;</span></li>
+<li><span>-&gt;&nbsp;Redirected&nbsp;to&nbsp;slot&nbsp;[4407]&nbsp;located&nbsp;at&nbsp;192.168.10.219:6380&nbsp;&nbsp;&nbsp;<span class="comment">//数据被转到了6380节点了</span><span>&nbsp;&nbsp;</span></span></li>
+<li><span><span class="string">"tank1"</span><span>&nbsp;&nbsp;</span></span></li>
+</ol>
+<p>经测试，集群是可用的。</p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -577,7 +345,7 @@ M: a87d207204a53ab599bf7f6ffb9d679d0eef4f25 192.168.10.219:6380
     Share on:
     <a href="http://twitter.com/home?status=redis%20cluster%20%E9%9B%86%E7%BE%A4%20%E5%AE%89%E8%A3%85%20%E9%85%8D%E7%BD%AE%20%E8%AF%A6%E8%A7%A3%20 http%3A//www.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" target="_blank" title="Share on Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//www.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/&p[images][0]=&p[title]=redis%20cluster%20%E9%9B%86%E7%BE%A4%20%E5%AE%89%E8%A3%85%20%E9%85%8D%E7%BD%AE%20%E8%AF%A6%E8%A7%A3%20&p[summary]=%3Cdiv%20class%3D%22highlight%22%3E%3Cpre%3E%3Cspan%20class%3D%22k%22%3E%5BTOC%5D%3C/span%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22na%22%3E%26lt%3Bdiv%20class%3C/span%3E%3Cspan%20class%3D%22o%22%3E%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%26quot%3Bentry%26quot%3B%26gt%3B%3C/span%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22err%22%3ERedis%3C/span%3E%20%3Cspan%20class%3D%22err%22%3E%E9%9B%86%E7%BE%A4%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8F%90%E4%BE%9B%E5%9C%A8%E5%A4%9A%E4%B8%AARedis%E9%97%B4%E8%8A%82%E7%82%B9%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E7%9A%84%E7%A8%8B%E5%BA%8F%E9%9B%86.redis3.0%E4%BB%A5%E5%89%8D%EF%BC%8C%E5%8F%AA%E6%94%AF%E6%8C%81%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%BB%E7%9A%84%E6%8C%82%E4%BA%86%EF%BC%8C%E5%86%99%E5%85%A5%E5%B0%B1%E6%88%90%E9%97%AE%E9%A2%98%E4%BA%86%E3%80%823.0%E5%87%BA%E6%9D%A5%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%BE%88%E5%A5%BD%E5%B8%AE%E6%88%91%E4%BB%AC%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E3%80%82%3C/span%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22err%22%3E%E7%9B%AE%E5%89%8Dredis%3C/span%3E%20%3Cspan%20class%3D%22err%22%3E3.0%E8%BF%98%E4%B8%8D%E7%A8%B3%E5%AE%9A%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%A6%81%E7%94%A8%E5%9C%A8%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%EF%BC%8C%E8%A6%81%E6%85%8E%E9%87%8D%E3%80%82%3C/span%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22na%22%3E%26lt%3Bspan%20id%3C/span%3E%3Cspan%20class%3D%22o%22%3E%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%26quot%3Bmore-1725%26quot%3B%26gt%3B%26lt%3B/span%26gt%3B%3C/span%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22err%22%3E%2A%2A%E4%B8%80%EF%BC%8Credis%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B4%E6%98%8E%2A%2A%3C/span%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22na%22%3E%26lt%3Bdiv%20class%3C/span%3E%3Cspan%20class%3D%22o%22%3E%3D%3C/span%3E%3Cspan%20class%3D%22s%22%3E%26quot%3Bdp-highlighter%26quot%3B%26gt%3B%3C/span%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22err%22%3E1.%3C/span%3E%20%20%3Cspan%20class%3D%22err%22%3E%26lt%3Bspan%26gt%3B%26lt%3Bspan%26gt%3B192.168.10.219%26amp%3Bnbsp%3C/span%3E%3Cspan%20class%3D%22c1%22%3E%3B6379%26amp%3Bnbsp%3B%26amp%3Bnbsp%3B%26lt%3B/span%26gt%3B%26lt%3B/span%26gt%3B%3C/span%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22err%22%3E2.%3C/span%3E%20%20%3Cspan%20class%3D%22err%22%3E%26lt%3Bspan%26gt%3B192.168.10.219%26amp%3Bnbsp%3C/span%3E%3Cspan%20class%3D%22c1%22%3E%3B6380%26amp%3Bnbsp%3B%26amp%3Bnbsp%20...%3C/span%3E%3C/pre%3E%3C/div%3E" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//www.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/&p[images][0]=&p[title]=redis%20cluster%20%E9%9B%86%E7%BE%A4%20%E5%AE%89%E8%A3%85%20%E9%85%8D%E7%BD%AE%20%E8%AF%A6%E8%A7%A3%20&p[summary]=%3Cp%3E%5BTOC%5D%0ARedis%20%E9%9B%86%E7%BE%A4%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8F%90%E4%BE%9B%E5%9C%A8%E5%A4%9A%E4%B8%AARedis%E9%97%B4%E8%8A%82%E7%82%B9%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E7%9A%84%E7%A8%8B%E5%BA%8F%E9%9B%86.redis3.0%E4%BB%A5%E5%89%8D%EF%BC%8C%E5%8F%AA%E6%94%AF%E6%8C%81%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E7%9A%84%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%BB%E7%9A%84%E6%8C%82%E4%BA%86%EF%BC%8C%E5%86%99%E5%85%A5%E5%B0%B1%E6%88%90%E9%97%AE%E9%A2%98%E4%BA%86%E3%80%823.0%E5%87%BA%E6%9D%A5%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%BE%88%E5%A5%BD%E5%B8%AE%E6%88%91%E4%BB%AC%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E3%80%82%3C/p%3E%0A%3Cp%3E%E7%9B%AE%E5%89%8Dredis%203.0%E8%BF%98%E4%B8%8D%E7%A8%B3%E5%AE%9A%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%A6%81%E7%94%A8%E5%9C%A8%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%EF%BC%8C%E8%A6%81%E6%85%8E%E9%87%8D%E3%80%82%3C/p%3E%0A%3Ch1%20id%3D%22redis%22%3E%E4%B8%80%EF%BC%8Credis%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B4%E6%98%8E%3C/h1%3E%0A%3Col%3E%0A%3Cli%3E%3Cspan%3E%3Cspan%3E192.168.10.219%26nbsp%3B6379%26nbsp%3B%26nbsp%3B%3C/span%3E%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%3E192.168.10.219%26nbsp%3B6380%26nbsp%3B%26nbsp%3B%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%3E192.168.10.219%26nbsp%3B6381%26nbsp%3B%26nbsp%3B%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%3E%26nbsp%3B%26nbsp%3B%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%3E192.168.10.220%26nbsp%3B6382%26nbsp%3B%26nbsp%3B%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%3E192.168.10.220%26nbsp%3B6383%26nbsp%3B%26nbsp%3B%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%3E192.168.10.220%26nbsp%3B6384%26nbsp%3B%26nbsp%3B%3C/span%3E%3C/div%3E%3C/li%3E%0A%3C/ol%3E%0A%3Cp%3E%3Cspan%20style%3D%22color%3A%20%23800080%3B%22%3E%3Cstrong%3E%E8%A6%81%E8%AE%A9%E9%9B%86%E7%BE%A4%E6%AD%A3%E5%B8%B8%E8%BF%90%E4%BD%9C%E8%87%B3%E5%B0%91%E9%9C%80%E8%A6%81%E4%B8%89%E4%B8%AA%E4%B8%BB%E8%8A%82%E7%82%B9%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%9C%A8%E5%88%9A%E5%BC%80%E5%A7%8B%E8%AF%95%E7%94%A8%E9%9B%86%E7%BE%A4%E5%8A%9F%E8%83%BD%E6%97%B6%EF%BC%8C%20%E5%BC%BA%E7%83%88%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%E5%85%AD%E4%B8%AA%E8%8A%82%E7%82%B9%20...%3C/strong%3E%3C/span%3E%3C/p%3E" target="_blank" title="Share on Facebook">Facebook</a>
     ❄
     <a href="https://plus.google.com/share?url=http%3A//www.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" target="_blank" title="Share on Google Plus">Google+</a>
     ❄
