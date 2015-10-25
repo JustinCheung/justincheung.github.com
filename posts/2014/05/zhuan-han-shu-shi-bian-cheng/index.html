@@ -16,7 +16,7 @@
 <meta property="og:description" content="1. 概论 在过去的近十年的时间里，面向对象编程大行其道。以至于在大学的教育里，老师也只会教给我们两种编程模型，面向过程和面向对象。 孰不知，在面向对象产生之前，在面向对象思想产生之前，函数式编程已经有了数十年的历史。 那么，接下来，就让我们回顾这个古老又现代的编程模型，让我们看看究竟是什么魔力将这个概念，将这个古老的概念，在21世纪的今天再次拉入了我们的视野。 2. 什么是函数式编程 在维基百科中，已经对函数式编程有了很详细的介绍。 那我们就来摘取一下Wiki上对Functional Programming的定义： In computer science, functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids state and mutable data. 简单地翻译一下 ..." />
 <meta property="og:site_name" content="JC's Box" />
 <meta property="og:article:author" content="JustinCheung" />
-<meta property="og:article:published_time" content="2014-05-27T00:00:00" />
+<meta property="og:article:published_time" content="2014-05-27T00:00:00+08:00" />
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[转]函数式编程 ">
 <meta name="twitter:description" content="1. 概论 在过去的近十年的时间里，面向对象编程大行其道。以至于在大学的教育里，老师也只会教给我们两种编程模型，面向过程和面向对象。 孰不知，在面向对象产生之前，在面向对象思想产生之前，函数式编程已经有了数十年的历史。 那么，接下来，就让我们回顾这个古老又现代的编程模型，让我们看看究竟是什么魔力将这个概念，将这个古老的概念，在21世纪的今天再次拉入了我们的视野。 2. 什么是函数式编程 在维基百科中，已经对函数式编程有了很详细的介绍。 那我们就来摘取一下Wiki上对Functional Programming的定义： In computer science, functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids state and mutable data. 简单地翻译一下 ...">
@@ -135,40 +135,40 @@
 <p>我对这句话有异议，切不说曾经的Lisp，再到如今的F#都对赋值操作另眼相看，低人一等。单说如今的Java和C#，提供的final和readonly一样可以支持变量的不变性，而这个唯一未免显得有点太孤傲了些。</p>
 </blockquote>
 <p>让我们先来看两段程序，首先是我们常见的一种包含赋值的程序：</p>
-<div class="highlight"><pre><span class="n">class</span> <span class="n">Account</span><span class="o">:</span> 
-   <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">balance</span><span class="p">)</span><span class="o">:</span> 
-        <span class="n">self</span><span class="p">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span> 
-   <span class="n">def</span> <span class="n">desposit</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">amount</span><span class="p">)</span><span class="o">:</span> 
-        <span class="n">self</span><span class="p">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">balance</span> <span class="o">+</span> <span class="n">amount</span> 
-        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">balance</span> 
-   <span class="n">def</span> <span class="n">despositTwice</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span> 
-        <span class="n">self</span><span class="p">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">balance</span> <span class="o">*</span> <span class="mi">2</span> 
-        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">balance</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="n">Account:</span> 
+   <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>,<span class="n">balance</span>): 
+        <span class="k">self</span>.<span class="n">balance</span> = <span class="n">balance</span> 
+   <span class="n">def</span> <span class="n">desposit</span>(<span class="k">self</span>,<span class="n">amount</span>): 
+        <span class="k">self</span>.<span class="n">balance</span> = <span class="k">self</span>.<span class="n">balance</span> + <span class="n">amount</span> 
+        <span class="k">return</span> <span class="k">self</span>.<span class="n">balance</span> 
+   <span class="n">def</span> <span class="n">despositTwice</span>(<span class="k">self</span>): 
+        <span class="k">self</span>.<span class="n">balance</span> = <span class="k">self</span>.<span class="n">balance</span> * <span class="mi">2</span> 
+        <span class="k">return</span> <span class="k">self</span>.<span class="n">balance</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">'</span><span class="n">__main__</span><span class="err">'</span><span class="o">:</span> 
-   <span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> 
-   <span class="n">print</span><span class="p">(</span><span class="n">account</span><span class="p">.</span><span class="n">desposit</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> 
-   <span class="n">print</span><span class="p">(</span><span class="n">account</span><span class="p">.</span><span class="n">despositTwice</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">__name__</span> == <span class="s">'__main__'</span>: 
+   <span class="n">account</span> = <span class="n">Account</span>(<span class="mi">100</span>) 
+   <span class="nb">print</span>(<span class="n">account</span>.<span class="n">desposit</span>(<span class="mi">10</span>)) 
+   <span class="nb">print</span>(<span class="n">account</span>.<span class="n">despositTwice</span>())
 </pre></div>
 <p>这段程序本身是没有问题的，但是我们考虑这样一种情况，现在有多个进程在同时跑这一个程序，那么程序就会被先desposit 还是先 despositTwice所影响。</p>
 <p>但是如果我们采用这样的方式：</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">makeAccount</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span><span class="o">:</span> 
-   <span class="n">global</span> <span class="n">desposit</span> 
-   <span class="n">global</span> <span class="n">despositTwice</span> 
-   <span class="n">def</span> <span class="n">desposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span><span class="o">:</span> 
-   <span class="n">result</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">+</span> <span class="n">amount</span> 
-   <span class="k">return</span> <span class="n">result</span> 
-   <span class="n">def</span> <span class="n">despositTwice</span><span class="p">()</span><span class="o">:</span> 
-        <span class="n">result</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">*</span> <span class="mi">2</span> 
-        <span class="k">return</span> <span class="n">result</span> 
-   <span class="n">def</span> <span class="n">dispatch</span><span class="p">(</span><span class="n">method</span><span class="p">)</span><span class="o">:</span> 
-        <span class="k">return</span> <span class="n">eval</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> 
-        <span class="k">return</span> <span class="n">dispatch</span>
+<div class="highlight"><pre>def makeAccount(balance): 
+   global desposit 
+   global despositTwice 
+   def desposit(amount): 
+   result = balance + amount 
+   return result 
+   def despositTwice(): 
+        result = balance * 2 
+        return result 
+   def dispatch(method): 
+        return eval(method) 
+        return dispatch
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">'</span><span class="n">__main__</span><span class="err">'</span><span class="o">:</span> 
-   <span class="n">handler</span> <span class="o">=</span> <span class="n">makeAccount</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> 
-   <span class="n">print</span><span class="p">(</span><span class="n">handler</span><span class="p">(</span><span class="err">'</span><span class="n">desposit</span><span class="err">'</span><span class="p">)(</span><span class="mi">10</span><span class="p">))</span> 
-   <span class="n">print</span><span class="p">(</span><span class="n">handler</span><span class="p">(</span><span class="err">'</span><span class="n">despositTwice</span><span class="err">'</span><span class="p">)())</span>
+if __name__ == '__main__': 
+   handler = makeAccount(100) 
+   print(handler('desposit')(10)) 
+   print(handler('despositTwice')())
 </pre></div>
 <p>这时我们就会发现，无论多少个进程在跑，因为我们本身没有赋值操作，所以都不会影响到我们的最终结果。</p>
 <p>但是这样也像大家看到的一样，采用这样的方式没有办法保持状态。</p>
@@ -190,20 +190,20 @@
 <p>我们在函数式编程中努力用函数来表达所有的概念，完成所有的操作。</p>
 <p>在面向对象编程中，我们把对象传来传去，那<strong>在函数式编程中，我们要做的是把函数传来传去，而这个，说成术语，我们把他叫做高阶函数</strong>。</p>
 <p>那我们就来看一个高阶函数的应用，熟悉js的同学应该对下面的代码很熟悉，让哦我们来写一个在电子电路中常用的滤波器的示例代码。</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">Filt</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="n">func</span><span class="p">)</span><span class="o">:</span> 
-   <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span> 
-   <span class="k">for</span> <span class="n">item</span> <span class="n">in</span> <span class="n">arr</span><span class="o">:</span> 
-        <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">item</span><span class="p">))</span> 
-   <span class="k">return</span> <span class="n">result</span>
+<div class="highlight"><pre>def Filt(arr,func): 
+   result = [] 
+   for item in arr: 
+        result.append(func(item)) 
+   return result
 
-<span class="n">def</span> <span class="n">MyFilter</span><span class="p">(</span><span class="n">ele</span><span class="p">)</span><span class="o">:</span> 
-    <span class="k">if</span> <span class="n">ele</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">:</span> 
-        <span class="k">return</span> <span class="mi">0</span> 
-   <span class="k">return</span> <span class="n">ele</span>
+def MyFilter(ele): 
+    if ele &lt; 0 : 
+        return 0 
+   return ele
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">'</span><span class="n">__main__</span><span class="err">'</span><span class="o">:</span> 
-   <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="mi">32</span><span class="p">]</span> 
-   <span class="n">print</span><span class="p">(</span><span class="err">'</span><span class="o">%</span><span class="n">s</span><span class="err">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">Filt</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="n">MyFilter</span><span class="p">)))</span>
+if __name__ == '__main__': 
+   arr = [-5,3,5,11,-45,32] 
+   print('%s' % (Filt(arr,MyFilter)))
 </pre></div>
 <p>哦，之前忘记了说，什么叫做高阶函数，我们给出定义：</p>
 <blockquote>
@@ -216,15 +216,15 @@
 <p>那么，毫无疑问上面的滤波器，就是高阶函数的一种应用。</p>
 <p><strong>在函数式编程中，函数是基本单位，是第一型，他几乎被用作一切，包括最简单的计算，甚至连变量都被计算所取代。在函数式编程中，变量只是一个名称，而不是一个存储单元，这是函数式编程与传统的命令式编程最典型的不同之处。</strong></p>
 <p>让我们看看，变量只是一个名称，在上面的代码中，我们可以这样重写主函数：</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">'</span><span class="n">__main__</span><span class="err">'</span><span class="o">:</span> 
-   <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="mi">32</span><span class="p">]</span> 
-   <span class="n">func</span> <span class="o">=</span> <span class="n">MyFilter</span> 
-   <span class="n">print</span><span class="p">(</span><span class="err">'</span><span class="o">%</span><span class="n">s</span><span class="err">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">Filt</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="n">func</span><span class="p">)))</span>
+<div class="highlight"><pre>if __name__ == '__main__': 
+   arr = [-5,3,5,11,-45,32] 
+   func = MyFilter 
+   print('%s' % (Filt(arr,func)))
 </pre></div>
 <p>当然，我们还可以把程序更精简一些，利用函数式编程中的利器，map,filter和reduce :</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">'</span><span class="n">__main__</span><span class="err">'</span><span class="o">:</span> 
-   <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="mi">32</span><span class="p">]</span> 
-   <span class="n">print</span><span class="p">(</span><span class="err">'</span><span class="o">%</span><span class="n">s</span><span class="err">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">map</span><span class="p">(</span><span class="n">lambda</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="n">x</span> <span class="o">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">0</span> <span class="k">else</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="n">x</span> <span class="p">,</span><span class="n">arr</span><span class="p">)))</span>
+<div class="highlight"><pre>if __name__ == '__main__': 
+   arr = [-5,3,5,11,-45,32] 
+   print('%s' % (map(lambda&amp;nbsp;x : 0 if x&amp;lt;0 else&amp;nbsp;x ,arr)))
 </pre></div>
 <p>这样看上去是不是更赏心悦目呢？</p>
 <p>这样我们就看到了，函数是我们编程的基本单位。</p>
@@ -243,23 +243,23 @@
 <p>我们说了一大堆函数式编程的特点，但是我们忽略了，这些都是在理想的层面，我们回头想想第四节的变量不变性，确实，我们说，函数式编程是无状态的，可是在我们现实情况中，状态不可能一直保持不变，而状态必然需要改变，传递，那么我们在函数式编程中的则是将其保存在函数的参数中，作为函数的附属品来传递。</p>
 <p>ps：在Erlang中，进程之间的交互传递变量是靠“信箱”的收发信件来实现，其实我们想一想，从本质而言，也是将变量作为一个附属品来传递么！</p>
 <p>我们来看个例子，我们在这里举一个求x的n次方的例子，我们用传统的命令式编程来写一下：</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">expr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">:</span> 
-   <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span> 
-   <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">:</span> 
-      <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">x</span> 
-   <span class="k">return</span> <span class="n">result</span>
+<div class="highlight"><pre>def expr(x,n): 
+   result = 1 
+   for i in range(1,n+1): 
+      result = result * x 
+   return result
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">'</span><span class="n">__main__</span><span class="err">'</span><span class="o">:</span> 
-   <span class="n">print</span><span class="p">(</span><span class="n">expr</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+if __name__ == '__main__': 
+   print(expr(2,5))
 </pre></div>
 <p>这里，我们一直在对result变量赋值，但是我们知道，在函数式编程中的变量是具有不变性的，那么我们为了保持result的状态，就需要将result作为函数参数来传递以保持状态：</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">expr</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">:</span> 
-   <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="o">:</span> 
-        <span class="k">return</span> <span class="mi">1</span> 
-   <span class="k">return</span> <span class="n">num</span><span class="o">*</span><span class="n">expr</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre>def expr(num,n): 
+   if n==0: 
+        return 1 
+   return num*expr(num,n-1)
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">'</span><span class="n">__main__</span><span class="err">'</span><span class="o">:</span> 
-   <span class="n">print</span><span class="p">(</span><span class="n">expr</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+if __name__ == '__main__': 
+   print(expr(2,5))
 </pre></div>
 <p>呦，这不是递归么！</p>
 <h1 id="10">10. 函数式编程和递归</h1>
@@ -271,24 +271,24 @@
 <p><strong>递归是在描述这个问题的定义。</strong></p>
 <p>那么就让我们以斐波那契数列为例来看下这两种编程模型。</p>
 <p>先说我们最常见的递归模型，这里，我不采用动态规划来做临时状态的缓存，只是说这种思路：</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">Fib</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">:</span> 
-   <span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">0</span> <span class="n">or</span> <span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="o">:</span> 
-        <span class="k">return</span> <span class="mi">1</span> 
-   <span class="k">else</span><span class="o">:</span> 
-        <span class="k">return</span> <span class="n">Fib</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">Fib</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre>def Fib(a): 
+   if a==0 or a==1: 
+        return 1 
+   else: 
+        return Fib(a-2)+Fib(a-1)
 </pre></div>
 <p>递归是在描述什么是斐波那契数列，这个数列的定义就是一个数等于他的前两项的和，并且已知Fib(0)和Fib(1)等于1。而程序则是用计算机语言来把这个定义重新描述了一次。</p>
 <p>那接下来，我们看下循环模型：</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">Fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">:</span> 
-   <span class="n">a</span><span class="o">=</span><span class="mi">1</span> 
-   <span class="n">b</span><span class="o">=</span><span class="mi">1</span> 
-   <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> 
-   <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">:</span> 
-        <span class="n">temp</span><span class="o">=</span><span class="n">a</span> 
-        <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span> 
-        <span class="n">b</span><span class="o">=</span><span class="n">temp</span> 
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> 
-    <span class="k">return</span> <span class="n">b</span>
+<div class="highlight"><pre>def Fib(n): 
+   a=1 
+   b=1 
+   n = n - 1 
+   while n &gt; 0: 
+        temp=a 
+        a=a+b 
+        b=temp 
+        n = n-1 
+    return b
 </pre></div>
 <p>这里则是在描述我们该如何求解斐波那契数列，应该先怎么样再怎么样。</p>
 <p>而我们明显可以看到，递归相比于循环，具有着更加良好的可读性。</p>
@@ -299,11 +299,11 @@
 <p>那么我们说下尾递归的原理，<strong>其实尾递归就是不要保持当前递归函数的状态，而把需要保持的东西全部用参数给传到下一个函数里，这样就可以自动清空本次调用的栈空间。</strong>这样的话，占用的栈空间就是常数阶的了。</p>
 <p>在看尾递归代码之前，我们还是先来明确一下递归的分类，我们将<strong>递归分成“树形递归”和“尾递归”，什么是树形递归，就是把计算过程逐一展开，最后形成的是一棵树状的结构</strong>，比如之前的斐波那契数列的递归解法。</p>
 <p>那么我们来看下斐波那契尾递归的写法：</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">Fib</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">:</span> 
-   <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="o">:</span> 
-        <span class="k">return</span> <span class="n">b</span> 
-   <span class="k">else</span><span class="o">:</span> 
-        <span class="k">return</span> <span class="n">Fib</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre>def Fib(a,b,n): 
+   if n==0: 
+        return b 
+   else: 
+        return Fib(b,a+b,n-1)
 </pre></div>
 <p>这里看上去有些难以理解，我们来解释一下：传入的a和b分别是前两个数，那么每次我都推进一位，那么b就变成了第一个数，而a+b就变成的第二个数。</p>
 <p>这就是尾递归。其实我们想一想，这不是在描述问题，而是在寻找一种问题的解决方案，和上面的循环有什么区别呢？我们来做一个从尾递归到循环的转换把！</p>
@@ -317,22 +317,22 @@
 <h1 id="12">12. 惰性求值与并行</h1>
 <p>第一次接触到惰性求值这个概念应该是在Haskell语言中，看一个最简单的惰性求值，我觉得也是最经典的例子：</p>
 <p>在Haskell里，有个repeat关键字，他的作用是返回一个无限长的List，那么我们来看下：</p>
-<div class="highlight"><pre><span class="n">take</span> <span class="mi">10</span> <span class="p">(</span><span class="n">repeat</span> <span class="mi">1</span><span class="p">);</span>
+<div class="highlight"><pre>take 10 (repeat 1);
 </pre></div>
 <p>就是这句代码，如果没有了惰性求值，我想这个进程一定会死在那里，可是结果却是很正常，返回了长度为10的List，List里的值都是1。这就是惰性求值的典型案例。</p>
 <p>我们看这样一段简单的代码：</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">getResult</span><span class="p">()</span><span class="o">:</span> 
-   <span class="n">a</span> <span class="o">=</span> <span class="n">getA</span><span class="p">()</span> <span class="c1">//Take a long time </span>
-   <span class="n">b</span> <span class="o">=</span> <span class="n">getB</span><span class="p">()</span> <span class="c1">//Take a long time </span>
-   <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<div class="highlight"><pre>def getResult(): 
+   a = getA() //Take a long time 
+   b = getB() //Take a long time 
+   c = a + b
 </pre></div>
 <p>这段代码本身很简单，在命令式程序设计中，编译器（或解释器）会做的就是逐一解释代码，按顺序求出a和b的值，然后再求出c。</p>
 <p>可是我们从并行的角度考虑，求a的值是不是可以和求b的值并行呢？也就是说，直到执行到a+b的时候我们编译器才意识到a和b直到现在才需要，那么我们双核处理器就自然去发挥去最大的功效去计算了呢！</p>
 <p>这才是惰性求值的最大威力。</p>
 <p>当然，惰性求值有着这样的优点也必然有着缺点，我记得我看过一个例子是最经典的：</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">Test</span><span class="p">()</span><span class="o">:</span> 
-   <span class="n">print</span><span class="p">(</span><span class="err">'</span><span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">number</span><span class="o">:</span><span class="err">'</span><span class="p">)</span> 
-   <span class="n">a</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">()</span>
+<div class="highlight"><pre>def Test(): 
+   print('Please enter a number:') 
+   a = raw_input()
 </pre></div>
 <p>可是这段代码如果惰性求值的话，第一句话就不见得会在第二句话之前执行了。</p>
 <h1 id="13">13. 函数式编程总览</h1>
@@ -352,13 +352,13 @@
             <section>
     <p id="post-share-links">
     Share on:
-    <a href="http://twitter.com/home?status=%5B%E8%BD%AC%5D%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%20 http%3A//www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="http://twitter.com/home?status=b'%5B%E8%BD%AC%5D%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%20http%3A//www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/'" target="_blank" title="Share on Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/&p[images][0]=&p[title]=%5B%E8%BD%AC%5D%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%20&p[summary]=%0A%3Ch1%20id%3D%221%22%3E1.%20%E6%A6%82%E8%AE%BA%3C/h1%3E%0A%3Cp%3E%E5%9C%A8%E8%BF%87%E5%8E%BB%E7%9A%84%E8%BF%91%E5%8D%81%E5%B9%B4%E7%9A%84%E6%97%B6%E9%97%B4%E9%87%8C%EF%BC%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%A1%8C%E5%85%B6%E9%81%93%E3%80%82%E4%BB%A5%E8%87%B3%E4%BA%8E%E5%9C%A8%E5%A4%A7%E5%AD%A6%E7%9A%84%E6%95%99%E8%82%B2%E9%87%8C%EF%BC%8C%E8%80%81%E5%B8%88%E4%B9%9F%E5%8F%AA%E4%BC%9A%E6%95%99%E7%BB%99%E6%88%91%E4%BB%AC%E4%B8%A4%E7%A7%8D%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%8C%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E5%92%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E3%80%82%3C/p%3E%0A%3Cp%3E%E5%AD%B0%E4%B8%8D%E7%9F%A5%EF%BC%8C%E5%9C%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%BA%A7%E7%94%9F%E4%B9%8B%E5%89%8D%EF%BC%8C%E5%9C%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3%E4%BA%A7%E7%94%9F%E4%B9%8B%E5%89%8D%EF%BC%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%B7%B2%E7%BB%8F%E6%9C%89%E4%BA%86%E6%95%B0%E5%8D%81%E5%B9%B4%E7%9A%84%E5%8E%86%E5%8F%B2%E3%80%82%3C/p%3E%0A%3Cp%3E%E9%82%A3%E4%B9%88%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%EF%BC%8C%E5%B0%B1%E8%AE%A9%E6%88%91%E4%BB%AC%E5%9B%9E%E9%A1%BE%E8%BF%99%E4%B8%AA%E5%8F%A4%E8%80%81%E5%8F%88%E7%8E%B0%E4%BB%A3%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%8C%E8%AE%A9%E6%88%91%E4%BB%AC%E7%9C%8B%E7%9C%8B%E7%A9%B6%E7%AB%9F%E6%98%AF%E4%BB%80%E4%B9%88%E9%AD%94%E5%8A%9B%E5%B0%86%E8%BF%99%E4%B8%AA%E6%A6%82%E5%BF%B5%EF%BC%8C%E5%B0%86%E8%BF%99%E4%B8%AA%E5%8F%A4%E8%80%81%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8C%E5%9C%A821%E4%B8%96%E7%BA%AA%E7%9A%84%E4%BB%8A%E5%A4%A9%E5%86%8D%E6%AC%A1%E6%8B%89%E5%85%A5%E4%BA%86%E6%88%91%E4%BB%AC%E7%9A%84%E8%A7%86%E9%87%8E%E3%80%82%3C/p%3E%0A%3Ch1%20id%3D%222%22%3E2.%20%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%3C/h1%3E%0A%3Cp%3E%E5%9C%A8%3Ca%20href%3D%22http%3A//en.wikipedia.org/wiki/Functional_programming%22%3E%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%3C/a%3E%E4%B8%AD%EF%BC%8C%E5%B7%B2%E7%BB%8F%E5%AF%B9%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%9C%89%E4%BA%86%E5%BE%88%E8%AF%A6%E7%BB%86%E7%9A%84%E4%BB%8B%E7%BB%8D%E3%80%82%3C/p%3E%0A%3Cp%3E%E9%82%A3%E6%88%91%E4%BB%AC%E5%B0%B1%E6%9D%A5%E6%91%98%E5%8F%96%E4%B8%80%E4%B8%8BWiki%E4%B8%8A%E5%AF%B9Functional%20Programming%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%9A%3C/p%3E%0A%3Cblockquote%3E%0A%3Cp%3EIn%20%3Ca%20href%3D%22http%3A//en.wikipedia.org/wiki/Computer_science%22%3Ecomputer%20science%3C/a%3E%2C%20%3Cstrong%3Efunctional%20programming%3C/strong%3E%20is%20a%20%3Ca%20href%3D%22http%3A//en.wikipedia.org/wiki/Programming_paradigm%22%3Eprogramming%20paradigm%3C/a%3E%20that%20treats%20%3Ca%20href%3D%22http%3A//en.wikipedia.org/wiki/Computation%22%3Ecomputation%3C/a%3E%20as%20the%20evaluation%20of%20%3Ca%20href%3D%22http%3A//en.wikipedia.org/wiki/Function_%28mathematics%29%22%3Emathematical%20functions%3C/a%3E%20and%20avoids%20%3Ca%20href%3D%22http%3A//en.wikipedia.org/wiki/Program_state%22%3Estate%3C/a%3E%20and%20%3Ca%20href%3D%22http%3A//en.wikipedia.org/wiki/Immutable_object%22%3Emutable%3C/a%3E%20data.%3C/p%3E%0A%3C/blockquote%3E%0A%3Cp%3E%E7%AE%80%E5%8D%95%E5%9C%B0%E7%BF%BB%E8%AF%91%E4%B8%80%E4%B8%8B%20...%3C/p%3E" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/" target="_blank" title="Share on Facebook">Facebook</a>
     ❄
     <a href="https://plus.google.com/share?url=http%3A//www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/" target="_blank" title="Share on Google Plus">Google+</a>
     ❄
-    <a href="mailto:?subject=%5B%E8%BD%AC%5D%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%20&body=http%3A//www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/" target="_blank" title="Share via Email">Email</a>
+    <a href="mailto:?subject=%5B%E8%BD%AC%5D%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B&amp;body=http%3A//www.zscbb.com/posts/2014/05/zhuan-han-shu-shi-bian-cheng/" target="_blank" title="Share via Email">Email</a>
     </p>
 </section>
 
@@ -409,7 +409,7 @@
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-05-27T00:00:00">May 27, 2014</time>
+            <time pubdate="pubdate" datetime="2014-05-27T00:00:00+08:00">May 27, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="http://www.zscbb.com/categories.html#scala-ref">scala</a>
             <h4>Tags</h4>

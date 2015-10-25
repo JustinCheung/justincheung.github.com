@@ -4,18 +4,18 @@
 &lt;p&gt;开始!&lt;/p&gt;
 &lt;h1 id="oop"&gt;面向对象编程（OOP）&lt;/h1&gt;
 &lt;p&gt;Java是一个支持并发、基于类和面向对象的计算机编程语言。下面列出了面向对象软件开发的优点：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;代码开发模块化，更易维护和修改。&lt;/span&gt;
-&lt;span class="err"&gt;代码复用。&lt;/span&gt;
-&lt;span class="err"&gt;增强代码的可靠性和灵活性。&lt;/span&gt;
-&lt;span class="err"&gt;增加代码的可理解性。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;代码开发模块化，更易维护和修改。
+代码复用。
+增强代码的可靠性和灵活性。
+增加代码的可理解性。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;面向对象编程有很多重要的特性，比如：封装，继承，多态和抽象。下面的章节我们会逐个分析这些特性。&lt;/p&gt;
 &lt;p&gt;封装&lt;/p&gt;
 &lt;p&gt;封装给对象提供了隐藏内部特性和行为的能力。对象提供一些能被其他对象访问的方法来改变它内部的数据。在Java当中，有3种修饰符：public，private和protected。每一种修饰符给其他的位于同一个包或者不同包下面对象赋予了不同的访问权限。&lt;/p&gt;
 &lt;p&gt;下面列出了使用封装的一些好处：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;通过隐藏对象的属性来保护对象内部的状态。&lt;/span&gt;
-&lt;span class="err"&gt;提高了代码的可用性和可维护性，因为对象的行为可以被单独的改变或者是扩展。&lt;/span&gt;
-&lt;span class="err"&gt;禁止对象之间的不良交互提高模块化。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;通过隐藏对象的属性来保护对象内部的状态。
+提高了代码的可用性和可维护性，因为对象的行为可以被单独的改变或者是扩展。
+禁止对象之间的不良交互提高模块化。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;参考这个文档获取更多关于封装的细节和示例。&lt;/p&gt;
 &lt;p&gt;多态&lt;/p&gt;
@@ -39,14 +39,14 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;p&gt;static变量在Java中是属于类的，它在所有的实例中的值是一样的。当类被Java虚拟机载入的时候，会对static变量进行初始化。如果你的代码尝试不用实例来访问非static的变量，编译器会报错，因为这些变量还没有被创建出来，还没有跟任何实例关联上。&lt;/p&gt;
 &lt;p&gt;5.Java支持的数据类型有哪些？什么是自动拆装箱？&lt;/p&gt;
 &lt;p&gt;Java语言支持的8中基本数据类型是：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;byte&lt;/span&gt;
-&lt;span class="kt"&gt;short&lt;/span&gt;
-&lt;span class="kt"&gt;int&lt;/span&gt;
-&lt;span class="kt"&gt;long&lt;/span&gt;
-&lt;span class="kt"&gt;float&lt;/span&gt;
-&lt;span class="kt"&gt;double&lt;/span&gt;
-&lt;span class="n"&gt;boolean&lt;/span&gt;
-&lt;span class="kt"&gt;char&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;byte
+short
+int
+long
+float
+double
+boolean
+char
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;自动装箱是Java编译器在基本数据类型和对应的对象包装类型之间做的一个转化。比如：把int转化成Integer，double转化成double，等等。反之就是自动拆箱。&lt;/p&gt;
 &lt;p&gt;6.Java中的方法覆盖(Overriding)和方法重载(Overloading)是什么意思？&lt;/p&gt;
@@ -59,13 +59,13 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;p&gt;不支持，Java不支持多继承。每个类都只能继承一个类，但是可以实现多个接口。&lt;/p&gt;
 &lt;p&gt;9.接口和抽象类的区别是什么？&lt;/p&gt;
 &lt;p&gt;Java提供和支持创建抽象类和接口。它们的实现有共同点，不同点在于：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;接口中所有的方法隐含的都是抽象的。而抽象类则可以同时包含抽象和非抽象的方法。&lt;/span&gt;
-&lt;span class="err"&gt;类可以实现很多个接口，但是只能继承一个抽象类&lt;/span&gt;
-&lt;span class="err"&gt;类如果要实现一个接口，它必须要实现接口声明的所有方法。但是，类可以不实现抽象类声明的所有方法，当然，在这种情况下，类也必须得声明成是抽象的。&lt;/span&gt;
-&lt;span class="err"&gt;抽象类可以在不提供接口方法实现的情况下实现接口。&lt;/span&gt;
-&lt;span class="n"&gt;Java&lt;/span&gt;&lt;span class="err"&gt;接口中声明的变量默认都是&lt;/span&gt;&lt;span class="n"&gt;final&lt;/span&gt;&lt;span class="err"&gt;的。抽象类可以包含非&lt;/span&gt;&lt;span class="n"&gt;final&lt;/span&gt;&lt;span class="err"&gt;的变量。&lt;/span&gt;
-&lt;span class="n"&gt;Java&lt;/span&gt;&lt;span class="err"&gt;接口中的成员函数默认是&lt;/span&gt;&lt;span class="n"&gt;public&lt;/span&gt;&lt;span class="err"&gt;的。抽象类的成员函数可以是&lt;/span&gt;&lt;span class="n"&gt;private&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="n"&gt;protected&lt;/span&gt;&lt;span class="err"&gt;或者是&lt;/span&gt;&lt;span class="n"&gt;public&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="err"&gt;接口是绝对抽象的，不可以被实例化。抽象类也不可以被实例化，但是，如果它包含&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="err"&gt;方法的话是可以被调用的。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;接口中所有的方法隐含的都是抽象的。而抽象类则可以同时包含抽象和非抽象的方法。
+类可以实现很多个接口，但是只能继承一个抽象类
+类如果要实现一个接口，它必须要实现接口声明的所有方法。但是，类可以不实现抽象类声明的所有方法，当然，在这种情况下，类也必须得声明成是抽象的。
+抽象类可以在不提供接口方法实现的情况下实现接口。
+Java接口中声明的变量默认都是final的。抽象类可以包含非final的变量。
+Java接口中的成员函数默认是public的。抽象类的成员函数可以是private，protected或者是public。
+接口是绝对抽象的，不可以被实例化。抽象类也不可以被实例化，但是，如果它包含main方法的话是可以被调用的。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;也可以参考JDK8中抽象类和接口的区别&lt;/p&gt;
 &lt;p&gt;10.什么是值传递和引用传递？&lt;/p&gt;
@@ -76,20 +76,20 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;p&gt;进程是执行着的应用程序，而线程是进程内部的一个执行序列。一个进程可以有多个线程。线程又叫做轻量级进程。&lt;/p&gt;
 &lt;p&gt;12.创建线程有几种不同的方式？你喜欢哪一种？为什么？&lt;/p&gt;
 &lt;p&gt;有三种方式可以用来创建线程：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;继承&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="err"&gt;类&lt;/span&gt;
-&lt;span class="err"&gt;实现&lt;/span&gt;&lt;span class="n"&gt;Runnable&lt;/span&gt;&lt;span class="err"&gt;接口&lt;/span&gt;
-&lt;span class="err"&gt;应用程序可以使用&lt;/span&gt;&lt;span class="n"&gt;Executor&lt;/span&gt;&lt;span class="err"&gt;框架来创建线程池&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;继承Thread类
+实现Runnable接口
+应用程序可以使用Executor框架来创建线程池
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;实现Runnable接口这种方式更受欢迎，因为这不需要继承Thread类。在应用设计中已经继承了别的对象的情况下，这需要多继承（而Java不支持多继承），只能实现接口。同时，线程池也是非常高效的，很容易实现和使用。&lt;/p&gt;
 &lt;p&gt;13.概括的解释下线程的几种可用状态。&lt;/p&gt;
 &lt;p&gt;线程在执行过程中，可以处于下面几种状态：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;就绪&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Runnable&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="err"&gt;线程准备运行，不一定立马就能开始执行。&lt;/span&gt;
-&lt;span class="err"&gt;运行中&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Running&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;：进程正在执行线程的代码。&lt;/span&gt;
-&lt;span class="err"&gt;等待中&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Waiting&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="err"&gt;线程处于阻塞的状态，等待外部的处理结束。&lt;/span&gt;
-&lt;span class="err"&gt;睡眠中&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Sleeping&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;：线程被强制睡眠。&lt;/span&gt;
-&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt;&lt;span class="err"&gt;阻塞&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Blocked&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;：等待&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt;&lt;span class="err"&gt;操作完成。&lt;/span&gt;
-&lt;span class="err"&gt;同步阻塞&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Blocked&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;Synchronization&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;：等待获取锁。&lt;/span&gt;
-&lt;span class="err"&gt;死亡&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dead&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;：线程完成了执行。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;就绪(Runnable):线程准备运行，不一定立马就能开始执行。
+运行中(Running)：进程正在执行线程的代码。
+等待中(Waiting):线程处于阻塞的状态，等待外部的处理结束。
+睡眠中(Sleeping)：线程被强制睡眠。
+I/O阻塞(Blocked on I/O)：等待I/O操作完成。
+同步阻塞(Blocked on Synchronization)：等待获取锁。
+死亡(Dead)：线程完成了执行。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;14.同步方法和同步代码块的区别是什么？&lt;/p&gt;
 &lt;p&gt;在Java语言中，每一个对象有一把锁。线程可以使用synchronized关键字来获取对象上的锁。synchronized关键字可应用在方法级别(粗粒度锁)或者是代码块级别(细粒度锁)。&lt;/p&gt;
@@ -102,10 +102,10 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;h1 id="java_2"&gt;Java集合类&lt;/h1&gt;
 &lt;p&gt;18.Java集合类框架的基本接口有哪些？&lt;/p&gt;
 &lt;p&gt;Java集合类提供了一套设计良好的支持对一组对象进行操作的接口和类。Java集合类里面最基本的接口有：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Collection&lt;/span&gt;&lt;span class="err"&gt;：代表一组对象，每一个对象都是它的子元素。&lt;/span&gt;
-&lt;span class="n"&gt;Set&lt;/span&gt;&lt;span class="err"&gt;：不包含重复元素的&lt;/span&gt;&lt;span class="n"&gt;Collection&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="err"&gt;：有顺序的&lt;/span&gt;&lt;span class="n"&gt;collection&lt;/span&gt;&lt;span class="err"&gt;，并且可以包含重复元素。&lt;/span&gt;
-&lt;span class="n"&gt;Map&lt;/span&gt;&lt;span class="err"&gt;：可以把键&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;映射到值&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;的对象，键不能重复。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Collection：代表一组对象，每一个对象都是它的子元素。
+Set：不包含重复元素的Collection。
+List：有顺序的collection，并且可以包含重复元素。
+Map：可以把键(key)映射到值(value)的对象，键不能重复。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;19.为什么集合类没有实现Cloneable和Serializable接口？&lt;/p&gt;
 &lt;p&gt;集合类接口指定了一组叫做元素的对象。集合类接口的每一种具体的实现类都可以选择以它自己的方式对元素进行保存和排序。有的集合类允许重复的键，有些不允许。&lt;/p&gt;
@@ -115,9 +115,9 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;p&gt;克隆(cloning)或者是序列化(serialization)的语义和含义是跟具体的实现相关的。因此，应该由集合类的具体实现来决定如何被克隆或者是序列化。&lt;/p&gt;
 &lt;p&gt;21.Iterator和ListIterator的区别是什么？&lt;/p&gt;
 &lt;p&gt;下面列出了他们的区别：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="err"&gt;可用来遍历&lt;/span&gt;&lt;span class="n"&gt;Set&lt;/span&gt;&lt;span class="err"&gt;和&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="err"&gt;集合，但是&lt;/span&gt;&lt;span class="n"&gt;ListIterator&lt;/span&gt;&lt;span class="err"&gt;只能用来遍历&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="err"&gt;对集合只能是前向遍历，&lt;/span&gt;&lt;span class="n"&gt;ListIterator&lt;/span&gt;&lt;span class="err"&gt;既可以前向也可以后向。&lt;/span&gt;
-&lt;span class="n"&gt;ListIterator&lt;/span&gt;&lt;span class="err"&gt;实现了&lt;/span&gt;&lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="err"&gt;接口，并包含其他的功能，比如：增加元素，替换元素，获取前一个和后一个元素的索引，等等。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Iterator可用来遍历Set和List集合，但是ListIterator只能用来遍历List。
+Iterator对集合只能是前向遍历，ListIterator既可以前向也可以后向。
+ListIterator实现了Iterator接口，并包含其他的功能，比如：增加元素，替换元素，获取前一个和后一个元素的索引，等等。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;22.快速失败(fail-fast)和安全失败(fail-safe)的区别是什么？&lt;/p&gt;
 &lt;p&gt;Iterator的安全失败是基于对底层集合做拷贝，因此，它不受源集合上修改的影响。java.util包下面的所有的集合类都是快速失败的，而java.util.concurrent包下面的所有的类都是安全失败的。快速失败的迭代器会抛出ConcurrentModificationException异常，而安全失败的迭代器永远不会抛出这样的异常。&lt;/p&gt;
@@ -126,26 +126,26 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;p&gt;24.hashCode()和equals()方法的重要性体现在什么地方？&lt;/p&gt;
 &lt;p&gt;Java中的HashMap使用hashCode()和equals()方法来确定键值对的索引，当根据键获取值的时候也会用到这两个方法。如果没有正确的实现这两个方法，两个不同的键可能会有相同的hash值，因此，可能会被集合认为是相等的。而且，这两个方法也用来发现重复元素。所以这两个方法的实现对HashMap的精确性和正确性是至关重要的。&lt;/p&gt;
 &lt;p&gt;25.HashMap和Hashtable有什么区别？&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;HashMap&lt;/span&gt;&lt;span class="err"&gt;和&lt;/span&gt;&lt;span class="n"&gt;Hashtable&lt;/span&gt;&lt;span class="err"&gt;都实现了&lt;/span&gt;&lt;span class="n"&gt;Map&lt;/span&gt;&lt;span class="err"&gt;接口，因此很多特性非常相似。但是，他们有以下不同点：&lt;/span&gt;
-&lt;span class="n"&gt;HashMap&lt;/span&gt;&lt;span class="err"&gt;允许键和值是&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="err"&gt;，而&lt;/span&gt;&lt;span class="n"&gt;Hashtable&lt;/span&gt;&lt;span class="err"&gt;不允许键或者值是&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="n"&gt;Hashtable&lt;/span&gt;&lt;span class="err"&gt;是同步的，而&lt;/span&gt;&lt;span class="n"&gt;HashMap&lt;/span&gt;&lt;span class="err"&gt;不是。因此，&lt;/span&gt;&lt;span class="n"&gt;HashMap&lt;/span&gt;&lt;span class="err"&gt;更适合于单线程环境，而&lt;/span&gt;&lt;span class="n"&gt;Hashtable&lt;/span&gt;&lt;span class="err"&gt;适合于多线程环境。&lt;/span&gt;
-&lt;span class="n"&gt;HashMap&lt;/span&gt;&lt;span class="err"&gt;提供了可供应用迭代的键的集合，因此，&lt;/span&gt;&lt;span class="n"&gt;HashMap&lt;/span&gt;&lt;span class="err"&gt;是快速失败的。另一方面，&lt;/span&gt;&lt;span class="n"&gt;Hashtable&lt;/span&gt;&lt;span class="err"&gt;提供了对键的列举&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Enumeration&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="err"&gt;一般认为&lt;/span&gt;&lt;span class="n"&gt;Hashtable&lt;/span&gt;&lt;span class="err"&gt;是一个遗留的类。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;HashMap和Hashtable都实现了Map接口，因此很多特性非常相似。但是，他们有以下不同点：
+HashMap允许键和值是null，而Hashtable不允许键或者值是null。
+Hashtable是同步的，而HashMap不是。因此，HashMap更适合于单线程环境，而Hashtable适合于多线程环境。
+HashMap提供了可供应用迭代的键的集合，因此，HashMap是快速失败的。另一方面，Hashtable提供了对键的列举(Enumeration)。
+一般认为Hashtable是一个遗留的类。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;26.数组(Array)和列表(ArrayList)有什么区别？什么时候应该使用Array而不是ArrayList？&lt;/p&gt;
 &lt;p&gt;下面列出了Array和ArrayList的不同点：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Array&lt;/span&gt;&lt;span class="err"&gt;可以包含基本类型和对象类型，&lt;/span&gt;&lt;span class="n"&gt;ArrayList&lt;/span&gt;&lt;span class="err"&gt;只能包含对象类型。&lt;/span&gt;
-&lt;span class="n"&gt;Array&lt;/span&gt;&lt;span class="err"&gt;大小是固定的，&lt;/span&gt;&lt;span class="n"&gt;ArrayList&lt;/span&gt;&lt;span class="err"&gt;的大小是动态变化的。&lt;/span&gt;
-&lt;span class="n"&gt;ArrayList&lt;/span&gt;&lt;span class="err"&gt;提供了更多的方法和特性，比如：&lt;/span&gt;&lt;span class="n"&gt;addAll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="n"&gt;removeAll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="n"&gt;iterator&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;等等。&lt;/span&gt;
-&lt;span class="err"&gt;对于基本类型数据，集合使用自动装箱来减少编码工作量。但是，当处理固定大小的基本数据类型的时候，这种方式相对比较慢。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Array可以包含基本类型和对象类型，ArrayList只能包含对象类型。
+Array大小是固定的，ArrayList的大小是动态变化的。
+ArrayList提供了更多的方法和特性，比如：addAll()，removeAll()，iterator()等等。
+对于基本类型数据，集合使用自动装箱来减少编码工作量。但是，当处理固定大小的基本数据类型的时候，这种方式相对比较慢。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;27.ArrayList和LinkedList有什么区别？&lt;/p&gt;
 &lt;p&gt;ArrayList和LinkedList都实现了List接口，他们有以下的不同点：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ArrayList&lt;/span&gt;&lt;span class="err"&gt;是基于索引的数据接口，它的底层是数组。它可以以&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;时间复杂度对元素进行随机访问。与此对应，&lt;/span&gt;&lt;span class="n"&gt;LinkedList&lt;/span&gt;&lt;span class="err"&gt;是以元素列表的形式存储它的数据，每一个元素都和它的前一个和后一个元素链接在一起，在这种情况下，查找某个元素的时间复杂度是&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;ArrayList是基于索引的数据接口，它的底层是数组。它可以以O(1)时间复杂度对元素进行随机访问。与此对应，LinkedList是以元素列表的形式存储它的数据，每一个元素都和它的前一个和后一个元素链接在一起，在这种情况下，查找某个元素的时间复杂度是O(n)。
 
-&lt;span class="err"&gt;相对于&lt;/span&gt;&lt;span class="n"&gt;ArrayList&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="n"&gt;LinkedList&lt;/span&gt;&lt;span class="err"&gt;的插入，添加，删除操作速度更快，因为当元素被添加到集合任意位置的时候，不需要像数组那样重新计算大小或者是更新索引。&lt;/span&gt;
+相对于ArrayList，LinkedList的插入，添加，删除操作速度更快，因为当元素被添加到集合任意位置的时候，不需要像数组那样重新计算大小或者是更新索引。
 
-&lt;span class="n"&gt;LinkedList&lt;/span&gt;&lt;span class="err"&gt;比&lt;/span&gt;&lt;span class="n"&gt;ArrayList&lt;/span&gt;&lt;span class="err"&gt;更占内存，因为&lt;/span&gt;&lt;span class="n"&gt;LinkedList&lt;/span&gt;&lt;span class="err"&gt;为每一个节点存储了两个引用，一个指向前一个元素，一个指向下一个元素。&lt;/span&gt;
+LinkedList比ArrayList更占内存，因为LinkedList为每一个节点存储了两个引用，一个指向前一个元素，一个指向下一个元素。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;也可以参考ArrayList vs. LinkedList。&lt;/p&gt;
 &lt;p&gt;28.Comparable和Comparator接口是干什么的？列出它们的区别。&lt;/p&gt;
@@ -159,12 +159,12 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;p&gt;31.如何权衡是使用无序的数组还是有序的数组？&lt;/p&gt;
 &lt;p&gt;有序数组最大的好处在于查找的时间复杂度是O(log n)，而无序数组是O(n)。有序数组的缺点是插入操作的时间复杂度是O(n)，因为值大的元素需要往后移动来给新元素腾位置。相反，无序数组的插入时间复杂度是常量O(1)。&lt;/p&gt;
 &lt;p&gt;32.Java集合类框架的最佳实践有哪些？&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;根据应用的需要正确选择要使用的集合的类型对性能非常重要，比如：假如元素的大小是固定的，而且能事先知道，我们就应该用&lt;/span&gt;&lt;span class="n"&gt;Array&lt;/span&gt;&lt;span class="err"&gt;而不是&lt;/span&gt;&lt;span class="n"&gt;ArrayList&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="err"&gt;有些集合类允许指定初始容量。因此，如果我们能估计出存储的元素的数目，我们可以设置初始容量来避免重新计算&lt;/span&gt;&lt;span class="n"&gt;hash&lt;/span&gt;&lt;span class="err"&gt;值或者是扩容。&lt;/span&gt;
-&lt;span class="err"&gt;为了类型安全，可读性和健壮性的原因总是要使用泛型。同时，使用泛型还可以避免运行时的&lt;/span&gt;&lt;span class="n"&gt;ClassCastException&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="err"&gt;使用&lt;/span&gt;&lt;span class="n"&gt;JDK&lt;/span&gt;&lt;span class="err"&gt;提供的不变类&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;immutable&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;作为&lt;/span&gt;&lt;span class="n"&gt;Map&lt;/span&gt;&lt;span class="err"&gt;的键可以避免为我们自己的类实现&lt;/span&gt;&lt;span class="n"&gt;hashCode&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;和&lt;/span&gt;&lt;span class="n"&gt;equals&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;方法。&lt;/span&gt;
-&lt;span class="err"&gt;编程的时候接口优于实现。&lt;/span&gt;
-&lt;span class="err"&gt;底层的集合实际上是空的情况下，返回长度是&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="err"&gt;的集合或者是数组，不要返回&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;根据应用的需要正确选择要使用的集合的类型对性能非常重要，比如：假如元素的大小是固定的，而且能事先知道，我们就应该用Array而不是ArrayList。
+有些集合类允许指定初始容量。因此，如果我们能估计出存储的元素的数目，我们可以设置初始容量来避免重新计算hash值或者是扩容。
+为了类型安全，可读性和健壮性的原因总是要使用泛型。同时，使用泛型还可以避免运行时的ClassCastException。
+使用JDK提供的不变类(immutable class)作为Map的键可以避免为我们自己的类实现hashCode()和equals()方法。
+编程的时候接口优于实现。
+底层的集合实际上是空的情况下，返回长度是0的集合或者是数组，不要返回null。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;33.Enumeration接口和Iterator接口的区别有哪些？&lt;/p&gt;
 &lt;p&gt;Enumeration速度是Iterator的2倍，同时占用更少的内存。但是，Iterator远远比Enumeration安全，因为其他线程不能够修改正在被iterator遍历的集合里面的对象。同时，Iterator允许调用者删除底层集合里面的元素，这对Enumeration来说是不可能的。&lt;/p&gt;
@@ -212,10 +212,10 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;p&gt;java applet是能够被包含在HTML页面中并且能被启用了java的客户端浏览器执行的程序。Applet主要用来创建动态交互的web应用程序。&lt;/p&gt;
 &lt;p&gt;49.解释一下Applet的生命周期&lt;/p&gt;
 &lt;p&gt;applet可以经历下面的状态：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Init&lt;/span&gt;&lt;span class="err"&gt;：每次被载入的时候都会被初始化。&lt;/span&gt;
-&lt;span class="n"&gt;Start&lt;/span&gt;&lt;span class="err"&gt;：开始执行&lt;/span&gt;&lt;span class="n"&gt;applet&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="n"&gt;Stop&lt;/span&gt;&lt;span class="err"&gt;：结束执行&lt;/span&gt;&lt;span class="n"&gt;applet&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="n"&gt;Destroy&lt;/span&gt;&lt;span class="err"&gt;：卸载&lt;/span&gt;&lt;span class="n"&gt;applet&lt;/span&gt;&lt;span class="err"&gt;之前，做最后的清理工作。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Init：每次被载入的时候都会被初始化。
+Start：开始执行applet。
+Stop：结束执行applet。
+Destroy：卸载applet之前，做最后的清理工作。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;50.当applet被载入的时候会发生什么？&lt;/p&gt;
 &lt;p&gt;首先，创建applet控制类的实例，然后初始化applet，最后开始运行。&lt;/p&gt;
@@ -225,11 +225,11 @@ Java中static方法不能被覆盖，因为方法覆盖是基于运行时动态�
 &lt;p&gt;最后，Java applet一般会使用很严格的安全策略，Java应用一般使用比较宽松的安全策略。&lt;/p&gt;
 &lt;p&gt;52.Java applet有哪些限制条件？&lt;/p&gt;
 &lt;p&gt;主要是由于安全的原因，给applet施加了以下的限制：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;applet&lt;/span&gt;&lt;span class="err"&gt;不能够载入类库或者定义本地方法。&lt;/span&gt;
-&lt;span class="n"&gt;applet&lt;/span&gt;&lt;span class="err"&gt;不能在宿主机上读写文件。&lt;/span&gt;
-&lt;span class="n"&gt;applet&lt;/span&gt;&lt;span class="err"&gt;不能读取特定的系统属性。&lt;/span&gt;
-&lt;span class="n"&gt;applet&lt;/span&gt;&lt;span class="err"&gt;不能发起网络连接，除非是跟宿主机。&lt;/span&gt;
-&lt;span class="n"&gt;applet&lt;/span&gt;&lt;span class="err"&gt;不能够开启宿主机上其他任何的程序。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;applet不能够载入类库或者定义本地方法。
+applet不能在宿主机上读写文件。
+applet不能读取特定的系统属性。
+applet不能发起网络连接，除非是跟宿主机。
+applet不能够开启宿主机上其他任何的程序。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;53.什么是不受信任的applet？&lt;/p&gt;
 &lt;p&gt;不受信任的applet是不能访问或是执行本地系统文件的Java applet，默认情况下，所有下载的applet都是不受信任的。&lt;/p&gt;
@@ -284,7 +284,7 @@ Java中的Swing组件使用了MVC(视图-模型-控制器)设计模式。&lt;/p&
 &lt;p&gt;PreparedStatements是预编译的，因此，性能会更好。同时，不同的查询参数值，PreparedStatement可以重用。&lt;/p&gt;
 &lt;p&gt;76.什么时候使用CallableStatement？用来准备CallableStatement的方法是什么？&lt;/p&gt;
 &lt;p&gt;CallableStatement用来执行存储过程。存储过程是由数据库存储和提供的。存储过程可以接受输入参数，也可以有返回结果。非常鼓励使用存储过程，因为它提供了安全性和模块化。准备一个CallableStatement的方法是：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;CallableStament&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prepareCall&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;CallableStament.prepareCall();
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;77.数据库连接池是什么意思？&lt;/p&gt;
 &lt;p&gt;像打开关闭数据库连接这种和数据库的交互可能是很费时的，尤其是当客户端数量增加的时候，会消耗大量的资源，成本是非常高的。可以在应用服务器启动的时候建立很多个数据库连接并维护在一个池中。连接请求由池中的连接提供。在连接使用完毕以后，把连接归还到池中，以用于满足将来更多的请求。&lt;/p&gt;
@@ -308,19 +308,19 @@ Java中的Swing组件使用了MVC(视图-模型-控制器)设计模式。&lt;/p&
 &lt;p&gt;bind()方法负责把指定名称绑定给远程对象，rebind()方法负责把指定名称重新绑定到一个新的远程对象。如果那个名称已经绑定过了，先前的绑定会被替换掉。&lt;/p&gt;
 &lt;p&gt;85.让RMI程序能正确运行有哪些步骤？&lt;/p&gt;
 &lt;p&gt;为了让RMI程序能正确运行必须要包含以下几个步骤：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;编译所有的源文件。&lt;/span&gt;
-&lt;span class="err"&gt;使用&lt;/span&gt;&lt;span class="n"&gt;rmic&lt;/span&gt;&lt;span class="err"&gt;生成&lt;/span&gt;&lt;span class="n"&gt;stub&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="err"&gt;启动&lt;/span&gt;&lt;span class="n"&gt;rmiregistry&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="err"&gt;启动&lt;/span&gt;&lt;span class="n"&gt;RMI&lt;/span&gt;&lt;span class="err"&gt;服务器。&lt;/span&gt;
-&lt;span class="err"&gt;运行客户端程序。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;编译所有的源文件。
+使用rmic生成stub。
+启动rmiregistry。
+启动RMI服务器。
+运行客户端程序。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;86.RMI的stub扮演了什么样的角色？&lt;/p&gt;
 &lt;p&gt;远程对象的stub扮演了远程对象的代表或者代理的角色。调用者在本地stub上调用方法，它负责在远程对象上执行方法。当stub的方法被调用的时候，会经历以下几个步骤：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;初始化到包含了远程对象的&lt;/span&gt;&lt;span class="n"&gt;JVM&lt;/span&gt;&lt;span class="err"&gt;的连接。&lt;/span&gt;
-&lt;span class="err"&gt;序列化参数到远程的&lt;/span&gt;&lt;span class="n"&gt;JVM&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="err"&gt;等待方法调用和执行的结果。&lt;/span&gt;
-&lt;span class="err"&gt;反序列化返回的值或者是方法没有执行成功情况下的异常。&lt;/span&gt;
-&lt;span class="err"&gt;把值返回给调用者。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;初始化到包含了远程对象的JVM的连接。
+序列化参数到远程的JVM。
+等待方法调用和执行的结果。
+反序列化返回的值或者是方法没有执行成功情况下的异常。
+把值返回给调用者。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;87.什么是分布式垃圾回收(DGC)？它是如何工作的？&lt;/p&gt;
 &lt;p&gt;DGC叫做分布式垃圾回收。RMI使用DGC来做自动垃圾回收。因为RMI包含了跨虚拟机的远程对象的引用，垃圾回收是很困难的。DGC使用引用计数算法来给远程对象提供自动内存管理。&lt;/p&gt;
@@ -359,9 +359,9 @@ Java中的Swing组件使用了MVC(视图-模型-控制器)设计模式。&lt;/p&
 &lt;p&gt;主体(Body)：它包含了响应的内容。它可以包含HTML代码，图片，等等。主体是由传输在HTTP消息中紧跟在头部后面的数据字节组成的。&lt;/p&gt;
 &lt;p&gt;102.什么是cookie？session和cookie有什么区别？&lt;/p&gt;
 &lt;p&gt;cookie是Web服务器发送给浏览器的一块信息。浏览器会在本地文件中给每一个Web服务器存储cookie。以后浏览器在给特定的Web服务器发请求的时候，同时会发送所有为该服务器存储的cookie。下面列出了session和cookie的区别：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;无论客户端浏览器做怎么样的设置，&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="err"&gt;都应该能正常工作。客户端可以选择禁用&lt;/span&gt;&lt;span class="n"&gt;cookie&lt;/span&gt;&lt;span class="err"&gt;，但是，&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="err"&gt;仍然是能够工作的，因为客户端无法禁用服务端的&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;无论客户端浏览器做怎么样的设置，session都应该能正常工作。客户端可以选择禁用cookie，但是，session仍然是能够工作的，因为客户端无法禁用服务端的session。
 
-&lt;span class="err"&gt;在存储的数据量方面&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="err"&gt;和&lt;/span&gt;&lt;span class="n"&gt;cookies&lt;/span&gt;&lt;span class="err"&gt;也是不一样的。&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="err"&gt;能够存储任意的&lt;/span&gt;&lt;span class="n"&gt;Java&lt;/span&gt;&lt;span class="err"&gt;对象，&lt;/span&gt;&lt;span class="n"&gt;cookie&lt;/span&gt;&lt;span class="err"&gt;只能存储&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="err"&gt;类型的对象。&lt;/span&gt;
+在存储的数据量方面session和cookies也是不一样的。session能够存储任意的Java对象，cookie只能存储String类型的对象。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;103.浏览器和Servlet通信使用的是什么协议？
 浏览器和Servlet通信使用的是HTTP协议。&lt;/p&gt;
@@ -378,24 +378,24 @@ Java中的Swing组件使用了MVC(视图-模型-控制器)设计模式。&lt;/p&
 &lt;p&gt;浏览器首先要请求一个以.jsp扩展名结尾的页面，发起JSP请求，然后，Web服务器读取这个请求，使用JSP编译器把JSP页面转化成一个Servlet类。需要注意的是，只有当第一次请求页面或者是JSP文件发生改变的时候JSP文件才会被编译，然后服务器调用servlet类，处理浏览器的请求。一旦请求执行结束，servlet会把响应发送给客户端。这里看下如何在JSP中获取请求参数。&lt;/p&gt;
 &lt;p&gt;109.JSP有什么优点？&lt;/p&gt;
 &lt;p&gt;下面列出了使用JSP的优点：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;JSP&lt;/span&gt;&lt;span class="err"&gt;页面是被动态编译成&lt;/span&gt;&lt;span class="n"&gt;Servlet&lt;/span&gt;&lt;span class="err"&gt;的，因此，开发者可以很容易的更新展现代码。&lt;/span&gt;
-&lt;span class="n"&gt;JSP&lt;/span&gt;&lt;span class="err"&gt;页面可以被预编译。&lt;/span&gt;
-&lt;span class="n"&gt;JSP&lt;/span&gt;&lt;span class="err"&gt;页面可以很容易的和静态模板结合，包括：&lt;/span&gt;&lt;span class="n"&gt;HTML&lt;/span&gt;&lt;span class="err"&gt;或者&lt;/span&gt;&lt;span class="n"&gt;XML&lt;/span&gt;&lt;span class="err"&gt;，也可以很容易的和产生动态内容的代码结合起来。&lt;/span&gt;
-&lt;span class="err"&gt;开发者可以提供让页面设计者以类&lt;/span&gt;&lt;span class="n"&gt;XML&lt;/span&gt;&lt;span class="err"&gt;格式来访问的自定义的&lt;/span&gt;&lt;span class="n"&gt;JSP&lt;/span&gt;&lt;span class="err"&gt;标签库。&lt;/span&gt;
-&lt;span class="err"&gt;开发者可以在组件层做逻辑上的改变，而不需要编辑单独使用了应用层逻辑的页面。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;JSP页面是被动态编译成Servlet的，因此，开发者可以很容易的更新展现代码。
+JSP页面可以被预编译。
+JSP页面可以很容易的和静态模板结合，包括：HTML或者XML，也可以很容易的和产生动态内容的代码结合起来。
+开发者可以提供让页面设计者以类XML格式来访问的自定义的JSP标签库。
+开发者可以在组件层做逻辑上的改变，而不需要编辑单独使用了应用层逻辑的页面。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;110.什么是JSP指令(Directive)？JSP中有哪些不同类型的指令？&lt;/p&gt;
 &lt;p&gt;Directive是当JSP页面被编译成Servlet的时候，JSP引擎要处理的指令。Directive用来设置页面级别的指令，从外部文件插入数据，指定自定义的标签库。Directive是定义在&amp;lt;%@ 和 %&amp;gt;之间的。下面列出了不同类型的Directive：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;包含指令&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Include&lt;/span&gt; &lt;span class="n"&gt;directive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;：用来包含文件和合并文件内容到当前的页面。&lt;/span&gt;
-&lt;span class="err"&gt;页面指令&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="n"&gt;directive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;：用来定义&lt;/span&gt;&lt;span class="n"&gt;JSP&lt;/span&gt;&lt;span class="err"&gt;页面中特定的属性，比如错误页面和缓冲区。&lt;/span&gt;
-&lt;span class="n"&gt;Taglib&lt;/span&gt;&lt;span class="err"&gt;指令：&lt;/span&gt; &lt;span class="err"&gt;用来声明页面中使用的自定义的标签库。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;包含指令(Include directive)：用来包含文件和合并文件内容到当前的页面。
+页面指令(Page directive)：用来定义JSP页面中特定的属性，比如错误页面和缓冲区。
+Taglib指令： 用来声明页面中使用的自定义的标签库。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;111.什么是JSP动作(JSP action)？&lt;/p&gt;
 &lt;p&gt;JSP动作以XML语法的结构来控制Servlet引擎的行为。当JSP页面被请求的时候，JSP动作会被执行。它们可以被动态的插入到文件中，重用JavaBean组件，转发用户到其他的页面，或者是给Java插件产生HTML代码。下面列出了可用的动作：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;include&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;当&lt;/span&gt;&lt;span class="n"&gt;JSP&lt;/span&gt;&lt;span class="err"&gt;页面被请求的时候包含一个文件。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;include&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;当&lt;/span&gt;&lt;span class="n"&gt;JSP页面被请求的时候包含一个文件&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
 &lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;useBean&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;找出或者是初始化&lt;/span&gt;&lt;span class="n"&gt;Javabean&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
-&lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;setProperty&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;设置&lt;/span&gt;&lt;span class="n"&gt;JavaBean&lt;/span&gt;&lt;span class="err"&gt;的属性。&lt;/span&gt;
-&lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;getProperty&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;获取&lt;/span&gt;&lt;span class="n"&gt;JavaBean&lt;/span&gt;&lt;span class="err"&gt;的属性。&lt;/span&gt;
+&lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;setProperty&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;设置&lt;/span&gt;&lt;span class="n"&gt;JavaBean的属性&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+&lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;getProperty&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;获取&lt;/span&gt;&lt;span class="n"&gt;JavaBean的属性&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
 &lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;forward&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;把请求转发到新的页面。&lt;/span&gt;
 &lt;span class="n"&gt;jsp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;产生特定浏览器的代码。&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -408,15 +408,15 @@ Java中的Swing组件使用了MVC(视图-模型-控制器)设计模式。&lt;/p&
 &lt;p&gt;JSP表达式是Web服务器把脚本语言表达式的值转化成一个String对象，插入到返回给客户端的数据流中。表达式是在&amp;lt;%=和%&amp;gt;这两个标签之间定义的。&lt;/p&gt;
 &lt;p&gt;115.隐含对象是什么意思？有哪些隐含对象？&lt;/p&gt;
 &lt;p&gt;JSP隐含对象是页面中的一些Java对象，JSP容器让这些Java对象可以为开发者所使用。开发者不用明确的声明就可以直接使用他们。JSP隐含对象也叫做预定义变量。下面列出了JSP页面中的隐含对象：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;application&lt;/span&gt;
-&lt;span class="n"&gt;page&lt;/span&gt;
-&lt;span class="n"&gt;request&lt;/span&gt;
-&lt;span class="n"&gt;response&lt;/span&gt;
-&lt;span class="n"&gt;session&lt;/span&gt;
-&lt;span class="n"&gt;exception&lt;/span&gt;
-&lt;span class="n"&gt;out&lt;/span&gt;
-&lt;span class="n"&gt;config&lt;/span&gt;
-&lt;span class="n"&gt;pageContext&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;application
+page
+request
+response
+session
+exception
+out
+config
+pageContext
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;你还在看么？哇，这可是一篇关于可用在Java面试中的各种类型问题的非常非常长的文章。
 如果你喜欢本文，可以订阅我们的期刊或者是白皮书，我们每周都会更新。
