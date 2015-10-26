@@ -242,7 +242,7 @@ http://www.tipue.com/search
                                    var fo = found[i].split('^');
                                    if (l_o >= start && l_o < set.show + start)
                                    {
-                                        out += '<div class="tipue_search_content_title"><a href="' + fo[3] + '"' + tipue_search_w + '>' +  fo[1] + '</a></div>';
+                                        out += '<div class="tipue_search_content_title"><a href="' + fo[0] + '"' + tipue_search_w + '>' +  fo[1] + '</a></div>';
                                                                                 
                                         var t = fo[2];
                                         var t_d = '';
@@ -267,7 +267,7 @@ http://www.tipue.com/search
                                         
                                         if (set.showURL)
                                         {  
-                                             out += '<div class="tipue_search_content_loc"><a href="' + fo[3] + '"' + tipue_search_w + '>' + fo[3] + '</a></div>';
+                                             out += '<div class="tipue_search_content_loc"><a href="' + fo[0] + '"' + tipue_search_w + '>' + fo[0] + '</a></div>';
                                         }
                                    }
                                    l_o++;     
