@@ -627,7 +627,183 @@ pageContext
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;你还在看么？哇，这可是一篇关于可用在Java面试中的各种类型问题的非常非常长的文章。
 如果你喜欢本文，可以订阅我们的期刊或者是白皮书，我们每周都会更新。
-那么，那里会有什么其他的Java面试题呢？在评论中回复我们，我们会在文章中包含它们。祝编码快乐！&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">JustinCheung</dc:creator><pubDate>Tue, 21 Apr 2015 00:00:00 +0800</pubDate><guid>tag:www.zscbb.com,2015-04-21:posts/2015/04/115ge-javamian-shi-ti-he-da-an-zhong-ji-lie-biao-xia/</guid><category>JAVA</category><category>面试</category></item><item><title>程序员人生规划［转］</title><link>http://www.zscbb.com/posts/2014/07/cheng-xu-yuan-ren-sheng-gui-hua-zhuan/</link><description>
+那么，那里会有什么其他的Java面试题呢？在评论中回复我们，我们会在文章中包含它们。祝编码快乐！&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">JustinCheung</dc:creator><pubDate>Tue, 21 Apr 2015 00:00:00 +0800</pubDate><guid>tag:www.zscbb.com,2015-04-21:posts/2015/04/115ge-javamian-shi-ti-he-da-an-zhong-ji-lie-biao-xia/</guid><category>JAVA</category><category>面试</category></item><item><title>115个Java面试题和答案——终极列表（下）</title><link>http://www.zscbb.com/posts/2015/04/115ge-javamian-shi-ti-he-da-an-zhong-ji-lie-biao-xia/</link><description>
+&lt;h1 id="swipemenulistview"&gt;SwipeMenuListView&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://android-arsenal.com/details/1/912"&gt;&lt;img alt="Android Arsenal" src="https://img.shields.io/badge/Android%20Arsenal-SwipeMenuListView-brightgreen.svg?style=flat"/&gt;&lt;/a&gt;
+&lt;a href="https://bintray.com/baoyongzhang/maven/SwipeMenuListView/_latestVersion"&gt; &lt;img alt="Download" src="https://api.bintray.com/packages/baoyongzhang/maven/SwipeMenuListView/images/download.svg"/&gt; &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A swipe menu for ListView.&lt;/p&gt;
+&lt;h1 id="demo"&gt;Demo&lt;/h1&gt;
+&lt;p&gt;&lt;p&gt;
+&lt;img alt="Screenshot" src="https://raw.githubusercontent.com/baoyongzhang/SwipeMenuListView/master/demo.gif" width="320"/&gt;
+&lt;/p&gt;&lt;/p&gt;
+&lt;h1 id="usage"&gt;Usage&lt;/h1&gt;
+&lt;h3 id="add-dependency"&gt;Add dependency&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;compile&lt;/span&gt; &lt;span class="s1"&gt;'com.baoyz.swipemenulistview:library:1.3.0'&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="step-1"&gt;Step 1&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;add SwipeMenuListView in layout xml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;com.baoyz.swipemenulistview.SwipeMenuListView&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;"@+id/listView"&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;"match_parent"&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;"match_parent"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="step-2"&gt;Step 2&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;create a SwipeMenuCreator to add items.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SwipeMenuCreator&lt;/span&gt; &lt;span class="n"&gt;creator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SwipeMenuCreator&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Override&lt;/span&gt;
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;create&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SwipeMenu&lt;/span&gt; &lt;span class="n"&gt;menu&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// create "open" item&lt;/span&gt;
+        &lt;span class="n"&gt;SwipeMenuItem&lt;/span&gt; &lt;span class="n"&gt;openItem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SwipeMenuItem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;getApplicationContext&lt;/span&gt;&lt;span class="o"&gt;());&lt;/span&gt;
+        &lt;span class="c1"&gt;// set item background&lt;/span&gt;
+        &lt;span class="n"&gt;openItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setBackground&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorDrawable&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;rgb&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0xC9&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mh"&gt;0xC9&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                &lt;span class="mh"&gt;0xCE&lt;/span&gt;&lt;span class="o"&gt;)));&lt;/span&gt;
+        &lt;span class="c1"&gt;// set item width&lt;/span&gt;
+        &lt;span class="n"&gt;openItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setWidth&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dp2px&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+        &lt;span class="c1"&gt;// set item title&lt;/span&gt;
+        &lt;span class="n"&gt;openItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setTitle&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Open"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="c1"&gt;// set item title fontsize&lt;/span&gt;
+        &lt;span class="n"&gt;openItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setTitleSize&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="c1"&gt;// set item title font color&lt;/span&gt;
+        &lt;span class="n"&gt;openItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setTitleColor&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;WHITE&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="c1"&gt;// add to menu&lt;/span&gt;
+        &lt;span class="n"&gt;menu&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;addMenuItem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;openItem&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+        &lt;span class="c1"&gt;// create "delete" item&lt;/span&gt;
+        &lt;span class="n"&gt;SwipeMenuItem&lt;/span&gt; &lt;span class="n"&gt;deleteItem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SwipeMenuItem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;getApplicationContext&lt;/span&gt;&lt;span class="o"&gt;());&lt;/span&gt;
+        &lt;span class="c1"&gt;// set item background&lt;/span&gt;
+        &lt;span class="n"&gt;deleteItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setBackground&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorDrawable&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;rgb&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0xF9&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                &lt;span class="mh"&gt;0x3F&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mh"&gt;0x25&lt;/span&gt;&lt;span class="o"&gt;)));&lt;/span&gt;
+        &lt;span class="c1"&gt;// set item width&lt;/span&gt;
+        &lt;span class="n"&gt;deleteItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setWidth&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dp2px&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+        &lt;span class="c1"&gt;// set a icon&lt;/span&gt;
+        &lt;span class="n"&gt;deleteItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setIcon&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;drawable&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ic_delete&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="c1"&gt;// add to menu&lt;/span&gt;
+        &lt;span class="n"&gt;menu&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;addMenuItem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;deleteItem&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;};&lt;/span&gt;
+
+&lt;span class="c1"&gt;// set creator&lt;/span&gt;
+&lt;span class="n"&gt;listView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setMenuCreator&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;creator&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="step-3"&gt;Step 3&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;listener item click event&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;listView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setOnMenuItemClickListener&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;OnMenuItemClickListener&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="nd"&gt;@Override&lt;/span&gt;
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;boolean&lt;/span&gt; &lt;span class="nf"&gt;onMenuItemClick&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SwipeMenu&lt;/span&gt; &lt;span class="n"&gt;menu&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+            &lt;span class="c1"&gt;// open&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+            &lt;span class="c1"&gt;// delete&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+        &lt;span class="c1"&gt;// false : close the menu; true : not close the menu&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="swipe-directions"&gt;Swipe directions&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="c1"&gt;// Right&lt;/span&gt;
+    &lt;span class="n"&gt;mListView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setSwipeDirection&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SwipeMenuListView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;DIRECTION_RIGHT&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Left&lt;/span&gt;
+    &lt;span class="n"&gt;mListView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setSwipeDirection&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SwipeMenuListView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;DIRECTION_LEFT&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="create-different-menu"&gt;Create Different Menu&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use the ViewType of adapter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AppAdapter&lt;/span&gt; &lt;span class="kd"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;BaseAdapter&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+
+        &lt;span class="o"&gt;...&lt;/span&gt;
+
+        &lt;span class="nd"&gt;@Override&lt;/span&gt;
+        &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;getViewTypeCount&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="c1"&gt;// menu type count&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+
+        &lt;span class="nd"&gt;@Override&lt;/span&gt;
+        &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;getItemViewType&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="c1"&gt;// current menu type&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+
+        &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Create different menus depending on the view type&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;SwipeMenuCreator&lt;/span&gt; &lt;span class="n"&gt;creator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SwipeMenuCreator&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+
+            &lt;span class="nd"&gt;@Override&lt;/span&gt;
+            &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;create&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SwipeMenu&lt;/span&gt; &lt;span class="n"&gt;menu&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+                &lt;span class="c1"&gt;// Create different menus depending on the view type&lt;/span&gt;
+                &lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;menu&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getViewType&lt;/span&gt;&lt;span class="o"&gt;())&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+                &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+                    &lt;span class="c1"&gt;// create menu of type 0&lt;/span&gt;
+                    &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+                &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+                    &lt;span class="c1"&gt;// create menu of type 1&lt;/span&gt;
+                    &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+                &lt;span class="o"&gt;...&lt;/span&gt;
+                &lt;span class="o"&gt;}&lt;/span&gt;
+            &lt;span class="o"&gt;}&lt;/span&gt;
+
+        &lt;span class="o"&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Demo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+&lt;img alt="Screenshot" src="https://raw.githubusercontent.com/baoyongzhang/SwipeMenuListView/master/demo3.gif" width="320"/&gt;
+&lt;/p&gt;
+&lt;h3 id="other"&gt;Other&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;OnSwipeListener&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;listView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setOnSwipeListener&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;OnSwipeListener&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Override&lt;/span&gt;
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onSwipeStart&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// swipe start&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Override&lt;/span&gt;
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onSwipeEnd&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// swipe end&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;open menu method for SwipeMenuListView&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;listView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;smoothOpenMenu&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Open/Close Animation Interpolator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// Close Interpolator&lt;/span&gt;
+&lt;span class="n"&gt;listView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setCloseInterpolator&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;BounceInterpolator&lt;/span&gt;&lt;span class="o"&gt;());&lt;/span&gt;
+&lt;span class="c1"&gt;// Open Interpolator&lt;/span&gt;
+&lt;span class="n"&gt;listView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setOpenInterpolator&lt;/span&gt;&lt;span class="o"&gt;(...);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+&lt;img alt="Screenshot" src="demo2.gif" width="320"/&gt;
+&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">JustinCheung</dc:creator><pubDate>Tue, 21 Apr 2015 00:00:00 +0800</pubDate><guid>tag:www.zscbb.com,2015-04-21:posts/2015/04/115ge-javamian-shi-ti-he-da-an-zhong-ji-lie-biao-xia/</guid><category>JAVA</category><category>面试</category></item><item><title>程序员人生规划［转］</title><link>http://www.zscbb.com/posts/2014/07/cheng-xu-yuan-ren-sheng-gui-hua-zhuan/</link><description>
 &lt;p&gt;程序员人生之路(强烈推荐，分析的透彻！)，某程序达人的人生感悟，估计没有半个甲子的时间，是绝对不可能感悟出来的。 
 相对同时刚出校门同学从事其它行业而言优厚的薪水，以及不断学习更新的专业知识不仅仅让你感到生活的充实，更满足了你那不让外人知的虚荣心。在刚出校门的几年中，你经常回头看看被你落在后面的同学们，在内心怜悯他们的同时，你也会对自已天天加班的努力工作感到心里平衡：“有付出才会有回报”这句话在那几年中你说的最多，不管是对自已的朋友们还是自已的爱人。第二句最常说的话是对公司的领导：“不行我就走人！”，实际上你也真的走过几回。对了，在这几年中，因为你的经济条件不错，你开始买房、开始谈恋爱、结婚、开始有了自已的小孩。有时候你会对自已说再过两年就去买车。当然其中可能有许多大件是需要分期付款的，但你对前途充满了信心，你确信认为这种日子会永远的持续下去，即使不是变得更好的话。 
 日子总是在这种平淡中一天天的过去，就在那么不经意间，你突然发现自已已经快30岁了，或者已经30了，莫名的，你心里会漫延着一种说不清楚的不安情绪，你好像觉得前途并非像前几年那样变得越来越好，你也忽然发现你以前所瞧不起的同学里好像已经有不少开着车的了，也有几个人住着比你还大的房子，好像房款还是一次付清的，你突然明白你现在的生活比起你的同学来最多是中游偏上了。工作中最让你感到心里不舒服的是，你越来越不敢对你的领导说不了，即使比你来的晚的同事升职或提薪，你也只是在私下与朋友们一起喝酒时才敢发发牢骚，在头的面前你的声间越来越小、笑脸是越来越温柔。 
