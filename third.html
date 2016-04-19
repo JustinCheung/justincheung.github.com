@@ -39,15 +39,7 @@
 		<script type="text/javascript">
         QC.Login({
 		btnId:"qqLoginBtn" ,//插入按钮的html标签id
-			size : 'C_S',//按钮样式，A、B、C为三种样式， 
-					//S、M、L、XL为同一种样式的不同尺寸，支持如下 : 
-												//A_S, A_M, A_L, A_XL; 
-												//B_S, B_M, B_L; 
-												//C_S;
-			clientId : '101305523',//appId
-			scope : 'all',//授权范围，可选
-			redirectURI : 'http://www.zscbb.com/third.html',
-			'btnMode':'showUserAfterLogin'
+			
 		});
 		function getToken(){
 			QC.Login.getMe(function(openId, accessToken){
