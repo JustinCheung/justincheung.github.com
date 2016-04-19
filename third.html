@@ -1,23 +1,23 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101305523" charset="utf-8"></script>
+		<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="100229030" charset="utf-8"></script>
 	</head>
 	<body>
 		<h2>QQ登录测试</h2>
 		<span id="qqLoginBtn"></span>
 		<input value=" 获取 " onclick="getToken();" type="button">
 		<script type="text/javascript">
-     QC.Login({
+        QC.Login({
 		btnId:"qqLoginBtn" ,//插入按钮的html标签id
 			size : 'C_S',//按钮样式，A、B、C为三种样式， 
 					//S、M、L、XL为同一种样式的不同尺寸，支持如下 : 
 												//A_S, A_M, A_L, A_XL; 
 												//B_S, B_M, B_L; 
 												//C_S;
-
-					scope : '',//授权范围，可选
-						'btnMode':'showUserAfterLogin'
+			clientId : '100229030',//appId
+			scope : 'all',//授权范围，可选
+			'btnMode':'showUserAfterLogin'
 		});
 		function getToken(){
 			var d = QC.Login.check();
