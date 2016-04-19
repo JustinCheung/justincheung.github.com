@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101305523" charset="utf-8" data-redirecturi="http://www.zscbb.com/third.html"></script>
+		<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101305523" charset="utf-8" data-redirecturi="http://www.zscbb.com/third.html" data-callback="true"></script>
 	</head>
 	<body>
 		<!-- <h2>QQ登录测试</h2>
@@ -36,7 +36,6 @@
   		<h2>QQ登录测试</h2>
 		<span id="qqLoginBtn"></span>
 		<input value=" 获取 " onclick="getToken();" type="button">
-		<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
 		<script type="text/javascript">
         QC.Login({
 		btnId:"qqLoginBtn" ,//插入按钮的html标签id
@@ -51,14 +50,9 @@
 			'btnMode':'showUserAfterLogin'
 		});
 		function getToken(){
-			var d = QC.Login.check();
-			if(QC.Login.check()){//如果已登录
-					QC.Login.getMe(function(openId, accessToken){
-							alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n"));
-					});
-					//这里可以调用自己的保存接口
-					//...
-			}
+			QC.Login.getMe(function(openId, accessToken){
+					alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n"));
+			});
 
 		}
 		</script>
