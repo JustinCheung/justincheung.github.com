@@ -49,8 +49,6 @@
 			scope : 'all',//授权范围，可选
 			redirectURI : 'http://www.zscbb.com/third.html',
 			'btnMode':'showUserAfterLogin'
-		},function(reqData, opts){//登录成功 
-			getToken();
 		});
 		function getToken(){
 			var d = QC.Login.check();
