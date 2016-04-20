@@ -4,36 +4,6 @@
 		<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101305523" charset="utf-8" data-redirecturi="http://www.zscbb.com/third.html" data-callback="true"></script>
 	</head>
 	<body>
-		<!-- <h2>QQ登录测试</h2>
-		<button id="qqLoginBtn" onclick="qqLogin()"></button>
-		<input value=" 获取 " onclick="check_qq_login_status()" type="button">
-		<script type="text/javascript">
-			   //使用qq登录  
-		function qqLogin(){
-		      location.href = 
-		'https://graph.qq.com/oauth2.0/authorize?client_id='+101305523+'&response_type=token&scope=get_user_info&redirect_uri='+getCurrLocation();
-		   }
-		 
-		  //获取当前页面路径--从哪个页面登录，登录成功后，返回哪个页面
-		  function getCurrLocation(){
-		      return window.location.protocol +'//'+window.location.host + window.location.pathname ;
-		  }
-
-		  //检查qq登录状态
-		   function check_qq_login_status(){
-		       //检查是否登录成功
-		        if(QC.Login.check()){
-		           //登录成功，获取openId
-		            QC.Login.getMe(function(openId,accessToken){
-		               var data = 'openid='+openId;
-		               callback(1,data);
-		            });
-		         }
-		   }
-		
-  		</script>
-  		-->
-  		
   		<h2>QQ登录测试</h2>
 		<span id="qqLoginBtn"></span>
 		<input value=" 获取 " onclick="getToken();" type="button">
@@ -41,12 +11,15 @@
         QC.Login({
 		btnId:"qqLoginBtn" ,//插入按钮的html标签id
 			size : 'C_S'
+		},function(reqData, opts){//登录成功
+			getToken();
 		});
 		function getToken(){
-			QC.Login.getMe(function(openId, accessToken){
+			if(QC.Login.check()){
+				QC.Login.getMe(function(openId, accessToken){
 					alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n"));
-			});
-
+				});
+			}
 		}
 		</script>
 	</body>
