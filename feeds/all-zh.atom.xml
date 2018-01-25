@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://web.zscbb.com/" rel="alternate"></link><link href="http://web.zscbb.com/feeds/all-zh.atom.xml" rel="self"></link><id>http://web.zscbb.com/</id><updated>2016-01-11T00:00:00+08:00</updated><entry><title>毕业之后这几年</title><link href="http://web.zscbb.com/posts/2016/01/bi-ye-zhi-hou-zhe-ji-nian/" rel="alternate"></link><updated>2016-01-11T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:web.zscbb.com,2016-01-11:posts/2016/01/bi-ye-zhi-hou-zhe-ji-nian/</id><summary type="html">
-&lt;h2 id="_1"&gt;序&lt;/h2&gt;
-&lt;p&gt;====================
-&amp;amp;nbsp&amp;amp;nbsp&amp;amp;nbsp&amp;amp;nbsp很久没有写过文章了，刚开始写下这个题目的时候还是有些许不适应的。不知道想写些什么，更不知道能写些什么。但是，一想起这个话题，立刻往事历历在目。那些誓言、承诺、没有实现的梦想、被现实吞没的青春以及那些年离开的人和事全都一涌而出。
-&amp;amp;nbsp&amp;amp;nbsp&amp;amp;nbsp&amp;amp;nbsp浊酒一杯入愁肠，却化作千丝万缕相思泪。此去经年，虽明月常向别时圆，却已相逢无期。安知再聚之时不满头华发，又或作古，此岂非“此时一别成永诀”。
-&amp;amp;nbsp&amp;amp;nbsp&amp;amp;nbsp&amp;amp;nbsp好吧。好吧。总是要来点正能量的，不然我写的都要抑郁了。那就搬个板凳来围成圈，慢慢听我道来。。。。&lt;/p&gt;
-&lt;h2 id="1"&gt;1. 毕业百天倒计时&lt;/h2&gt;
-&lt;p&gt;=====================&lt;/p&gt;</summary><category term="心路历程"></category></entry><entry><title>redis cluster 集群 安装 配置 详解</title><link href="http://web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" rel="alternate"></link><updated>2015-06-23T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:web.zscbb.com,2015-06-23:posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://web.zscbb.com/" rel="alternate"></link><link href="http://web.zscbb.com/feeds/all-zh.atom.xml" rel="self"></link><id>http://web.zscbb.com/</id><updated>2015-06-23T00:00:00+08:00</updated><entry><title>redis cluster 集群 安装 配置 详解</title><link href="http://web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" rel="alternate"></link><updated>2015-06-23T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:web.zscbb.com,2015-06-23:posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/</id><summary type="html">
 &lt;p&gt;Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。&lt;/p&gt;
 &lt;p&gt;目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。&lt;/p&gt;
 &lt;h1 id="redis"&gt;一，redis服务器说明&lt;/h1&gt;
