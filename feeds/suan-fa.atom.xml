@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>JC's Box</title><link href="http://web.zscbb.com/" rel="alternate"></link><link href="http://web.zscbb.com/feeds/suan-fa.atom.xml" rel="self"></link><id>http://web.zscbb.com/</id><updated>2014-03-21T00:00:00+08:00</updated><entry><title>[转]主宰计算机的10个算法</title><link href="http://web.zscbb.com/posts/2014/03/zhuan-zhu-zai-ji-suan-ji-de-10ge-suan-fa/" rel="alternate"></link><updated>2014-03-21T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:web.zscbb.com,2014-03-21:posts/2014/03/zhuan-zhu-zai-ji-suan-ji-de-10ge-suan-fa/</id><summary type="html">
+&lt;p&gt;Reddit有篇帖子介绍了算法对我们现在生活的重要性，以及哪些算法对现代文明所做贡献最大。如果对算法有所了解，读这篇文章时你可能会问“作者知道算法为何物吗？”，或是“Facebook的‘信息流’(News Feed)算是一种算法吗？”，如果“信息流”是算法，那就可以把所有事物都归结为一种算法。才疏学浅，结合那篇帖子，接下来我试着解释一下算法是什么，又是哪10个算法正在主导我们的世界。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="\images\0.jpg"/&gt;&lt;/p&gt;
+&lt;h1 id="_1"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;什么是算法？&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;简而言之，任何定义明确的计算步骤都可称为算法，接受一个或一组值为输入，输出一个或一组值。(来源：homas H. Cormen, Chales E. Leiserson 《算法导论第3版》)&lt;/p&gt;
+&lt;p&gt;可以这样理解，算法是用来解决特定问题的一系列步骤(不仅计算机需要算法，我们在日常生活中也在使用算法)。算法必须具备如下3个重要特性：&lt;/p&gt;
+&lt;p&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;&lt;strong&gt;[1] 有穷性。&lt;/strong&gt;&lt;/span&gt;执行有限步骤后，算法必须中止。&lt;/p&gt;
+&lt;p&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;&lt;strong&gt;[2] 确切性。&lt;/strong&gt;&lt;/span&gt;算法的每个步骤都必须确切定义。&lt;/p&gt;
+&lt;p&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;&lt;strong&gt;[3] 可行性。&lt;/strong&gt;&lt;/span&gt;特定算法须可以在特定的时间内解决特定问题，&lt;/p&gt;
+&lt;p&gt;其实，算法虽然广泛应用在计算机领域，但却完全源自数学。实际上，最早的数学算法可追溯到公元前1600年-Babylonians有关求因式分解和平方根的算法。&lt;/p&gt;
+&lt;p&gt;那么又是哪10个计算机算法造就了我们今天的生活呢？请看下面的表单，排名不分先后：&lt;/p&gt;
+&lt;h1 id="1merge-sortquick-sortheap-sort"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;1.归并排序(MERGE SORT)，快速排序(QUICK SORT)和堆积排序(HEAP SORT)&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="" src="\images\1.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;哪个排序算法效率最高？这要看情况。这也就是我把这3种算法放在一起讲的原因，可能你更常用其中一种，不过它们各有千秋。&lt;/p&gt;
+&lt;p&gt;归并排序算法，是目前为止最重要的算法之一，是分治法的一个典型应用，由数学家John von Neumann于1945年发明。&lt;/p&gt;
+&lt;p&gt;快速排序算法，结合了集合划分算法和分治算法，不是很稳定，但在处理随机列阵(AM-based arrays)时效率相当高。&lt;/p&gt;
+&lt;p&gt;堆积排序，采用优先伫列机制，减少排序时的搜索时间，同样不是很稳定。&lt;/p&gt;
+&lt;p&gt;与早期的排序算法相比(如冒泡算法)，这些算法将排序算法提上了一个大台阶。也多亏了这些算法，才有今天的数据发掘，人工智能，链接分析，以及大部分网页计算工具。&lt;/p&gt;
+&lt;h1 id="2"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;2. 傅立叶变换和快速傅立叶变换&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;这两种算法简单，但却相当强大，整个数字世界都离不开它们，其功能是实现时间域函数与频率域函数之间的相互转化。能看到这篇文章，也是托这些算法的福。&lt;/p&gt;
+&lt;p&gt;因特网，WIFI，智能机，座机，电脑，路由器，卫星等几乎所有与计算机相关的设备都或多或少与它们有关。不会这两种算法，你根本不可能拿到电子，计算机或者通信工程学位。(USA)&lt;/p&gt;
+&lt;h1 id="3-dijkstras-algorithm"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;3.代克思托演算法 (Dijkstra’s algorithm)&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;可以这样说，如果没有这种算法，因特网肯定没有现在的高效率。只要能以“图”模型表示的问题，都能用这个算法找到“图”中两个节点间的最短距离。&lt;/p&gt;
+&lt;p&gt;虽然如今有很多更好的方法来解决最短路径问题，但代克思托演算法的稳定性仍无法取代。&lt;/p&gt;
+&lt;h1 id="4-rsa"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;4. RSA非对称加密算法&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="" src="\images\2.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;毫不夸张地说，如果没有这个算法对密钥学和网络安全的贡献，如今因特网的地位可能就不会如此之高。现在的网络毫无安全感，但遇到钱相关的问题时我们必需要保证有足够的安全感，如果你觉得网络不安全，肯定不会傻乎乎地在网页上输入自己的银行卡信息。&lt;/p&gt;
+&lt;p&gt;RSA算法，密钥学领域最牛叉的算法之一，由RSA公司的三位创始人提出，奠定了当今的密钥研究领域。用这个算法解决的问题简单又复杂：保证安全的情况下，如何在独立平台和用户之间分享密钥。&lt;/p&gt;
+&lt;h1 id="5-secure-hash-algorithm"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;5. 哈希安全算法(Secure Hash Algorithm)&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;确切地说，这不是一种算法，而是一组加密哈希函数，由美国国家标准技术研究所首先提出。无论是你的应用商店，电子邮件和杀毒软件，还是浏览器等等，都使用这种算法来保证你正常下载，以及是否被“中间人攻击”，或者“网络钓鱼”。&lt;/p&gt;
+&lt;h1 id="6-integer-factorization"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;6. 整数质因子分解算法(Integer factorization)&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;这其实是一个数学算法，不过已经广泛应用与计算机领域。如果没有这个算法，加密信息也不会如此安全。通过一系列步骤将，它可以将一个合成数分解成不可再分的数因子。&lt;/p&gt;
+&lt;p&gt;很多加密协议都采用了这个算法，就比如刚提到的RSA算法。&lt;/p&gt;
+&lt;h1 id="7-link-analysis"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;7. 链接分析算法(Link Analysis)&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="" src="\images\3.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;在因特网时代，不同入口间关系的分析至关重要。从搜索引擎和社交网站，到市场分析工具，都在不遗余力地寻找因特网的正真构造。&lt;/p&gt;
+&lt;p&gt;链接分析算法一直是这个领域最让人费解的算法之一，实现方式不一，而且其本身的特性让每个实现方式的算法发生异化，不过基本原理却很相似。&lt;/p&gt;
+&lt;p&gt;链接分析算法的机制其实很简单：你可以用矩阵表示一幅“图“，形成本征值问题。本征值问题可以帮助你分析这个“图”的结构，以及每个节点的权重。这个算法于1976年由Gabriel Pinski和Francis Narin提出。&lt;/p&gt;
+&lt;p&gt;谁会用这个算法呢？Google的网页排名，Facebook向你发送信息流时(所以信息流不是算法，而是算法的结果)，Google+和Facebook的好友推荐功能，LinkedIn的工作推荐，Youtube的视频推荐，等等。&lt;/p&gt;
+&lt;p&gt;普遍认为Google是首先使用这类算法的机构，不过其实早在1996年(Google问世2年前)李彦宏就创建的“RankDex”小型搜索引擎就使用了这个思路。而Hyper Search搜索算法建立者马西莫·马奇奥里也曾使用过类似的算法。这两个人都后来都成为了Google历史上的传奇人物。&lt;/p&gt;
+&lt;h1 id="8-proportional-integral-derivative-algorithm"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;8. 比例微积分算法(Proportional Integral Derivative Algorithm)&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="" src="\images\4.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;飞机，汽车，电视，手机，卫星，工厂和机器人等等事物中都有这个算法的身影。&lt;/p&gt;
+&lt;p&gt;简单来讲，这个算法主要是通过“控制回路反馈机制”，减小预设输出信号与真实输出信号间的误差。只要需要信号处理，或电子系统来控制自动化机械，液压和加热系统，都需要用到这个算个法。&lt;/p&gt;
+&lt;p&gt;没有它，就没有现代文明。&lt;/p&gt;
+&lt;h1 id="9"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;9. 数据压缩算法&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;数据压缩算法有很多种，哪种最好？这要取决于应用方向，压缩mp3，JPEG和MPEG-2文件都不一样。&lt;/p&gt;
+&lt;p&gt;哪里能见到它们？不仅仅是文件夹中的压缩文件。你正在看的这个网页就是使用数据压缩算法将信息下载到你的电脑上。除文字外，游戏，视频，音乐，数据储存，云计算等等都是。它让各种系统更轻松，效率更高。&lt;/p&gt;
+&lt;h1 id="10"&gt;&lt;span style="color: rgb(192, 0, 0); "&gt;10. 随机数生成算法&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;到如今，计算机还没有办法生成“正真的”随机数，但伪随机数生成算法就足够了。这些算法在许多领域都有应用，如网络连接，加密技术，安全哈希算法，网络游戏，人工智能，以及问题分析中的条件初始化。&lt;/p&gt;
+&lt;p&gt;这个表单并不完整，很多与我们密切相关的算法都没有提到，如机器学习和矩阵乘法。另外，知识有限，如有批漏，还望指正。&lt;/p&gt;</summary><category term="算法"></category></entry><entry><title>常用排序算法小记</title><link href="http://web.zscbb.com/posts/2013/05/chang-yong-pai-xu-suan-fa-xiao-ji/" rel="alternate"></link><updated>2013-05-21T00:00:00+08:00</updated><author><name>JustinCheung</name></author><id>tag:web.zscbb.com,2013-05-21:posts/2013/05/chang-yong-pai-xu-suan-fa-xiao-ji/</id><summary type="html">
+&lt;p&gt;排序算法很多地方都会用到，近期又重新看了一遍算法，并自己简单地实现了一遍，特此记录下来，为以后复习留点材料。&lt;/p&gt;
+&lt;p&gt;废话不多说，下面逐一看看经典的排序算法：&lt;/p&gt;
+&lt;h1 id="1"&gt;1. 选择排序&lt;/h1&gt;
+&lt;p&gt;选择排序的基本思想是遍历数组的过程中，以 i 代表当前需要排序的序号，则需要在剩余的 [i…n-1] 中找出其中的最小值，然后将找到的最小值与 i 指向的值进行交换。因为每一趟确定元素的过程中都会有一个选择最大值的子流程，所以人们形象地称之为选择排序。&lt;/p&gt;
+&lt;p&gt;举个实例来看看：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;初始： [38, 17, 16, 16, 7, 31, 39, 32, 2, 11]&lt;/p&gt;
+&lt;p&gt;i = 0:  [2 , 17, 16, 16, 7, 31, 39, 32, 38 , 11] (0th [38]&amp;lt;-&amp;gt;8th [2])&lt;/p&gt;
+&lt;p&gt;i = 1:  [2, 7 , 16, 16, 17 , 31, 39, 32, 38, 11] (1st [38]&amp;lt;-&amp;gt;4th [17])&lt;/p&gt;
+&lt;p&gt;i = 2:  [2, 7, 11 , 16, 17, 31, 39, 32, 38, 16 ] (2nd [11]&amp;lt;-&amp;gt;9th [16])&lt;/p&gt;
+&lt;p&gt;i = 3:  [2, 7, 11, 16, 17, 31, 39, 32, 38, 16] ( 无需交换 )&lt;/p&gt;
+&lt;p&gt;i = 4:  [2, 7, 11, 16, 16 , 31, 39, 32, 38, 17 ] (4th [17]&amp;lt;-&amp;gt;9th [16])&lt;/p&gt;
+&lt;p&gt;i = 5:  [2, 7, 11, 16, 16, 17 , 39, 32, 38, 31 ] (5th [31]&amp;lt;-&amp;gt;9th [17])&lt;/p&gt;
+&lt;p&gt;i = 6:  [2, 7, 11, 16, 16, 17, 31 , 32, 38, 39 ] (6th [39]&amp;lt;-&amp;gt;9th [31])&lt;/p&gt;
+&lt;p&gt;i = 7:  [2, 7, 11, 16, 16, 17, 31, 32, 38, 39] ( 无需交换 )&lt;/p&gt;
+&lt;p&gt;i = 8:  [2, 7, 11, 16, 16, 17, 31, 32, 38, 39] ( 无需交换 )&lt;/p&gt;
+&lt;p&gt;i = 9:  [2, 7, 11, 16, 16, 17, 31, 32, 38, 39] ( 无需交换 )&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;由例子可以看出，选择排序随着排序的进行（ i 逐渐增大），比较的次数会越来越少，但是不论数组初始是否有序，选择排序都会从 i 至数组末尾进行一次选择比较，所以给定长度的数组，选择排序的比较次数是固定的： 1 + 2 + 3 + …. + n = n * (n + 1) / 2 ，而交换的次数则跟初始数组的顺序有关，如果初始数组顺序为随机，则在最坏情况下，数组元素将会交换 n 次，最好的情况下则可能 0 次（数组本身即为有序）。&lt;/p&gt;
+&lt;p&gt;由此可以推出，选择排序的时间复杂度和空间复杂度分别为 O(n2 ) 和 O(1) （选择排序只需要一个额外空间用于数组元素交换）。&lt;/p&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/** &lt;/span&gt;
+&lt;span class="cm"&gt; * Selection Sorting &lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+SELECTION&lt;span class="o"&gt;(&lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Sortable&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;.&lt;/span&gt;length&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;++)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;selected&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="o"&gt;++)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;compareTo&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;selected&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;selected&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;            &lt;/span&gt;exchange&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;selected&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id="2"&gt;2. 插入排序&lt;/h1&gt;
+&lt;p&gt;插入排序的基本思想是在遍历数组的过程中，假设在序号 i 之前的元素即 [0..i-1] 都已经排好序，本趟需要找到 i 对应的元素 x 的正确位置 k ，并且在寻找这个位置 k 的过程中逐个将比较过的元素往后移一位，为元素 x “腾位置”，最后将 k 对应的元素值赋为 x ，插入排序也是根据排序的特性来命名的。&lt;/p&gt;
+&lt;p&gt;以下是一个实例，红色 标记的数字为插入的数字，被划掉的数字是未参与此次排序的元素，红色 标记的数字与被划掉数字之间的元素为逐个向后移动的元素，比如第二趟参与排序的元素为 [11, 31, 12] ，需要插入的元素为 12 ，但是 12 当前并没有处于正确的位置，于是我们需要依次与前面的元素 31 、 11 做比较，一边比较一边移动比较过的元素，直到找到第一个比 12 小的元素 11 时停止比较，此时 31 对应的索引 1 则是 12 需要插入的位置。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;初始：    [11, 31, 12, 5, 34, 30, 26, 38, 36, 18]&lt;/p&gt;
+&lt;p&gt;第一趟： [11, 31 , 12, 5, 34, 30, 26, 38, 36, 18] （无移动的元素）&lt;/p&gt;
+&lt;p&gt;第二趟： [11, 12 , 31, 5, 34, 30, 26, 38, 36, 18] （ 31 向后移动）&lt;/p&gt;
+&lt;p&gt;第三趟： [5 , 11, 12, 31, 34, 30, 26, 38, 36, 18] （ 11, 12, 31 皆向后移动）&lt;/p&gt;
+&lt;p&gt;第四趟： [5, 11, 12, 31, 34 , 30, 26, 38, 36, 18] （无移动的元素）&lt;/p&gt;
+&lt;p&gt;第五趟： [5, 11, 12, 30 , 31, 34, 26, 38, 36, 18] （ 31, 34 向后移动）&lt;/p&gt;
+&lt;p&gt;第六趟： [5, 11, 12, 26 , 30, 31, 34, 38, 36, 18] （ 30, 31, 34 向后移动）&lt;/p&gt;
+&lt;p&gt;第七趟： [5, 11, 12, 26, 30, 31, 34, 38 , 36, 18] （无移动的元素）&lt;/p&gt;
+&lt;p&gt;第八趟： [5, 11, 12, 26, 30, 31, 34, 36 , 38, 18] （ 38 向后移动）&lt;/p&gt;
+&lt;p&gt;第九趟： [5, 11, 12, 18 , 26, 30, 31, 34, 36, 38] （ 26, 30, 31, 34, 36, 38 向后移动）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;插入排序会优于选择排序，理由是它在排序过程中能够利用前部分数组元素已经排好序的一个优势，有效地减少一些比较的次数，当然这种优势得看数组的初始顺序如何，最坏的情况下（给定的数组恰好为倒序）插入排序需要比较和移动的次数将会等于 1 + 2 + 3… + n = n * (n + 1) / 2 ，这种极端情况下，插入排序的效率甚至比选择排序更差。因此插入排序是一个不稳定的排序方法，插入效率与数组初始顺序息息相关。一般情况下，插入排序的时间复杂度和空间复杂度分别为 O(n2 ) 和 O(1) 。&lt;/p&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/** &lt;/span&gt;
+&lt;span class="cm"&gt; * Insertion Sorting &lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+INSERTION&lt;span class="o"&gt;(&lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Sortable&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;.&lt;/span&gt;length&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;++)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;toInsert&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;i&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="o"&gt;--)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;compareTo&lt;span class="o"&gt;(&lt;/span&gt;toInsert&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                     &lt;/span&gt;break&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;            &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;toInsert&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id="3"&gt;3. 冒泡排序&lt;/h1&gt;
+&lt;p&gt;冒泡排序可以算是最经典的排序算法了，记得小弟上学时最先接触的也就是这个算法了，因为实现方法最简单，两层 for 循环，里层循环中判断相邻两个元素是否逆序，是的话将两个元素交换，外层循环一次，就能将数组中剩下的元素中最小的元素“浮”到最前面，所以称之为冒泡排序。&lt;/p&gt;
+&lt;p&gt;照例举个简单的实例吧：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;初始状态：   [24, 19, 26, 39, 36, 7, 31, 29, 38, 23]&lt;/p&gt;
+&lt;p&gt;内层第一趟： [24, 19, 26, 39, 36, 7, 31, 29, 23 , 38 ] （ 9th [23]&amp;lt;-&amp;gt;8th [38 ）&lt;/p&gt;
+&lt;p&gt;内层第二趟： [24, 19, 26, 39, 36, 7, 31, 23 , 29 , 38] （ 8th [23]&amp;lt;-&amp;gt;7th [29] ）&lt;/p&gt;
+&lt;p&gt;内层第三趟： [24, 19, 26, 39, 36, 7, 23 , 31 , 29, 38] （ 7th [23]&amp;lt;-&amp;gt;6th [31] ）&lt;/p&gt;
+&lt;p&gt;内层第四趟： [24, 19, 26, 39, 36, 7, 23, 31, 29, 38] （ 7 、 23 都位于正确的顺序，无需交换）&lt;/p&gt;
+&lt;p&gt;内层第五趟： [24, 19, 26, 39, 7 , 36 , 23, 31, 29, 38] （ 5th [7]&amp;lt;-&amp;gt;4th [36] ）&lt;/p&gt;
+&lt;p&gt;内层第六趟： [24, 19, 26, 7 , 39 , 36, 23, 31, 29, 38] （ 4th [7]&amp;lt;-&amp;gt;3rd [39] ）&lt;/p&gt;
+&lt;p&gt;内层第七趟： [24, 19, 7 , 26 , 39, 36, 23, 31, 29, 38] （ 3rd [7]&amp;lt;-&amp;gt;2nd [26] ）&lt;/p&gt;
+&lt;p&gt;内层第八趟： [24, 7 , 19 , 26, 39, 36, 23, 31, 29, 38] （ 2nd [7]&amp;lt;-&amp;gt;1st [19] ）&lt;/p&gt;
+&lt;p&gt;内层第九趟： [7 , 24 , 19, 26, 39, 36, 23, 31, 29, 38] （ 1st [7]&amp;lt;-&amp;gt;0th [24] ）&lt;/p&gt;
+&lt;p&gt;…...&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其实冒泡排序跟选择排序比较相像，比较次数一样，都为 n * (n + 1) / 2 ，但是冒泡排序在挑选最小值的过程中会进行额外的交换（冒泡排序在排序中只要发现相邻元素的顺序不对就会进行交换，与之对应的是选择排序，只会在内层循环比较结束之后根据情况决定是否进行交换），所以在我看来，选择排序属于冒泡排序的改进版。&lt;/p&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/** &lt;/span&gt;
+&lt;span class="cm"&gt; * Bubble Sorting, it's very similar with Insertion Sorting &lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+BUBBLE&lt;span class="o"&gt;(&lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Sortable&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;length&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;.&lt;/span&gt;length&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;lastExchangedIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;length&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;++)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mark&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;flag&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;identity&lt;span class="w"&gt; &lt;/span&gt;whether&lt;span class="w"&gt; &lt;/span&gt;exchange&lt;span class="w"&gt; &lt;/span&gt;happened&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;false&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;isExchanged&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;false&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;last&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;and&lt;span class="w"&gt; &lt;/span&gt;exchange&lt;span class="w"&gt; &lt;/span&gt;happened&lt;span class="w"&gt; &lt;/span&gt;before&lt;span class="w"&gt; &lt;/span&gt;reaching&lt;span class="w"&gt; &lt;/span&gt;index&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;currOrderedIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lastExchangedIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;lastExchangedIdx&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;length&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;currOrderedIdx&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="o"&gt;--)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;compareTo&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;exchange&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;isExchanged&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;true&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;lastExchangedIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;no&lt;span class="w"&gt; &lt;/span&gt;exchange&lt;span class="w"&gt; &lt;/span&gt;happen&lt;span class="w"&gt; &lt;/span&gt;means&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;already&lt;span class="w"&gt; &lt;/span&gt;in&lt;span class="w"&gt; &lt;/span&gt;order&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;isExchanged&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;false&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;break&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id="4"&gt;4. 希尔排序&lt;/h1&gt;
+&lt;p&gt;希尔排序的诞生是由于插入排序在处理大规模数组的时候会遇到需要移动太多元素的问题。希尔排序的思想是将一个大的数组“分而治之”，划分为若干个小的数组，以 gap 来划分，比如数组 [1, 2, 3, 4, 5, 6, 7, 8] ，如果以 gap = 2 来划分，可以分为 [1, 3, 5, 7] 和 [2, 4, 6, 8] 两个数组（对应的，如 gap = 3 ，则划分的数组为： [1, 4, 7] 、 [2, 5, 8] 、 [3, 6] ）然后分别对划分出来的数组进行插入排序，待各个子数组排序完毕之后再减小 gap 值重复进行之前的步骤，直至 gap = 1 ，即对整个数组进行插入排序，此时的数组已经基本上快排好序了，所以需要移动的元素会很小很小，解决了插入排序在处理大规模数组时较多移动次数的问题。&lt;/p&gt;
+&lt;p&gt;具体实例请参照插入排序。&lt;/p&gt;
+&lt;p&gt;希尔排序是插入排序的改进版，在数据量大的时候对效率的提升帮助很大，数据量小的时候建议直接使用插入排序就好了。&lt;/p&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/** &lt;/span&gt;
+&lt;span class="cm"&gt; * Shell Sorting &lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+SHELL&lt;span class="o"&gt;(&lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Sortable&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;length&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;.&lt;/span&gt;length&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;gap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;use&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;most&lt;span class="w"&gt; &lt;/span&gt;next&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;length&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;as&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;first&lt;span class="w"&gt; &lt;/span&gt;gap&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;gap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;length&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;gap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;gap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;gap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;gap&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;length&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;++)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;next&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;i&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="kr"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;gap&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;gap&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;compareTo&lt;span class="o"&gt;(&lt;/span&gt;next&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;already&lt;span class="w"&gt; &lt;/span&gt;find&lt;span class="w"&gt; &lt;/span&gt;its&lt;span class="w"&gt; &lt;/span&gt;position&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                        &lt;/span&gt;break&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;                    &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;gap&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;gap&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;next&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;gap&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id="5"&gt;5. 归并排序&lt;/h1&gt;
+&lt;p&gt;归并排序采用的是递归来实现，属于“分而治之”，将目标数组从中间一分为二，之后分别对这两个数组进行排序，排序完毕之后再将排好序的两个数组“归并”到一起，归并排序最重要的也就是这个“归并”的过程，归并的过程中需要额外的跟需要归并的两个数组长度一致的空间，比如需要规定的数组分别为： [3, 6, 8, 11] 和 [1, 3, 12, 15] （虽然逻辑上被划为为两个数组，但实际上这些元素还是位于原来数组中的，只是通过一些 index 将其划分成两个数组，原数组为 [3, 6, 8, 11, 1, 3, 12, 15 ，我们设置三个指针 lo, mid, high 分别为 0,3,7 就可以实现逻辑上的子数组划分）那么需要的额外数组的长度为 4 + 4 = 8 。归并的过程可以简要地概括为如下：&lt;/p&gt;
+&lt;p&gt;1） 将两个子数组中的元素复制到新数组 copiedArray 中，以前面提到的例子为例，则 copiedArray = [3, 6, 8, 11, 1, 3, 12, 15] ；
+2） 设置两个指针分别指向原子数组中对应的第一个元素，假定这两个指针取名为 leftIdx 和 rightIdx ，则 leftIdx = 0 （对应 copiedArray 中的第一个元素 [3] ）， rightIdx = 4 （对应 copiedArray 中的第五个元素 [1] ）；
+3） 比较 leftIdx 和 rightIdx 指向的数组元素值，选取其中较小的一个并将其值赋给原数组中对应的位置 i ，赋值完毕后分别对参与赋值的这两个索引做自增 1 操作，如果 leftIdx 或 rigthIdx 值已经达到对应数组的末尾，则余下只需要将剩下数组的元素按顺序 copy 到余下的位置即可。
+下面给个归并的具体实例：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第一趟：&lt;/p&gt;
+&lt;p&gt;辅助数组 [21 , 28, 39 | 35, 38] （数组被拆分为左右两个子数组，以 | 分隔开）&lt;/p&gt;
+&lt;p&gt;[21 ,  ,  ,  ,  ] （第一次 21 与 35 比较 , 左边子数组胜出， leftIdx = 0 ， i = 0 ）&lt;/p&gt;
+&lt;p&gt;第二趟：&lt;/p&gt;
+&lt;p&gt;辅助数组 [21, 28 , 39 | 35, 38]&lt;/p&gt;
+&lt;p&gt;[21 , 28,  ,  ,  ] （第二次 28 与 35 比较，左边子数组胜出， leftIdx = 1 ， i = 1 ）&lt;/p&gt;
+&lt;p&gt;第三趟： [21, 28, 39 | 35 , 38]&lt;/p&gt;
+&lt;p&gt;[21 , 28 , 35,  ,  ] （第三次 39 与 35 比较，右边子数组胜出， rightIdx = 0 ， i = 2 ）&lt;/p&gt;
+&lt;p&gt;第四趟： [21, 28, 39 | 35, 38 ]&lt;/p&gt;
+&lt;p&gt;[21 , 28 , 35 , 38,  ] （第四次 39 与 38 比较，右边子数组胜出， rightIdx = 1 ， i = 3 ）&lt;/p&gt;
+&lt;p&gt;第五趟： [21, 28, 39 | 35, 38]&lt;/p&gt;
+&lt;p&gt;[21 , 28 , 35 , 38 , 39] （第五次时右边子数组已复制完，无需比较 leftIdx = 2 ， i = 4 ）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以上便是一次归并的过程，我们可以将整个需要排序的数组做有限次拆分（每次一分为二）直到分为长度为 1 的小数组为止，长度为 1 时数组已经不用排序了。在这之后再逆序（由于采用递归）依次对这些数组进行归并操作，直到最后一次归并长度为 n / 2 的子数组，归并完成之后数组排序也完成。&lt;/p&gt;
+&lt;p&gt;归并排序需要的额外空间是所有排序中最多的，每次归并需要与参与归并的两个数组长度之和相同个元素（为了提供辅助数组）。则可以推断归并排序的空间复杂度为 1 + 2 + 4 + … + n = n * ( n + 2) / 4 （忽略了 n 的奇偶性的判断），时间复杂度比较难估，这里小弟也忘记是多少了（囧）。&lt;/p&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/** &lt;/span&gt;
+&lt;span class="cm"&gt; * Merge sorting &lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+MERGE&lt;span class="o"&gt;(&lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Sortable&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;this&lt;span class="o"&gt;.&lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;.&lt;/span&gt;length&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;private&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;OPTIMIZE&lt;span class="w"&gt; &lt;/span&gt;ONE&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;substring&lt;span class="s"&gt;'s length is less than 20,  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;use&lt;span class="w"&gt; &lt;/span&gt;insertion&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;reduce&lt;span class="w"&gt; &lt;/span&gt;recursive&lt;span class="w"&gt; &lt;/span&gt;invocation&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;hi&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;++)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;toInsert&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;i&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="o"&gt;--)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;compareTo&lt;span class="o"&gt;(&lt;/span&gt;toInsert&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                        &lt;/span&gt;break&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;                &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;j&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;toInsert&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;mid&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;hi&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mid&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mid&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;merge&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mid&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;private&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;merge&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;mid&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;OPTIMIZE&lt;span class="w"&gt; &lt;/span&gt;TWO&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;it&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;already&lt;span class="w"&gt; &lt;/span&gt;in&lt;span class="w"&gt; &lt;/span&gt;right&lt;span class="w"&gt; &lt;/span&gt;order&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;skip&lt;span class="w"&gt; &lt;/span&gt;this&lt;span class="w"&gt; &lt;/span&gt;merge&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;since&lt;span class="w"&gt; &lt;/span&gt;there&lt;span class="s"&gt;'s no need to do so  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;leftEndCompareToRigthStart&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;mid&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;compareTo&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;mid&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;leftEndCompareToRigthStart&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;leftEndCompareToRigthStart&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;SuppressWarnings&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"unchecked"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arrayCopy&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="err"&gt;[&lt;/span&gt;hi&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;System&lt;span class="o"&gt;.&lt;/span&gt;arraycopy&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arrayCopy&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arrayCopy&lt;span class="o"&gt;.&lt;/span&gt;length&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;lowIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;highIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mid&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;++)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;lowIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mid&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;left&lt;span class="w"&gt; &lt;/span&gt;sub&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="w"&gt; &lt;/span&gt;exhausted&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;i&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arrayCopy&lt;span class="err"&gt;[&lt;/span&gt;highIdx&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;highIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;right&lt;span class="w"&gt; &lt;/span&gt;sub&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="w"&gt; &lt;/span&gt;exhausted&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;i&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arrayCopy&lt;span class="err"&gt;[&lt;/span&gt;lowIdx&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;arrayCopy&lt;span class="err"&gt;[&lt;/span&gt;lowIdx&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;compareTo&lt;span class="o"&gt;(&lt;/span&gt;arrayCopy&lt;span class="err"&gt;[&lt;/span&gt;highIdx&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;i&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arrayCopy&lt;span class="err"&gt;[&lt;/span&gt;lowIdx&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;i&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arrayCopy&lt;span class="err"&gt;[&lt;/span&gt;highIdx&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id="6"&gt;6. 快速排序&lt;/h1&gt;
+&lt;p&gt;快速排序也是用归并方法实现的一个“分而治之”的排序算法，它的魅力之处在于它能在每次partition（排序算法的核心所在）都能为一个数组元素确定其排序最终正确位置（一次就定位准，下次循环就不考虑这个元素了）。&lt;/p&gt;
+&lt;p&gt;快速排序的partition操作按以下逻辑进行，假定本次排序的数组为arr：&lt;/p&gt;
+&lt;p&gt;1） 选择一个元素（为了简单起见，就选择本次partition的第一个元素，即arr[0]）作为基准元素，接下来的步骤会为其确定排序完成后最终的位置；&lt;/p&gt;
+&lt;p&gt;2） 1）  接下来需要遍历[1…n-1]对应的数组元素以帮助找到arr[0]值（以v替代）对应的位置，定义i为当前访问数组的索引，lt为值小于v的最大索引，gt为值大于v的最小索引，那么在遍历过程中，如果发现i指向的值与v相等，则将i值加1，继续下一次比较；如果i指向的值比v小，则将i和lt对应的元素进行交换，然后分别将两个索引加1；如果i指向的值比v大，则将i与gt对应的元素进行交换，然后i自增，gt自减。循环遍历完成（i &amp;gt; gt时结束）之后可以保证[0…lt-1]对应的值都是比v小的，[lt..gt]之间的值都是与v相等的，[gt+1…n-1]对应的值都是比v大的。&lt;/p&gt;
+&lt;p&gt;3） 分别对[0…lt-1]和[gt+1…n-1]两个子数组进行排序，如此递归，直至子子子数组的长度为0。&lt;/p&gt;
+&lt;p&gt;下面举个partition的具体实例：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;初始（i = 1, lt = 0, gt = 8）：&lt;/p&gt;
+&lt;p&gt;[41, 59, 43, 26, 63, 30, 29, 26, 42]（需要确定位置的为0th[41]）&lt;/p&gt;
+&lt;p&gt;第一趟（i = 1, lt = 0, gt = 8）：&lt;/p&gt;
+&lt;p&gt;[41, 42, 43, 26, 63, 30, 29, 26, 59]（1st[59] &amp;gt; 41，1st[59]&amp;lt;-&amp;gt;8th[42]，gt--）&lt;/p&gt;
+&lt;p&gt;第二趟（i = 1, lt = 0, gt = 7）：&lt;/p&gt;
+&lt;p&gt;[41, 26, 43, 26, 63, 30, 29, 42, 59]（1st[42] &amp;gt; 41，1st[42]&amp;lt;-&amp;gt;7th[26]，gt--）&lt;/p&gt;
+&lt;p&gt;第三趟（i = 1, lt = 0, gt = 6）：&lt;/p&gt;
+&lt;p&gt;[26, 41, 43, 26, 63, 30, 29, 42, 59]（1st[26] &amp;lt; 41, 1st[26]&amp;lt;-&amp;gt;0st[41]，i++, lt++）&lt;/p&gt;
+&lt;p&gt;第四趟（i = 2, lt = 1, gt = 6）：&lt;/p&gt;
+&lt;p&gt;[26, 41, 29, 26, 63, 30, 43, 42, 59]（2nd[43] &amp;gt; 41，2nd[43]&amp;lt;-&amp;gt;6th[29]，gt--）&lt;/p&gt;
+&lt;p&gt;第五趟（i = 2, lt = 1, gt = 5）：&lt;/p&gt;
+&lt;p&gt;[26, 29, 41, 26, 63, 30, 43, 42, 59]（2nd[29] &amp;lt; 41, 2nd[29]&amp;lt;-&amp;gt;1st[41]，i++，lt++）&lt;/p&gt;
+&lt;p&gt;第六趟（i = 3, lt = 2, gt = 5）：    &lt;/p&gt;
+&lt;p&gt;[26, 29, 26, 41, 63, 30, 43, 42, 59]（3rd[26] &amp;lt; 41，3rd[26]&amp;lt;-&amp;gt;2nd[41]，i++，lt++）&lt;/p&gt;
+&lt;p&gt;第七趟（i = 4, lt = 3, gt = 5）：&lt;/p&gt;
+&lt;p&gt;[26, 29, 26, 41, 30, 63, 43, 42, 59] （4th[63] &amp;gt; 41，4th[63]&amp;lt;-&amp;gt;5th[30]，gt--）&lt;/p&gt;
+&lt;p&gt;第八趟（i = 4, lt = 3, gt = 4）：    &lt;/p&gt;
+&lt;p&gt;[26, 29, 26, 30, 41, 63, 43, 42, 59]（4th[30] &amp;lt; 41，4th[30]&amp;lt;-&amp;gt;3rd[41]，i++，lt++）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可以看出，在一次partition之后，以41为分割线，41左侧皆为比它小的元素，41右侧皆为比它大或相等的元素（当然这个实例比较特殊，没有出现和41相等的元素）。快速排序顾名思义就是排序速度非常快，后面我会放在我机器上跑各个排序方法的时间对比图。值得一提的是JDK中在Arrays工具内中内置的sort方法就是接合插入排序和三路快速排序实现的，有兴趣的同学可以看看JDK的源码。&lt;/p&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/** &lt;/span&gt;
+&lt;span class="cm"&gt; * Quick Sorting &lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+QUICK&lt;span class="o"&gt;(&lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;Sortable&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;this&lt;span class="o"&gt;.&lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;.&lt;/span&gt;length&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;private&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;extends&lt;span class="w"&gt; &lt;/span&gt;Comparable&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;T&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;void&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;T&lt;span class="err"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;boolean&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;lo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;T&lt;span class="w"&gt; &lt;/span&gt;toFinal&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;lo&lt;span class="err"&gt;];&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;leftIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;rightIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kr"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;rightIdx&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="err"&gt;[&lt;/span&gt;i&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;compareTo&lt;span class="o"&gt;(&lt;/span&gt;toFinal&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;i&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;compare&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;exchange&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;leftIdx&lt;span class="o"&gt;++,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;++)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;exchange&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;rightIdx&lt;span class="o"&gt;--,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;partially&lt;span class="w"&gt; &lt;/span&gt;sort&lt;span class="w"&gt; &lt;/span&gt;left&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="w"&gt; &lt;/span&gt;and&lt;span class="w"&gt; &lt;/span&gt;right&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;no&lt;span class="w"&gt; &lt;/span&gt;need&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;include&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;leftIdx&lt;span class="o"&gt;-&lt;/span&gt;th&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kr"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;rightIdx&lt;span class="o"&gt;-&lt;/span&gt;th&lt;span class="w"&gt; &lt;/span&gt;elements&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;since&lt;span class="w"&gt; &lt;/span&gt;they&lt;span class="w"&gt; &lt;/span&gt;are&lt;span class="w"&gt; &lt;/span&gt;already&lt;span class="w"&gt; &lt;/span&gt;in&lt;span class="w"&gt; &lt;/span&gt;its&lt;span class="w"&gt; &lt;/span&gt;final&lt;span class="w"&gt; &lt;/span&gt;position&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;lo&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;leftIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;sort&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;rightIdx&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hi&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ascend&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里是我测试时的测试用例，利用了枚举和策略模式的优势，切换排序算法时相对会比较容易。&lt;/p&gt;
+&lt;p&gt;以下为经典排序算法在我机器上运行的耗时对比图（测试用的随机数组长度为50000），直接截的测试用例的图。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="\images\排序测试.png"/&gt;&lt;/p&gt;</summary><category term="算法"></category><category term="Java"></category></entry><entry><title>利用等概率Rand5产生等概率Rand3</title><link href="http://web.zscbb.com/posts/2011/08/build-rand3-from-rand5/" rel="alternate"></link><updated>2013-11-07T22:00:00+08:00</updated><author><name>Calf</name></author><id>tag:web.zscbb.com,2011-08-02:posts/2011/08/build-rand3-from-rand5/</id><summary type="html">&lt;p&gt;问题本身很明确，但不知道起个什么题目好，姑且先这么说吧。&lt;/p&gt;
+&lt;p&gt;问题描述：现在有一个叫做Rand5的函数，可以生成等概率的[0,
+5)范围内的随机整数，要求利用此函数写一个Rand3函数（除此之外，不能再使用任何能产生随机数的函数或数据源），生成等概率的[0,
+3)范围内的随机整数。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;我第一次遇到这个问题的时候，着实犯了一回傻，自以为是地证明了这个题目是无解的。其实从概率的角度来看，题目的要求就是，利用一个1/5的概率源，通过某种方式产生出1/3的概率输出。我们都知道，概率运算法则有加法和乘法，而在我的记忆中，算法是“在有限步骤内求解某一问题所使用的一组定义明确的规则”，算法的一个重要特征就是有穷性，即一个算法必须保证执行有限步之后结束。那么有限多个1/5通过加法和乘法是不可能的到1/3这个数值的，因为加法和乘法都不会给分母带来新的因子，那么分母中的3根本就不可能出现。&lt;/p&gt;
+&lt;p&gt;然而我忽略了这样一个式子：&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\sum_{i=0}^\infty \left(\frac{2}{5}\right)^i = \frac{1}{1-\frac{2}{5}} = \frac{5}{3}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;基于这个想法，我们来看看这个算法是什么样子的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;Rand3&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Rand5&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;Rand3&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Rand5&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;算法很简单，x是我们最终要输出的数字，只要它不在[0,
+3)范围内，就不断地调用Rand5来更新它。直观地看，算法输出的数字只有0、1、2这三个，而且对任何一个都没有偏袒，那么显然每个数字的概率都是1/3，那让我们来严格地计算一下。&lt;/p&gt;
+&lt;p&gt;以输出0为例，看看概率是多少。x的第一个有效数值是通过Rand5得到的。Rand5返回0的概率是1/5，如果这事儿发生了，我们就得到了0，否则只有当Rand5返回3或4的时候，我们才有机会再次调用它来得到新的数据。第二次调用Rand5之后，又是有1/5的概率得到0，2/5的概率得到3或4导致循环继续执行下去，如此反复。因此概率的计算公式为：&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\begin{array}{rcl}
+p &amp;amp; = &amp;amp; \frac{1}{5}+\frac{2}{5}\times\left(\frac{1}{5}+\frac{2}{5}\times\left(\frac{1}{5}+\frac{2}{5}\times\left(\cdots\right)\right)\right) \\
+&amp;amp; = &amp;amp; \frac{1}{5}\times\sum_{i=0}^\infty \left(\frac{2}{5}\right)^i \\
+&amp;amp; = &amp;amp; \frac{1}{5}\times\frac{1}{1-\frac{2}{5}} \\
+&amp;amp; = &amp;amp; \frac{1}{5}\times\frac{5}{3} \\
+&amp;amp; = &amp;amp; \frac{1}{3} \end{array}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;喏，计算表明，Rand3输出0的概率确实是1/3，对于另外两个数字也是一样的。&lt;/p&gt;
+&lt;p&gt;那么这段代码是不是一个算法呢，它是否满足算法的有穷性呢？我不能确定，虽然它不停机的概率是0，然而这个概率是一个极限值，唉，回去复习极限知识先。&lt;/p&gt;
+&lt;p&gt;【2013年11月7日添加】今天想到，对于上面那个函数，需要再了解一下它消耗的时间。具体来讲，就是要知道平均每调用一次Rand3，相当于调用了多少次Rand5。根据算法可以知道，Rand3函数执行一次，有3/5的概率是只调用一次Rand5就能停机；刚好调用两次Rand5后停机的概率是(2/5) * (3/5)。类推下去，刚好调用k次Rand5后停机的概率应该是(2/5) ^ (k-1) * (3/5)。根据这个概率分布，可以计算出停机前Rand5被调用次数的数学期望，即&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\sum_{k=1}^{\infty}{k\times p(k)}
+=\sum_{k=1}^{\infty}k \frac{3}{5} \left(\frac{2}{5}\right)^{k-1}
+=\frac{3}{5}\times\frac{1}{\left(1-\frac{2}{5}\right)^2}
+=\frac{5}{3}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;可见，Rand3函数每运行一次，平均需要调用1.67次Rand5。&lt;/p&gt;
+&lt;p&gt;更一般地，当我们依据上述算法，将一种分布的随机信号转换成另外一种随机信号时，如果每消耗m个源信号，就有p的概率可以产生一个目标信号，那么平均来讲，停机前需要使用的源信号数据个数的期望为：&lt;/p&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+\sum_{k=1}^{\infty}k\cdot m\cdot p\cdot (1-p)^{k-1}=\frac{m}{p}
+\end{equation*}
+&lt;/div&gt;
+&lt;p&gt;【2013年11月7日添加结束】&lt;/p&gt;
+&lt;p&gt;改变一下题目，如果要求利用Rand5编写Rand7怎么办？很简单，用两个Rand5可以拼出Rand25，然后就用前面的方法即可：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;Rand7&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Rand5&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;Rand5&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;Rand7&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Rand5&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;Rand5&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;【2013年11月7日】可以直接算出，按照这种方法，平均每运行一次Rand7，需要调用Rand5的次数。这里m等于2，p等于21/25，所以最后的结果是50/21，大约是2.38。&lt;/p&gt;
+&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</summary><category term="Probability"></category><category term="Interview Question"></category></entry></feed>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="JustinCheung" />
+        <meta name="copyright" content="JustinCheung" />
+
+
+<meta name="keywords" content="Web, redis, Writting, redis, " />
+
+<meta property="og:title" content="redis cluster 集群 安装 配置 详解 "/>
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" />
+<meta property="og:description" content="Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。 目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。 一，redis服务器说明 192.168.10.219 6379 192.168.10.219 6380 192.168.10.219 6381 192.168.10.220 6382 192.168.10.220 6383 192.168.10.220 6384 要让集群正常运作至少需要三个主节点，不过在刚开始试用集群功能时， 强烈建议使用六个节点： 其中三个为主节点 ..." />
+<meta property="og:site_name" content="JC's Box" />
+<meta property="og:article:author" content="JustinCheung" />
+<meta property="og:article:published_time" content="2015-06-23T00:00:00+08:00" />
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis cluster 集群 安装 配置 详解 ">
+<meta name="twitter:description" content="Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。 目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。 一，redis服务器说明 192.168.10.219 6379 192.168.10.219 6380 192.168.10.219 6381 192.168.10.220 6382 192.168.10.220 6383 192.168.10.220 6384 要让集群正常运作至少需要三个主节点，不过在刚开始试用集群功能时， 强烈建议使用六个节点： 其中三个为主节点 ...">
+
+        <title>redis cluster 集群 安装 配置 详解  · JC's Box
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://web.zscbb.com/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://web.zscbb.com/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://web.zscbb.com/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://web.zscbb.com/theme/css/custom.css" media="screen">
+        <link rel="shortcut icon" href="http://web.zscbb.com/theme/images/favicon.ico" type="image/x-icon" type="image/png" />
+        <link rel="icon" href="http://web.zscbb.com/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="http://web.zscbb.com/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://web.zscbb.com/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://web.zscbb.com/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="http://web.zscbb.com/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://web.zscbb.com/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="http://web.zscbb.com/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://web.zscbb.com/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="http://web.zscbb.com/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link href="http://web.zscbb.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="JC's Box - Full Atom Feed" />
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-50301243-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    </head>
+    <body>
+		
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://web.zscbb.com/"><span class=site-name>JC's Box</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://web.zscbb.com">Home</a></li>
+                            <li ><a href="http://web.zscbb.com/pages/about.html">About</a></li>
+                            <li ><a href="http://web.zscbb.com/categories.html">Categories</a></li>
+                            <li ><a href="http://web.zscbb.com/tags.html">Tags</a></li>
+                            <li ><a href="http://web.zscbb.com/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://web.zscbb.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="http://web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/"> redis cluster 集群 安装 配置 详解  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#redis">一，redis服务器说明</a></li>
+<li><a href="#rubyrubygems">二，安装ruby,rubygems</a></li>
+<li><a href="#redis300">三，安装redis3.0.0</a><ul>
+<li><a href="#1redis">1，安装redis</a></li>
+<li><a href="#2redis">2,配置redis</a></li>
+<li><a href="#3copy">3，copy配置文件，并修改端口</a></li>
+<li><a href="#4redis">4，启动并查看redis</a></li>
+</ul>
+</li>
+<li><a href="#_1">四，创建集群，并查看</a><ul>
+<li><a href="#1redis_1">1，创建redis集群</a></li>
+<li><a href="#2redis_1">2，查看redis集群状态</a></li>
+</ul>
+</li>
+<li><a href="#redis_1">五，测试redis集群</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+            
+<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集.redis3.0以前，只支持主从同步的，如果主的挂了，写入就成问题了。3.0出来后就可以很好帮我们解决这个问题。</p>
+<p>目前redis 3.0还不稳定，如果要用在生产环境中，要慎重。</p>
+<h1 id="redis">一，redis服务器说明</h1>
+<div class="highlight"><pre>192.168.10.219 6379  
+192.168.10.219 6380  
+192.168.10.219 6381
+
+192.168.10.220 6382  
+192.168.10.220 6383  
+192.168.10.220 6384
+</pre></div>
+<p><span style="color: #800080;"><strong>要让集群正常运作至少需要三个主节点，不过在刚开始试用集群功能时， 强烈建议使用六个节点： 其中三个为主节点， 而其余三个则是各个主节点的从节点。所有用二台机器，开6个redis进程，模拟6台机器。</strong></span></p>
+<h1 id="rubyrubygems">二，安装ruby,rubygems</h1>
+<div class="highlight"><pre># yum -y install gcc openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel gcc-c++ automake autoconf
+
+# yum -y install ruby rubygems   //安装ruby rubygems
+
+//换源  
+# gem source -l  
+# gem source --remove http://rubygems.org/  
+# gem sources -a http://ruby.taobao.org/  
+# gem source -l
+
+# gem install redis --version 3.0.0  //安装gem_redis  
+Successfully installed redis-3.0.0  
+1 gem installed  
+Installing ri documentation for redis-3.0.0...  
+Installing RDoc documentation for redis-3.0.0...
+</pre></div>
+<h1 id="redis300">三，安装redis3.0.0</h1>
+<h2 id="1redis">1，安装redis</h2>
+<div class="highlight"><pre># wget http://download.redis.io/releases/redis-3.0.0.tar.gz  
+# tar -xvzf redis-3.0.0.tar.gz  
+# cd redis-3.0.0  
+# make &amp;&amp; make install  
+# cd src  
+# cp redis-trib.rb /usr/local/bin
+
+# mkdir /etc/redis  
+# mkdir /var/log/redis
+</pre></div>
+<p><span style="color: #800080;"><strong>上述操作要先在二台机器上面都操作好。</strong></span></p>
+<h2 id="2redis">2,配置redis</h2>
+<div class="highlight"><pre>[root@slave2 redis-3.0.0]#  vim redis.conf   //解压的根目录，有redis.conf,做以下修改  
+port 6379  
+pidfile /var/run/redis-6379.pid  
+dbfilename dump-6379.rdb  
+appendfilename "appendonly-6379.aof"  
+cluster-config-file nodes-6379.conf  
+cluster-enabled yes  
+cluster-node-timeout 5000  
+appendonly yes
+</pre></div>
+<h2 id="3copy">3，copy配置文件，并修改端口</h2>
+<div class="highlight"><pre># cp redis.conf /etc/redis/redis-6379.conf  
+# cp redis.conf /etc/redis/redis-6380.conf  
+# cp redis.conf /etc/redis/redis-6381.conf
+
+# scp redis.conf 192.168.10.220:/etc/redis/redis-6382.conf  
+# scp redis.conf 192.168.10.220:/etc/redis/redis-6383.conf  
+# scp redis.conf 192.168.10.220:/etc/redis/redis-6384.conf
+
+# sed -i "s/6379/6380/g" /etc/redis/redis-6380.conf  
+# sed -i "s/6379/6381/g" /etc/redis/redis-6381.conf
+
+# sed -i "s/6379/6382/g" /etc/redis/redis-6382.conf  
+# sed -i "s/6379/6383/g" /etc/redis/redis-6383.conf  
+# sed -i "s/6379/6384/g" /etc/redis/redis-6384.conf
+</pre></div>
+<p><span style="color: #800080;"><strong>将配置文件分别copy到二台机器上，并替换端口：</strong></span></p>
+<div class="highlight"><pre># cat redis-6380.conf |awk '{if($0 !~ /^$/ &amp;&amp; $0 !~ /#/) {print $0}}' |grep 6380  
+pidfile /var/run/redis-6380.pid  
+port 6380  
+dbfilename dump-6380.rdb  
+appendfilename "appendonly-6380.aof"  
+cluster-config-file nodes-6380.conf
+</pre></div>
+<p><span style="color: #800080;"><strong>有5处修改端口的地方</strong></span></p>
+<h2 id="4redis">4，启动并查看redis</h2>
+<div class="highlight"><pre># redis-server /etc/redis/redis-6379.conf &gt; /var/log/redis/redis-6379.log 2&gt;&amp;1 &amp;  
+# redis-server /etc/redis/redis-6380.conf &gt; /var/log/redis/redis-6380.log 2&gt;&amp;1 &amp;  
+# redis-server /etc/redis/redis-6381.conf &gt; /var/log/redis/redis-6381.log 2&gt;&amp;1 &amp;
+
+# redis-server /etc/redis/redis-6382.conf &gt; /var/log/redis/redis-6382.log 2&gt;&amp;1 &amp;  
+# redis-server /etc/redis/redis-6383.conf &gt; /var/log/redis/redis-6383.log 2&gt;&amp;1 &amp;  
+# redis-server /etc/redis/redis-6384.conf &gt; /var/log/redis/redis-6384.log 2&gt;&amp;1 &amp;
+
+# netstat -tpnl |grep redis  
+tcp        0      0 0.0.0.0:6379                0.0.0.0:*                   LISTEN      7298/redis-server *  
+tcp        0      0 0.0.0.0:6380                0.0.0.0:*                   LISTEN      7299/redis-server *  
+tcp        0      0 0.0.0.0:6381                0.0.0.0:*                   LISTEN      7304/redis-server *  
+tcp        0      0 0.0.0.0:16379               0.0.0.0:*                   LISTEN      7298/redis-server *  
+tcp        0      0 0.0.0.0:16380               0.0.0.0:*                   LISTEN      7299/redis-server *  
+tcp        0      0 0.0.0.0:16381               0.0.0.0:*                   LISTEN      7304/redis-server *  
+tcp        0      0 :::6379                     :::*                        LISTEN      7298/redis-server *  
+tcp        0      0 :::6380                     :::*                        LISTEN      7299/redis-server *  
+tcp        0      0 :::6381                     :::*                        LISTEN      7304/redis-server *  
+tcp        0      0 :::16379                    :::*                        LISTEN      7298/redis-server *  
+tcp        0      0 :::16380                    :::*                        LISTEN      7299/redis-server *  
+tcp        0      0 :::16381                    :::*                        LISTEN      7304/redis-server *
+
+[root@slave2 redis]# ll /etc/redis/  
+总用量 156  
+-rw-r--r-- 1 root root     0 4月  30 23:54 appendonly-6379.aof  
+-rw-r--r-- 1 root root     0 5月   1 00:08 appendonly-6380.aof  
+-rw-r--r-- 1 root root     0 5月   1 00:08 appendonly-6381.aof  
+-rw-r--r-- 1 root root    18 5月   1 00:08 dump-6379.rdb  
+-rw-r--r-- 1 root root    18 5月   1 00:08 dump-6380.rdb  
+-rw-r--r-- 1 root root    18 5月   1 00:08 dump-6381.rdb  
+-rw-r--r-- 1 root root   763 5月   1 00:08 nodes-6379.conf  
+-rw-r--r-- 1 root root   763 5月   1 00:08 nodes-6380.conf  
+-rw-r--r-- 1 root root   763 5月   1 00:08 nodes-6381.conf  
+-rw-r--r-- 1 root root 41412 4月  30 23:30 redis-6379.conf  
+-rw-r--r-- 1 root root 41412 4月  30 23:39 redis-6380.conf  
+-rw-r--r-- 1 root root 41412 4月  30 23:39 redis-6381.conf
+</pre></div>
+<p>所有节点都启动成功，并不代表，他们就是集群了。</p>
+<h1 id="_1">四，创建集群，并查看</h1>
+<h2 id="1redis_1">1，创建redis集群</h2>
+<div class="highlight"><pre># redis-trib.rb create --replicas 1 192.168.10.219:6379 192.168.10.219:6380 192.168.10.219:6381 192.168.10.220:6382 192.168.10.220:6383 192.168.10.220:6384
+</pre></div>
+<h2 id="2redis_1">2，查看redis集群状态</h2>
+<div class="highlight"><pre>[root@slave2 redis]# redis-trib.rb check 192.168.10.219:6379  
+Connecting to node 192.168.10.219:6379: OK  
+Connecting to node 192.168.10.220:6384: OK  
+Connecting to node 192.168.10.219:6381: OK  
+Connecting to node 192.168.10.220:6383: OK  
+Connecting to node 192.168.10.220:6382: OK  
+Connecting to node 192.168.10.219:6380: OK  
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.10.219:6379)  
+M: d40d9a367c24784b0336c7b80fb4c87337e2cba6 192.168.10.219:6379  
+slots:5461-10922 (5462 slots) master  
+1 additional replica(s)  
+S: 5f00f163d0c0a540ea99daf004f55588a802327b 192.168.10.220:6384  
+slots: (0 slots) slave  
+replicates d40d9a367c24784b0336c7b80fb4c87337e2cba6  
+S: b3b1a848987b5a87a06888e126d5c9b16f871ff5 192.168.10.219:6381  
+slots: (0 slots) slave  
+replicates d2eb5a8a77f87888792428aed4692dfb907e7a1d  
+M: d2eb5a8a77f87888792428aed4692dfb907e7a1d 192.168.10.220:6383  
+slots:10923-16383 (5461 slots) master  
+1 additional replica(s)  
+M: a8eafe8b19d6a28c034917da13a43ce1230fe870 192.168.10.220:6382  
+slots:0-5460 (5461 slots) master  
+1 additional replica(s)  
+S: a87d207204a53ab599bf7f6ffb9d679d0eef4f25 192.168.10.219:6380 
+slots: (0 slots) slave 
+replicates a8eafe8b19d6a28c034917da13a43ce1230fe870  
+[OK] All nodes agree about slots configuration.  
+&gt;&gt;&gt; Check for open slots...  
+&gt;&gt;&gt; Check slots coverage...  
+[OK] All 16384 slots covered.
+</pre></div>
+<p>到这儿，redis集群就配置成功了</p>
+<h1 id="redis_1">五，测试redis集群</h1>
+<div class="highlight"><pre># redis-cli -c -p 6379 -h 192.168.10.219   //在219登录  
+192.168.10.219:6379&gt; set tank tank1    //设置测试值  
+-&gt; Redirected to slot [4407] located at 192.168.10.220:6382  
+OK   //直接转向到220 6382端口，数据存到了220 6382，不过有点奇怪  
+192.168.10.220:6382&gt; get tank   //可以取到值  
+"tank1"
+
+[root@manage redis]# redis-cli -c -p 6383 -h 192.168.10.220  //220机器，6383端口  
+192.168.10.220:6383&gt; get tank  
+-&gt; Redirected to slot [4407] located at 192.168.10.220:6382  //直接转向220 6382端口  
+"tank1"
+
+[root@manage redis]# ps aux |grep redis //查看进程  
+root      7310  0.2  0.9 137436  9724 pts/0    Sl   Apr30   0:09 redis-server *:6382 [cluster]  
+root      7311  0.2  0.9 137436  9776 pts/0    Sl   Apr30   0:09 redis-server *:6383 [cluster]  
+root      7316  0.2  0.9 137436  9944 pts/0    Sl   Apr30   0:10 redis-server *:6384 [cluster]  
+root      7478  0.0  0.0 103256   812 pts/0    S+   00:56   0:00 grep redis
+
+[root@manage redis]# kill -9 7310  //关闭220 6382端口，看数据会不会丢失
+
+[root@slave2 redis]# redis-trib.rb check 192.168.10.219:6379  //查看集群情况，任何接口都行  
+Connecting to node 192.168.10.219:6379: OK  
+Connecting to node 192.168.10.220:6384: OK  
+Connecting to node 192.168.10.219:6381: OK  
+Connecting to node 192.168.10.220:6383: OK  
+Connecting to node 192.168.10.219:6380: OK  
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.10.219:6379)  
+M: d40d9a367c24784b0336c7b80fb4c87337e2cba6 192.168.10.219:6379 
+slots:5461-10922 (5462 slots) master  
+1 additional replica(s)  
+S: 5f00f163d0c0a540ea99daf004f55588a802327b 192.168.10.220:6384 
+slots: (0 slots) slave  
+replicates d40d9a367c24784b0336c7b80fb4c87337e2cba6  
+S: b3b1a848987b5a87a06888e126d5c9b16f871ff5 192.168.10.219:6381  
+slots: (0 slots) slave  
+replicates d2eb5a8a77f87888792428aed4692dfb907e7a1d  
+M: d2eb5a8a77f87888792428aed4692dfb907e7a1d 192.168.10.220:6383     slots:10923-16383 (5461 slots) master  
+1 additional replica(s)  
+M: a87d207204a53ab599bf7f6ffb9d679d0eef4f25 192.168.10.219:6380  
+slots:0-5460 (5461 slots) master  
+0 additional replica(s)  
+[OK] All nodes agree about slots configuration.  
+&gt;&gt;&gt; Check for open slots...  
+&gt;&gt;&gt; Check slots coverage...  
+[OK] All 16384 slots covered.  //变成，三主二从了
+
+[root@slave2 redis]# redis-cli -c -p 6379 -h 192.168.10.219    //219登录  
+192.168.10.219:6379&gt; get tank  
+-&gt; Redirected to slot [4407] located at 192.168.10.219:6380   //数据被转到了6380节点了  
+"tank1"
+</pre></div>
+<p>经测试，集群是可用的。</p>
+            <section>
+    <p id="post-share-links">
+    Share on:
+    <a href="http://twitter.com/home?status=b'redis%20cluster%20%E9%9B%86%E7%BE%A4%20%E5%AE%89%E8%A3%85%20%E9%85%8D%E7%BD%AE%20%E8%AF%A6%E8%A7%A3%20http%3A//web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/'" target="_blank" title="Share on Twitter">Twitter</a>
+    ❄
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" target="_blank" title="Share on Facebook">Facebook</a>
+    ❄
+    <a href="https://plus.google.com/share?url=http%3A//web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" target="_blank" title="Share on Google Plus">Google+</a>
+    ❄
+    <a href="mailto:?subject=redis%20cluster%20%E9%9B%86%E7%BE%A4%20%E5%AE%89%E8%A3%85%20%E9%85%8D%E7%BD%AE%20%E8%AF%A6%E8%A7%A3&amp;body=http%3A//web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/" target="_blank" title="Share via Email">Email</a>
+    </p>
+</section>
+
+            <section>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zsczsc';
+        var disqus_identifier = 'http://web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/';
+    var disqus_url = 'http://web.zscbb.com/posts/2015/06/redis-cluster-ji-qun-an-zhuang-pei-zhi-xiang-jie/';
+
+    (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+            <hr/>
+<section>
+    <h2>Related Posts</h2>
+<ul class="related-posts-list">
+<li><a href="http://web.zscbb.com/posts/2014/04/githubge-ren-bo-ke-chuang-jian-yi-ji-pei-zhi-guo-cheng-lian-zai-zhong/" title="GitHub个人博客创建以及配置过程(连载中。。。)">GitHub个人博客创建以及配置过程(连载中。。。)</a></li>
+<li><a href="http://web.zscbb.com/posts/2014/05/wei-lai-shi-nian-hu-lian-wang-fa-zhan-qu-shi/" title="未来十年互联网发展趋势">未来十年互联网发展趋势</a></li>
+</ul>
+<hr />
+</section>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="http://web.zscbb.com/posts/2015/04/115ge-javamian-shi-ti-he-da-an-zhong-ji-lie-biao-shang/" title="Previous: 115个Java面试题和答案——终极列表（上）">115个Java面试题和答案——终极列表（上）</a></li>
+                <li class="next-article"><a href="http://web.zscbb.com/posts/2016/01/bi-ye-zhi-hou-zhe-ji-nian/" title="Next: 毕业之后这几年">毕业之后这几年</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-06-23T00:00:00+08:00">Jun 23, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="http://web.zscbb.com/categories.html#redis-ref">redis</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="http://web.zscbb.com/tags.html#redis-ref">redis
+                    <span>1</span>
+</a></li>
+                <li><a href="http://web.zscbb.com/tags.html#web-ref">Web
+                    <span>3</span>
+</a></li>
+                <li><a href="http://web.zscbb.com/tags.html#writting-ref">Writting
+                    <span>2</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+    <a href="mailto:zsc846551675@126.com" title="My email Address" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-envelope sidebar-social-links"></i></a>
+    <a href="https://github.com/JustinCheung" title="My Github Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="http://weibo.com/1308577680" title="My Weibo Profile Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-weibo profile sidebar-social-links"></i></a>
+    <a href="https://www.facebook.com/justin.cheung.790256" title="My facebook Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-facebook sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+            <script type="text/javascript">
+var disqus_shortname = 'zsczsc';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<script  language="javascript" type="text/javascript">
+function uncollapse() {
+    if (window.location.hash.match(/^#comment-\d+$/)) {
+        $('#disqus_thread').collapse('show');
+    }
+}
+</script>
+<script type="text/javascript" language="JavaScript">
+uncollapse();
+window.onhashchange=function(){
+    if (window.location.hash.match(/^#comment-\d+$/))
+        window.location.reload(true);
+}
+</script>
+<script>
+$('#disqus_thread').on('shown', function () {
+    var link = document.getElementsByClassName('accordion-toggle');
+    var old_innerHTML = link[0].innerHTML;
+    $(link[0]).fadeOut(500, function() {
+        $(this).text('Click here to hide comments').fadeIn(500);
+    });
+    $('#disqus_thread').on('hidden', function () {
+        $(link[0]).fadeOut(500, function() {
+            $(this).text(old_innerHTML).fadeIn(500);
+        });
+    })
+})
+</script>
+
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
